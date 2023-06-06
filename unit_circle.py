@@ -3,37 +3,29 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plot_unit_circle(alpha):
-    angles = np.linspace(0, 2*np.pi, 100)
-    x = np.cos(angles)
-    y = np.sin(angles)
-
-    # Rotate the unit circle based on the selected angle
-    x_rotated = np.cos(alpha) * x
-    y_rotated = np.sin(alpha) * y
-
-    # Calculate the values of sin(alpha) and cos(alpha)
-    sin_alpha = np.sin(alpha)
-    cos_alpha = np.cos(alpha)
+    x = np.cos(alpha)
+    y = np.sin(alpha)
 
     plt.figure(figsize=(6, 6))
-    plt.plot(x_rotated, y_rotated, 'b-', label='Rotated Unit Circle')
-    plt.scatter([cos_alpha], [sin_alpha], color='red', label='Point')
+    plt.plot([0, x], [0, y], 'r-', label='Radius')
+    plt.plot(x, y, 'bo', label='Point')
+    plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), 'b-', label='Unit Circle')
     plt.xlim(-1.5, 1.5)
     plt.ylim(-1.5, 1.5)
     plt.xlabel('x')
     plt.ylabel('y')
-    plt.title('Rotated Unit Circle: Sin and Cos')
+    plt.title('Unit Circle: Sin and Cos')
     plt.legend()
     plt.grid(True)
 
     # Display the values of sin(alpha) and cos(alpha)
-    st.markdown(f"**sin(alpha)**: {sin_alpha:.4f}")
-    st.markdown(f"**cos(alpha)**: {cos_alpha:.4f}")
+    st.markdown(f"**sin(alpha)**: {y:.4f}")
+    st.markdown(f"**cos(alpha)**: {x:.4f}")
 
     st.pyplot(plt)
 
 def main():
-    st.title('Rotated Unit Circle: Sin and Cos')
+    st.title('Unit Circle: Sin and Cos')
     alpha = st.slider('Select the angle (alpha)', 0.0, 2*np.pi, np.pi/4)
     plot_unit_circle(alpha)
 
