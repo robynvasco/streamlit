@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from fractions import Fraction
+import sympy
 
 # Set seaborn style
 sns.set_style('white')
@@ -15,10 +16,10 @@ def plot_unit_circle(alpha):
     x = np.cos(alpha)
     y = np.sin(alpha)
 
-    plt.figure(figsize=(5, 5))
+    plt.figure(figsize=(8, 8))
     plt.plot([0, x], [0, 0], '-', linewidth=3, color=custom_palette[0], label='cos')
     plt.plot([x, x], [0, y], '-', linewidth=3, color=custom_palette[1], label='sin')
-    plt.plot([0, x], [0, y], '-', linewidth=2, color=custom_palette[2], label='Radius')
+    plt.plot([0, x], [0, y], '-', linewidth=3, color=custom_palette[2], label='Radius')
     plt.plot(x, y, 'o', markersize=10, color='black', label='Point')
     plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), '--', linewidth=1, color='gray', alpha=0.5, label='Unit Circle')
     plt.xlim(-1.5, 1.5)
@@ -26,8 +27,8 @@ def plot_unit_circle(alpha):
     plt.xticks([])
     plt.yticks([])
     plt.axis('off')
-   
-    plt.legend(loc='upper right')
+    plt.title('Unit Circle: Trigonometric Functions', fontsize=18, fontweight='bold')
+    plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
 
     # Display the values of sin(alpha) and cos(alpha) in a styled box
@@ -44,8 +45,10 @@ def plot_unit_circle(alpha):
     st.pyplot(plt)
 
 def main():
+    sympy.init_printing(use_unicode=True)
+
     st.title('Unit Circle: Trigonometric Functions')
-    alpha = st.slider('Select the angle (&alpha;)', 0, 16, 4, format='%d * Pi/8')
+    alpha = st.slider('Select the angle (\u03B1)', 0, 16, 4, format='%d * \u03C0/8')
     alpha = alpha * np.pi / 8
     plot_unit_circle(alpha)
 
