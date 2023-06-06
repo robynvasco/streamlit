@@ -19,7 +19,6 @@ def plot_unit_circle(alpha):
     plt.plot([0, x], [0, 0], '-', linewidth=3, color=custom_palette[0], label='cos')
     plt.plot([x, x], [0, y], '-', linewidth=3, color=custom_palette[1], label='sin')
     plt.plot([0, x], [0, y], '-', linewidth=3, color=custom_palette[2], label='Radius')
-    plt.plot(x, y, 'o', markersize=10, color=custom_palette[2], label='Point')
     plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), '--', linewidth=1, color='gray', alpha=0.5, label='Unit Circle')
     plt.xlim(-1.5, 1.5)
     plt.ylim(-1.5, 1.5)
@@ -38,14 +37,14 @@ def plot_unit_circle(alpha):
     angle_degrees = np.degrees(alpha)
     arc = Arc((0, 0), 1, 1, 0, 0, angle_degrees, color=custom_palette[2], linewidth=1)
     plt.gca().add_patch(arc)
-    angle_text = f"Angle: {angle_degrees:.1f}°"
+    angle_text = f"\u03B1={angle_degrees:.1f}°"
     plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=10, color='black')
 
     st.pyplot(plt)
 
 def main():
     st.title('Unit Circle: Trigonometric Functions')
-    alpha = st.slider('Select the angle (in degrees)', 0, 360, 45)
+    alpha = st.slider('Select the angle \u03B1 (in degrees)', 0, 360, 45)
     alpha_rad = np.radians(alpha)
     plot_unit_circle(alpha_rad)
 
