@@ -16,9 +16,9 @@ def plot_unit_circle(alpha):
     y = np.sin(alpha)
 
     plt.figure(figsize=(8, 8))
-    plt.plot([0, x], [0, 0], 'o-', linewidth=3, markersize=8, color=custom_palette[0], label='cos')
-    plt.plot([x, x], [0, y], 'o-', linewidth=3, markersize=8, color=custom_palette[1], label='sin')
-    plt.plot([0, x], [0, y], 'o-', linewidth=3, markersize=8, color=custom_palette[2], label='Radius')
+    plt.quiver(0, 0, x, 0, angles='xy', scale_units='xy', scale=1, color=custom_palette[0], label='cos')
+    plt.quiver(0, 0, 0, y, angles='xy', scale_units='xy', scale=1, color=custom_palette[1], label='sin')
+    plt.plot([0, x], [0, y], 'o-', linewidth=3, markersize=0, color=custom_palette[2], label='Radius')
     plt.plot(x, y, 'o', markersize=10, color='black', label='Point')
     plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), '--', linewidth=1, color='gray', alpha=0.5, label='Unit Circle')
     plt.xlim(-1.5, 1.5)
