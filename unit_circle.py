@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from fractions import Fraction
-import sympy
 
 # Set seaborn style
 sns.set_style('white')
@@ -39,14 +38,16 @@ def plot_unit_circle(alpha):
         'linewidth': 1,
         'pad': 0.5
     }
-    st.markdown(f"<div style='margin-top: 20px;'><span style='font-size: 16px;'>sin(&alpha;):</span> <span style='font-size: 18px; font-weight: bold;'>{y:.4f}</span></div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='margin-bottom: 20px;'><span style='font-size: 16px;'>cos(&alpha;):</span> <span style='font-size: 18px; font-weight: bold;'>{x:.4f}</span></div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='margin-top: 20px;'><span style='font-size: 16px;'>sin(&alpha;):</span> <span style='font-size: 18px; font-weight: bold; color: {custom_palette[1]};'>{y:.4f}</span></div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='margin-bottom: 20px;'><span style='font-size: 16px;'>cos(&alpha;):</span> <span style='font-size: 18px; font-weight: bold; color: {custom_palette[0]};'>{x:.4f}</span></div>", unsafe_allow_html=True)
+
+    # Draw floating labels for sin and cos lines
+    plt.text(x, 0, 'cos', ha='center', va='bottom', fontsize=12, color=custom_palette[0])
+    plt.text(x, y, 'sin', ha='center', va='bottom', fontsize=12, color=custom_palette[1])
 
     st.pyplot(plt)
 
 def main():
-    sympy.init_printing(use_unicode=True)
-
     st.title('Unit Circle: Trigonometric Functions')
     alpha = st.slider('Select the angle (\u03B1)', 0, 16, 4, format='%d * \u03C0/8')
     alpha = alpha * np.pi / 8
