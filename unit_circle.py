@@ -18,16 +18,16 @@ def plot_unit_circle(alpha):
     plt.figure(figsize=(5, 5))
     plt.plot([0, x], [0, 0], '-', linewidth=3, color=custom_palette[0], label='cos')
     plt.plot([x, x], [0, y], '-', linewidth=3, color=custom_palette[1], label='sin')
-    plt.plot([0, x], [0, y], '-', linewidth=3, color=custom_palette[2], label='Radius')
+    plt.plot([0, x], [0, y], '-', linewidth=2, color=custom_palette[2], label='Radius')
     plt.plot(x, y, 'o', markersize=10, color='black', label='Point')
     plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), '--', linewidth=1, color='gray', alpha=0.5, label='Unit Circle')
-    plt.xlim(-1.3, 1.3)
-    plt.ylim(-1.3, 1.3)
+    plt.xlim(-1.5, 1.5)
+    plt.ylim(-1.5, 1.5)
     plt.xticks([])
     plt.yticks([])
     plt.axis('off')
    
-    plt.legend(loc='upper right', fontsize=12)
+    plt.legend(loc='upper right', fontsize=10)
     plt.grid(True, linestyle='--', linewidth=0.5)
 
     # Display the values of sin(alpha) and cos(alpha) in a styled box
