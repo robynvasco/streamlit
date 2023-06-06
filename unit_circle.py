@@ -27,7 +27,7 @@ def plot_unit_circle(alpha):
     plt.yticks([])
     plt.axis('off')
    
-    plt.legend(loc='upper right', fontsize=10)
+    plt.legend(loc='upper right')
     plt.grid(True, linestyle='--', linewidth=0.5)
 
     # Display the values of sin(alpha) and cos(alpha) in a styled box
