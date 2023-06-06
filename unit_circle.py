@@ -7,9 +7,11 @@ def plot_unit_circle(alpha):
     y = np.sin(alpha)
 
     plt.figure(figsize=(6, 6))
-    plt.plot([0, x], [0, y], 'r-', label='Radius')
+    plt.plot([0, 1], [0, 0], 'g-', linewidth=2, label='cos')
+    plt.plot([0, 0], [0, 1], 'r-', linewidth=2, label='sin')
+    plt.plot([0, x], [0, y], 'b-', linewidth=2, label='Radius')
     plt.plot(x, y, 'bo', label='Point')
-    plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), 'b-', label='Unit Circle')
+    plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), 'gray', linestyle='--', alpha=0.3, label='Unit Circle')
     plt.xlim(-1.5, 1.5)
     plt.ylim(-1.5, 1.5)
     plt.xlabel('x')
