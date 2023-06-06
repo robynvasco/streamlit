@@ -21,12 +21,12 @@ def plot_unit_circle(alpha):
     plt.plot([0, x], [0, y], '-', linewidth=3, color=custom_palette[2], label='Radius')
     plt.plot(x, y, 'o', markersize=10, color='black', label='Point')
     plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), '--', linewidth=1, color='gray', alpha=0.5, label='Unit Circle')
-    plt.xlim(-1.5, 1.5)
-    plt.ylim(-1, 1)
+    plt.xlim(-1.3, 1.3)
+    plt.ylim(-1.3, 1.3)
     plt.xticks([])
     plt.yticks([])
     plt.axis('off')
-    plt.title('Unit Circle: Trigonometric Functions', fontsize=18, fontweight='bold')
+   
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
 
