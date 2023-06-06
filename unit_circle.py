@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from fractions import Fraction
+from matplotlib.patches import Arc
 
 # Set seaborn style
 sns.set_style('white')
@@ -42,22 +43,23 @@ def plot_unit_circle(alpha):
     st.markdown(f"<div style='margin-bottom: 20px;'><span style='font-size: 16px;'>cos(&alpha;):</span> <span style='font-size: 18px; font-weight: bold; color: {custom_palette[0]};'>{x:.4f}</span></div>", unsafe_allow_html=True)
 
     # Draw floating labels for sin and cos lines
-    plt.text(x/2, -0.4, 'cos', ha='center', va='bottom', fontsize=12, color=custom_palette[0])
-    plt.text(x+0.4, y/2, 'sin', ha='center', va='bottom', fontsize=12, color=custom_palette[1])
+    plt.text(x/2, 0, 'cos', ha='center', va='bottom', fontsize=12, color=custom_palette[0])
+    plt.text(x/2, y/2, 'sin', ha='center', va='bottom', fontsize=12, color=custom_palette[1])
 
-    # Annotate the angle alpha
-    angle_text = fr"$\alpha = \frac{{{alpha}}}{{\pi}}$"
-    plt.annotate(angle_text, (0.05, -0.15), fontsize=14)
+    # Draw the angle arc and annotate the angle value in degrees
+    angle_degrees = np.degrees(alpha)
+    arc = Arc((0, 0), 1, 1, 0, 0, angle_degrees, color='black', linewidth=2)
+    plt.gca().add_patch(arc)
+    angle_text = f"{angle_degrees:.1f}°"
+    plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=12, fontweight='bold')
 
     st.pyplot(plt)
 
 def main():
     st.title('Unit Circle: Trigonometric Functions')
-    alpha = st.slider('Select the angle (\u03B1)', 0, 16, 4, format='%d * \u03C0/8')
-    alpha = alpha * np.pi / 8
-    plot_unit_circle(alpha)
+    alpha = st.slider('Select the angle (in degrees)', 0, 360, 45)
+    alpha_rad = np.radians(alpha)
+    plot_unit_circle(alpha_rad)
 
 if __name__ == '__main__':
     main()
-                      
-                      
