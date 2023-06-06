@@ -53,4 +53,11 @@ def plot_unit_circle(alpha):
 
 def main():
     st.title('Unit Circle: Trigonometric Functions')
-    alpha = st.slider('Select the angle (\u03B1)', 0,
+    alpha = st.slider('Select the angle (\u03B1)', 0, 16, 4, format='%d * \u03C0/8')
+    alpha = alpha * np.pi / 8
+    plot_unit_circle(alpha)
+
+if __name__ == '__main__':
+    main()
+                      
+                      
