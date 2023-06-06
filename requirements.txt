@@ -2,3 +2,5 @@ numpy
 matplotlib
 streamlit
 seaborn
+fractions
+sympy
