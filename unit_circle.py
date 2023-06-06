@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from fractions import Fraction
 
 # Set seaborn style
 sns.set_style('white')
@@ -45,7 +46,8 @@ def plot_unit_circle(alpha):
 
 def main():
     st.title('Unit Circle: Trigonometric Functions')
-    alpha = st.slider('Select the angle (&alpha;)', 0.0, 2*np.pi, np.pi/4)
+    alpha = st.slider('Select the angle (&alpha;)', 0, 16, 4, format='%d * Pi/8')
+    alpha = alpha * np.pi / 8
     plot_unit_circle(alpha)
 
 if __name__ == '__main__':
