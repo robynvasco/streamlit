@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Set seaborn style
-sns.set_style('whitegrid')
+sns.set_style('white')
 
 # Set custom color palette
 custom_palette = ['#00B894', '#00A8FF', '#F53B57']
@@ -26,19 +26,26 @@ def plot_unit_circle(alpha):
     plt.yticks(fontsize=12)
     plt.xlabel('x', fontsize=14)
     plt.ylabel('y', fontsize=14)
-    plt.title('Unit Circle: Sin and Cos', fontsize=16)
+    plt.title('Unit Circle: Trigonometric Functions', fontsize=18, fontweight='bold')
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
 
-    # Display the values of sin(alpha) and cos(alpha)
-    st.markdown(f"**sin(alpha)**: {y:.4f}", unsafe_allow_html=True)
-    st.markdown(f"**cos(alpha)**: {x:.4f}", unsafe_allow_html=True)
+    # Display the values of sin(alpha) and cos(alpha) in a styled box
+    box_style = {
+        'boxstyle': 'round',
+        'facecolor': 'white',
+        'edgecolor': 'gray',
+        'linewidth': 1,
+        'pad': 0.5
+    }
+    st.markdown(f"<div style='margin-top: 20px;'><span style='font-size: 16px;'>sin(&alpha;):</span> <span style='font-size: 18px; font-weight: bold;'>{y:.4f}</span></div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='margin-bottom: 20px;'><span style='font-size: 16px;'>cos(&alpha;):</span> <span style='font-size: 18px; font-weight: bold;'>{x:.4f}</span></div>", unsafe_allow_html=True)
 
     st.pyplot(plt)
 
 def main():
-    st.title('Unit Circle: Sin and Cos')
-    alpha = st.slider('Select the angle (alpha)', 0.0, 2*np.pi, np.pi/4)
+    st.title('Unit Circle: Trigonometric Functions')
+    alpha = st.slider('Select the angle (&alpha;)', 0.0, 2*np.pi, np.pi/4)
     plot_unit_circle(alpha)
 
 if __name__ == '__main__':
