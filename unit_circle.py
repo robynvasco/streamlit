@@ -8,8 +8,8 @@ def plot_unit_circle(alpha):
     y = np.sin(angles)
 
     # Rotate the unit circle based on the selected angle
-    x_rotated = np.cos(alpha) * x - np.sin(alpha) * y
-    y_rotated = np.sin(alpha) * x + np.cos(alpha) * y
+    x_rotated = np.cos(alpha) * x
+    y_rotated = np.sin(alpha) * y
 
     # Calculate the values of sin(alpha) and cos(alpha)
     sin_alpha = np.sin(alpha)
@@ -17,8 +17,7 @@ def plot_unit_circle(alpha):
 
     plt.figure(figsize=(6, 6))
     plt.plot(x_rotated, y_rotated, 'b-', label='Rotated Unit Circle')
-    plt.plot([0, x_rotated[50]], [0, y_rotated[50]], 'r-', label='Cosine')
-    plt.plot([0, x_rotated[0]], [0, y_rotated[0]], 'g-', label='Sine')
+    plt.scatter([cos_alpha], [sin_alpha], color='red', label='Point')
     plt.xlim(-1.5, 1.5)
     plt.ylim(-1.5, 1.5)
     plt.xlabel('x')
@@ -40,4 +39,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
