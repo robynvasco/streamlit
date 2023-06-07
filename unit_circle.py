@@ -8,7 +8,7 @@ from matplotlib.patches import Arc
 sns.set_style('white')
 
 # Set custom color palette
-custom_palette = ['#F53B57', '#00A8FF', ,'#00B894']
+custom_palette = ['#F53B57', '#00A8FF', '#00B894']
 sns.set_palette(custom_palette)
 
 def plot_unit_circle(alpha):
