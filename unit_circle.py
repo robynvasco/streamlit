@@ -76,7 +76,7 @@ def main():
     
     st.write('')
     st.write('### Trigonometric Values')
-       table_data = {
+    table_data = {
         'α in degrees': ['', '0', '30', '45', '60', '90'],
         'α in radians': ['', '0', 'π/6', 'π/4', 'π/3', 'π/2'],
         'sin(α)': ['', '0', '½', '½·√2', '½·√3', '1'],
