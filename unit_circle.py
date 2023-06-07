@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.patches import Arc
+import pandas as pd
 
 # Set seaborn style
 sns.set_style('white')
