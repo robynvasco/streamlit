@@ -37,7 +37,7 @@ def plot_unit_circle(alpha):
 
     # Draw the angle arc and annotate the angle value in degrees
     angle_degrees = np.degrees(alpha)
-    arc = Arc((0, 0), 1, 1, 0, 0, angle_degrees, color=custom_palette[2], linewidth=1)
+    arc = Arc((0, 0), 1, 1, 0, 0, angle_degrees, color="grey", linewidth=2)
     plt.gca().add_patch(arc)
     angle_text = f"\u03B1={int(angle_degrees)}\u00B0"
     plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=10, color='black')
@@ -57,19 +57,16 @@ def plot_unit_circle(alpha):
     tick_labels = ['0', 'π/2', 'π', '3π/2', '2π']
     plt.xticks(tick_values, tick_labels)
     plt.yticks([-1, -0.5, 0, 0.5, 1])
-    plt.xlabel('alpha')
+    plt.xlabel(' \u03B1')
     plt.ylabel('y')
     plt.ylim(-1.5, 1.5)
     plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
-    plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
     
 
     st.pyplot(plt)
     
     
-def fraction_html(numerator, denominator):
-    return f'<div>{numerator}</div><div style="border-top:1px solid black;padding-top:2px">{denominator}</div>'
 
 def main():
     st.title('Unit Circle and Trigonometric Functions')
