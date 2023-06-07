@@ -15,7 +15,7 @@ def plot_unit_circle(alpha):
     x = np.cos(alpha)
     y = np.sin(alpha)
 
-    plt.figure(figsize=(13, 5))
+    plt.figure(figsize=(15, 7))
     plt.subplot(1, 2, 1)
     plt.plot([0, x], [0, 0], '-', linewidth=3, color=custom_palette[0], label='cos')
     plt.plot([x, x], [0, y], '-', linewidth=3, color=custom_palette[1], label='sin')
@@ -47,13 +47,15 @@ def plot_unit_circle(alpha):
     plt.subplot(1, 2, 2)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
     plt.scatter(alpha, y, color=custom_palette[1], s=50)
-    plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=1)
+    plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=2)
   
 
     plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
     plt.scatter(alpha, x, color=custom_palette[0], s=50)
-    plt.plot([alpha, alpha], [0, x], '-', color=custom_palette[1], linewidth=1)
-    plt.xticks(np.linspace(0, 2*np.pi, 5))
+    plt.plot([alpha, alpha], [0, x], '-', color=custom_palette[0], linewidth=2)
+    tick_values = np.linspace(0, 2*np.pi, 5)
+    tick_labels = ['0', 'π/2', 'π', '3π/2', '2π']
+    plt.xticks(tick_values, tick_labels)
     plt.yticks([-1, -0.5, 0, 0.5, 1])
     plt.xlabel('alpha')
     plt.ylabel('y')
