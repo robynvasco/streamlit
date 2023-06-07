@@ -66,6 +66,10 @@ def plot_unit_circle(alpha):
     
 
     st.pyplot(plt)
+    
+    
+def fraction_html(numerator, denominator):
+    return f'<div>{numerator}</div><div style="border-top:1px solid black;padding-top:2px">{denominator}</div>'
 
 def main():
     st.title('Unit Circle and Trigonometric Functions')
@@ -75,14 +79,15 @@ def main():
     
     st.write('')
     st.write('### Trigonometric Values')
-    table_data = {
-        '': ['α in degrees', 'α in radians', 'sin(α)', 'Memory Aid for sin(α)', 'cos(α)'],
-        '0°': ['0', '0', '0', '1/2\n-----\n  1', '1'],
-        '30°': ['30', 'π/6', '1/2', '1/2\n-----\n  √1', '1/2\n-----\n  √3'],
-        '45°': ['45', 'π/4', '1/2\n-----\n  √2', '1/2\n-----\n  √2', '1/2\n-----\n  √2'],
-        '60°': ['60', 'π/3', '1/2\n-----\n  √3', '1/2\n-----\n  √3', '1/2'],
-        '90°': ['90', 'π/2', '1', '1/2\n-----\n  √4', '0']
+      table_data = {
+        'α in degrees': ['α in radians', 'sin(α)', 'Memory Aid for sin(α)', 'cos(α)'],
+        '0°': [ '0', '0', fraction_html("1", "2"), '1'],
+        '30°': [ 'π/6', fraction_html("1", "2"), fraction_html("1", "2√1"), fraction_html("1", "2√3")],
+        '45°': ['π/4', fraction_html("1", "2√2"), fraction_html("1", "2√2"), fraction_html("1", "2√2")],
+        '60°': [ 'π/3', fraction_html("1", "2√3"), fraction_html("1", "2√3"), fraction_html("1", "2")],
+        '90°': [ 'π/2', '1', fraction_html("1", "2√4"), '0']
     }
+
     st.table(table_data)
 
 
