@@ -57,7 +57,7 @@ def plot_unit_circle(alpha):
     plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
-
+    plt.subplots_adjust(wspace=0.3)
 
     st.pyplot(plt)
 
