@@ -79,7 +79,7 @@ def main():
     
     st.write('')
     st.write('### Trigonometric Values')
-      table_data = {
+    table_data = {
         'α in degrees': ['α in radians', 'sin(α)', 'Memory Aid for sin(α)', 'cos(α)'],
         '0°': [ '0', '0', fraction_html("1", "2"), '1'],
         '30°': [ 'π/6', fraction_html("1", "2"), fraction_html("1", "2√1"), fraction_html("1", "2√3")],
