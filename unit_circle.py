@@ -23,12 +23,13 @@ def plot_unit_circle(alpha):
     plt.plot(np.cos(np.linspace(0, 2*np.pi, 100)), np.sin(np.linspace(0, 2*np.pi, 100)), '--', linewidth=1, color='gray', alpha=0.5, label='Unit Circle')
     plt.xlim(-1.5, 1.5)
     plt.ylim(-1.5, 1.5)
-    plt.xticks([])
     plt.yticks([])
+    plt.yticks([-1, 0, 1])
     plt.axis('off')
-    plt.title('Unit Circle: Trigonometric Functions', fontsize=18, fontweight='bold')
+    plt.title('Unit Circle', fontsize=18, fontweight='bold')
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
+    plt.gca().set_aspect('equal')  # Set aspect ratio to equal
 
     # Draw floating labels for sin and cos lines
     plt.text(x/2, -0.1, 'cos', ha='center', va='bottom', fontsize=12, color=custom_palette[0])
@@ -42,21 +43,20 @@ def plot_unit_circle(alpha):
     plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=10, color='black')
     
     
-     # Plot the sine function
+     # Plot the sine and cos function
     plt.subplot(1, 2, 2)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
     plt.scatter(alpha, y, color=custom_palette[1], s=50)
     plt.xlabel('alpha')
     plt.ylabel('f(alpha)')
 
-    # Plot the cosine function
     plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
     plt.scatter(alpha, x, color=custom_palette[0], s=50)
-    plt.xlim(0, 6)
-    plt.ylim(-1, 1)
-    plt.xticks([])
-    plt.yticks([])
-    plt.title('Sinus and Cosinus Functions', fontsize=18, fontweight='bold')
+    plt.xticks(np.linspace(0, 2*np.pi, 5))
+    plt.yticks([-1, -0.5, 0, 0.5, 1])
+    plt.xlabel('alpha')
+    plt.ylabel('y')
+    plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
 
@@ -64,7 +64,7 @@ def plot_unit_circle(alpha):
     st.pyplot(plt)
 
 def main():
-    st.title('Unit Circle: Trigonometric Functions')
+    st.title('Unit Circle and Trigonometric Functions')
     alpha = st.slider('Select the angle \u03B1 (in degrees)', 0, 360, 45)
     alpha_rad = np.radians(alpha)
     plot_unit_circle(alpha_rad)
