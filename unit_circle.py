@@ -15,7 +15,7 @@ def plot_unit_circle(alpha):
     x = np.cos(alpha)
     y = np.sin(alpha)
 
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(13, 5))
     plt.subplot(1, 2, 1)
     plt.plot([0, x], [0, 0], '-', linewidth=3, color=custom_palette[0], label='cos')
     plt.plot([x, x], [0, y], '-', linewidth=3, color=custom_palette[1], label='sin')
@@ -61,7 +61,7 @@ def plot_unit_circle(alpha):
     plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
-    plt.subplots_adjust(wspace=1)
+    
 
     st.pyplot(plt)
 
