@@ -72,6 +72,17 @@ def main():
     alpha = st.slider('Select the angle \u03B1 in \u00B0', 0, 360, 45)
     alpha_rad = np.radians(alpha)
     plot_unit_circle(alpha_rad)
+    
+    st.write('')
+    st.write('### Trigonometric Values')
+    table_data = {
+        'α im Gradmaß': ['0°', '30°', '45°', '60°', '90°'],
+        'α im Bogenmaß': ['0', 'π/6', 'π/4', 'π/3', 'π/2'],
+        'sin(α)': ['0', '1/2', '1/2·√2', '1/2·√3', '1'],
+        'Merkhilfe für sin(α)': ['1/2·√0', '1/2·√1', '1/2·√2', '1/2·√3', '1/2·√4'],
+        'cos(α)': ['1', '1/2·√3', '1/2·√2', '1/2', '0']
+    }
+    st.table(table_data)
 
 if __name__ == '__main__':
     main()
