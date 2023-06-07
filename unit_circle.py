@@ -80,13 +80,16 @@ def main():
     st.write('')
     st.write('### Trigonometric Values')
     table_data = {
-        'α in degrees': ['α in radians', 'sin(α)', 'Memory Aid for sin(α)', 'cos(α)'],
-        '0°': [ '0', '0', fraction_html("1", "2"), '1'],
-        '30°': [ 'π/6', fraction_html("1", "2"), fraction_html("1", "2√1"), fraction_html("1", "2√3")],
-        '45°': ['π/4', fraction_html("1", "2√2"), fraction_html("1", "2√2"), fraction_html("1", "2√2")],
-        '60°': [ 'π/3', fraction_html("1", "2√3"), fraction_html("1", "2√3"), fraction_html("1", "2")],
-        '90°': [ 'π/2', '1', fraction_html("1", "2√4"), '0']
+        '': ['α in degrees', 'α in radians', 'sin(α)', 'Memory Aid for sin(α)', 'cos(α)'],
+        '0°': ['0', '0', '0', '1/2', '1'],
+        '30°': ['30', 'π/6', '1/2', '1/2√1', '1/2√3'],
+        '45°': ['45', 'π/4', '1/2√2', '1/2√2', '1/2√2'],
+        '60°': ['60', 'π/3', '1/2√3', '1/2√3', '1/2'],
+        '90°': ['90', 'π/2', '1', '1/2√4', '0']
     }
+
+    # Replace '1/2' with '½'
+    table_data['0°'][3] = '½'
 
     st.table(table_data)
 
