@@ -54,6 +54,7 @@ def plot_unit_circle(alpha):
     plt.yticks([-1, -0.5, 0, 0.5, 1])
     plt.xlabel('alpha')
     plt.ylabel('y')
+    plt.ylim(-1.5, 1.5)
     plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
