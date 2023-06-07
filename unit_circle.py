@@ -47,11 +47,12 @@ def plot_unit_circle(alpha):
     plt.subplot(1, 2, 2)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
     plt.scatter(alpha, y, color=custom_palette[1], s=50)
-    plt.plot([alpha, alpha], [0, y], '--', color=custom_palette[1], linewidth=1)
-    plt.plot([0, alpha], [y, y], '--', color=custom_palette[0], linewidth=1)
+    plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=1)
+  
 
     plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
     plt.scatter(alpha, x, color=custom_palette[0], s=50)
+    plt.plot([alpha, alpha], [0, x], '-', color=custom_palette[1], linewidth=1)
     plt.xticks(np.linspace(0, 2*np.pi, 5))
     plt.yticks([-1, -0.5, 0, 0.5, 1])
     plt.xlabel('alpha')
@@ -60,7 +61,7 @@ def plot_unit_circle(alpha):
     plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
     plt.legend(loc='upper right', fontsize=12)
     plt.grid(True, linestyle='--', linewidth=0.5)
-    plt.subplots_adjust(wspace=0.3)
+    plt.subplots_adjust(wspace=1)
 
     st.pyplot(plt)
 
