@@ -51,4 +51,48 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
         plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=3)
 
     if show_cosine:
-        plt.plot(np.linspace(0, 2*np.pi,
+        plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
+        plt.scatter(alpha, x, color=custom_palette[0], s=50)
+        plt.plot([alpha, alpha], [0, x], '-', color=custom_palette[0], linewidth=2)
+
+    tick_values = np.linspace(0, 2*np.pi, 5)
+    tick_labels = ['0', 'π/2', 'π', '3π/2', '2π']
+    plt.xticks(tick_values, tick_labels)
+    plt.yticks([-1, -0.5, 0, 0.5, 1])
+    plt.xlabel('\u03B1')
+    plt.ylabel('y')
+    plt.ylim(-1.5, 1.5)
+    plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
+    plt.grid(True, linestyle='--', linewidth=0.5)
+
+    st.pyplot(plt)
+
+
+def main():
+    st.title('Unit Circle and Trigonometric Functions')
+    alpha = st.slider('Select the angle \u03B1 in \u00B0', 0, 360, 45)
+    alpha_rad = np.radians(alpha)
+    
+    show_sine = st.checkbox('Show Sine')
+    show_cosine = st.checkbox('Show Cosine')
+    
+    plot_unit_circle(alpha_rad, show_sine, show_cosine)
+    
+    st.write('')
+    st.write('### Trigonometric Values')
+    table_data = {
+        'α in degrees': ['0°', '30°', '45°', '60°', '90°'],
+        'α in radians': ['0', 'π/6', 'π/4', 'π/3', 'π/2'],
+        'sin(α)': ['0', '½', '½√2', '½√3', '1'],
+        'Memory Aid for sin(α)': ['½√0', '½√1', '½√2', '½√3', '½√4'],
+        'cos(α)': ['1', '½√3', '½√2', '½', '0']
+    }
+
+    df = pd.DataFrame(table_data)
+
+    # Render the table
+    st.table(df)
+
+
+if __name__ == '__main__':
+    main()
