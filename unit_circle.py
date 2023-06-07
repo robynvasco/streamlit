@@ -48,7 +48,7 @@ def plot_unit_circle(alpha):
     plt.subplot(1, 2, 2)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
     plt.scatter(alpha, y, color=custom_palette[1], s=50)
-    plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=2)
+    plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=3)
   
 
     plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
@@ -78,11 +78,11 @@ def main():
     st.write('')
     st.write('### Trigonometric Values')
     table_data = {
-        'α in degrees': ['', '0', '30', '45', '60', '90'],
-        'α in radians': ['', '0', 'π/6', 'π/4', 'π/3', 'π/2'],
-        'sin(α)': ['', '0', '½', '½·√2', '½·√3', '1'],
-        'Memory Aid for sin(α)': ['', '½·√0', '½·√1', '½·√2', '½·√3', '½·√4'],
-        'cos(α)': ['', '1', '½·√3', '½·√2', '½', '0']
+        'α in degrees': ['0°', '30°', '45°', '60°', '90°'],
+        'α in radians': ['0', 'π/6', 'π/4', 'π/3', 'π/2'],
+        'sin(α)': ['0', '½', '½·√2', '½·√3', '1'],
+        'Memory Aid for sin(α)': ['½√0', '½√1', '½√2', '½√3', '½√4'],
+        'cos(α)': ['1', '½√3', '½√2', '½', '0']
     }
 
     df = pd.DataFrame(table_data)
