@@ -15,7 +15,8 @@ def plot_unit_circle(alpha):
     x = np.cos(alpha)
     y = np.sin(alpha)
 
-    plt.figure(figsize=(8, 8))
+    plt.figure(figsize=(10, 5))
+    plt.subplot(1, 2, 1)
     plt.plot([0, x], [0, 0], '-', linewidth=3, color=custom_palette[0], label='cos')
     plt.plot([x, x], [0, y], '-', linewidth=3, color=custom_palette[1], label='sin')
     plt.plot([0, x], [0, y], '-', linewidth=3, color=custom_palette[2], label='Radius')
@@ -45,17 +46,12 @@ def plot_unit_circle(alpha):
     plt.subplot(1, 2, 1)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
     plt.scatter(alpha, y, color=custom_palette[1], s=50)
-    plt.xlabel('alpha')
-    plt.ylabel('sin(alpha)')
-    plt.title('Sine Function')
 
     # Plot the cosine function
-    plt.subplot(1, 2, 2)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
     plt.scatter(alpha, x, color=custom_palette[0], s=50)
-    plt.xlabel('alpha')
-    plt.ylabel('cos(alpha)')
-    plt.title('Cosine Function')
+   
+    
 
 
     st.pyplot(plt)
