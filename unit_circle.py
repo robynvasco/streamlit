@@ -39,6 +39,24 @@ def plot_unit_circle(alpha):
     plt.gca().add_patch(arc)
     angle_text = f"\u03B1={angle_degrees:.1f}°"
     plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=10, color='black')
+    
+    
+     # Plot the sine function
+    plt.subplot(1, 2, 1)
+    plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
+    plt.scatter(alpha, y, color=custom_palette[1], s=50)
+    plt.xlabel('alpha')
+    plt.ylabel('sin(alpha)')
+    plt.title('Sine Function')
+
+    # Plot the cosine function
+    plt.subplot(1, 2, 2)
+    plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
+    plt.scatter(alpha, x, color=custom_palette[0], s=50)
+    plt.xlabel('alpha')
+    plt.ylabel('cos(alpha)')
+    plt.title('Cosine Function')
+
 
     st.pyplot(plt)
 
