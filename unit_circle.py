@@ -43,15 +43,20 @@ def plot_unit_circle(alpha):
     
     
      # Plot the sine function
-    plt.subplot(1, 2, 1)
+    plt.subplot(1, 2, 2)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
     plt.scatter(alpha, y, color=custom_palette[1], s=50)
 
     # Plot the cosine function
     plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
     plt.scatter(alpha, x, color=custom_palette[0], s=50)
-   
-    
+    plt.xlim(0, 6)
+    plt.ylim(0, 6)
+    plt.xticks([])
+    plt.yticks([])
+    plt.title('Sinus and Cosinus Functions', fontsize=18, fontweight='bold')
+    plt.legend(loc='upper right', fontsize=12)
+    plt.grid(True, linestyle='--', linewidth=0.5)
 
 
     st.pyplot(plt)
