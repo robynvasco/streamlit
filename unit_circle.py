@@ -47,6 +47,8 @@ def plot_unit_circle(alpha):
     plt.subplot(1, 2, 2)
     plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
     plt.scatter(alpha, y, color=custom_palette[1], s=50)
+    plt.plot([alpha, alpha], [0, y], '--', color=custom_palette[1], linewidth=1)
+    plt.plot([0, alpha], [y, y], '--', color=custom_palette[0], linewidth=1)
 
     plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
     plt.scatter(alpha, x, color=custom_palette[0], s=50)
