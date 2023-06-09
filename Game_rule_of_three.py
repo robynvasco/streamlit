@@ -1,16 +1,32 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+import numpy as np
 
-def visualize_direct_proportional_slope(a, b, c, x):
-    values = [a, b, c, x]
-    labels = ['a', 'b', 'c', 'x']
+def visualize_proportional_bridge(a, b, c, x):
     fig, ax = plt.subplots()
-    ax.plot([1, 2], [a, c], marker='o', label='Known Values')
-    ax.annotate(f"Slope = {round((c - a) / (2 - 1), 2)}", xy=(1, a), xytext=(10, 10),
-                textcoords='offset points', ha='center')
-    ax.set_xlabel('Position')
-    ax.set_ylabel('Value')
-    ax.set_title('Direct Proportional Slope')
+    
+    # Plot known values
+    ax.plot([0, 1], [0, a], color='blue', label='a')
+    ax.plot([0, 1], [0, c], color='red', label='c')
+    
+    # Plot unknown value
+    ax.plot([1, 2], [a, x], color='green', label='x')
+    
+    # Plot bridge lines
+    ax.plot([1, 1], [a, c], color='gray', linestyle='--')
+    ax.plot([1, 2], [c, c], color='gray', linestyle='--')
+    
+    # Add labels and annotations
+    ax.text(-0.1, a, 'a', ha='right', va='center')
+    ax.text(-0.1, c, 'c', ha='right', va='center')
+    ax.text(2.1, x, 'x', ha='left', va='center')
+    ax.text(0.5, (a + c) / 2, 'b', ha='center', va='center')
+    
+    ax.set_xlim([-0.5, 2.5])
+    ax.set_ylim([0, max(a, c, x) * 1.2])
+    ax.set_xlabel('Bridge')
+    ax.set_ylabel('Values')
+    ax.set_title('Proportional Bridge')
     ax.legend()
 
     return fig
@@ -28,9 +44,9 @@ def main():
         x = (b * c) / a
         st.write(f"The unknown value 'x' is: {x}")
 
-        fig3 = visualize_direct_proportional_slope(a, b, c, x)
+        fig = visualize_proportional_bridge(a, b, c, x)
 
-        st.pyplot(fig3)
+        st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
