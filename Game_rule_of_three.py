@@ -2,8 +2,7 @@ import streamlit as st
 
 def rule_of_three_calculator(a, b, c):
     # Calculate the unknown value using the Rule of Three
-    d = (b * c) / a
-    x=round(d)
+    x = (b * c) / a
     return x
 
 def main():
@@ -26,7 +25,7 @@ def main():
     st.write(f"If {a} apples cost ${b}, then {c} apples would cost ${x}.")
 
     # Get user input for their answer
-    user_answer = st.number_input("Enter your answer:", value=0, step=0.01)
+    user_answer = st.number_input("Enter your answer:", value=0.0, step=0.01, format="%.2f")
 
     # Check if the user's answer is correct
     if abs(user_answer - x) < 0.01:
@@ -38,9 +37,9 @@ def main():
     st.write("Let's try another example!")
 
     # Get user input for a new set of known values
-    a = st.number_input("Enter the first number (a):", value=0, step=0.01)
-    b = st.number_input("Enter the second number (b):", value=0, step=0.01)
-    c = st.number_input("Enter the third number (c):", value=0, step=0.01)
+    a = st.number_input("Enter the first number (a):", value=0.0, step=0.01, format="%.2f")
+    b = st.number_input("Enter the second number (b):", value=0.0, step=0.01, format="%.2f")
+    c = st.number_input("Enter the third number (c):", value=0.0, step=0.01, format="%.2f")
 
     # Calculate the unknown value using the Rule of Three
     x = rule_of_three_calculator(a, b, c)
