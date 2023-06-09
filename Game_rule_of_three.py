@@ -35,35 +35,30 @@ def main():
         answer = level["answer"]
         completed = level["completed"]
 
-        st.header(f"Level {level_index + 1}: {scenario}")
-        st.write(description)
-
-        # Input values
-        st.subheader("Input Values:")
-        a, b, c = values
-
-        user_answer = st.number_input("How many days will it last?", value=0, min_value=0, key=f"answer_{level_index}")
-
-        # Check answer
-        if user_answer == answer:
-            st.success("Congratulations! You provided the correct answer.")
-            level["completed"] = True
-            level_index += 1
-            if level_index < len(levels):
-                st.info("Prepare for the next level!")
-            else:
-                st.balloons()
-                st.success("You saved Planet X-42! Well done!")
-
-        elif user_answer != 0:
-            st.error("Oops! That's not the correct answer. Try again!")
-
         if not completed:
+            st.header(f"Level {level_index + 1}: {scenario}")
+            st.write(description)
+
+            # Input values
+            st.subheader("Input Values:")
+            a, b, c = values
+
+            user_answer = st.number_input("How many days will it last?", value=0, min_value=0, key=f"answer_{level_index}")
+
+            # Check answer
+            if user_answer == answer:
+                st.success("Congratulations! You provided the correct answer.")
+                level["completed"] = True
+            elif user_answer != 0:
+                st.error("Oops! That's not the correct answer. Try again!")
+
             break
 
-        # Display result
-        st.subheader("Result:")
-        st.write(f"With {c} oxygen tanks, it will last approximately {answer} days.")
+        level_index += 1
+
+    if level_index == len(levels):
+        st.balloons()
+        st.success("You saved Planet X-42! Well done!")
 
 if __name__ == "__main__":
     main()
