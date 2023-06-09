@@ -40,7 +40,7 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
     angle_degrees = np.degrees(alpha)
     arc = Arc((0, 0), 1, 1, 0, 0, angle_degrees, color="grey", linewidth=2)
     plt.gca().add_patch(arc)
-    angle_text = f"\u03B1={int(angle_degrees)}\u00B0"
+    angle_text = f"\u03B1={np.radians(alpha)}\u00B0"
     plt.text(0.3, 0.15, angle_text, ha='center', va='center', fontsize=10, color='grey')
 
     ######### Plot the sine and cosine functions
