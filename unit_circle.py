@@ -54,9 +54,9 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
         plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
         plt.scatter(alpha, x, color=custom_palette[0], s=50)
         plt.plot([alpha, alpha], [0, x], '-', color=custom_palette[0], linewidth=2)
-    else:
-        plt.subplot(1, 2, 2)
-        plt.axis('off')
+   else:
+    plt.subplot(1, 2, 2)
+    plt.axis('off')
 
 
     tick_values = np.linspace(0, 2*np.pi, 5)
