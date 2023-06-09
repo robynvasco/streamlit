@@ -79,11 +79,12 @@ def main():
     st.write('### Why use the Unit Circle?')
     st.write('The unit circle is a circle with a radius of 1 unit and its center at the origin (0, 0) of a coordinate plane. It is widely used in trigonometry to understand the relationships between sine and cosine values at different angles. Here are a few reasons why we use the unit circle:')
 
-    alpha = st.slider('Select the angle α in °', 0, 360, 45)
-    alpha_rad = np.radians(alpha)
+    with st.container():
+        alpha = st.slider('Select the angle α in °', 0, 360, 45)
+        alpha_rad = np.radians(alpha)
 
-    show_sine = st.checkbox('Show sin(α)', value=True)
-    show_cosine = st.checkbox('Show cos(α)', value=True)
+        show_sine = st.checkbox('Show sin(α)', value=True)
+        show_cosine = st.checkbox('Show cos(α)', value=True)
 
     plot_unit_circle(alpha_rad, show_sine, show_cosine)
 
