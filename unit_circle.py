@@ -69,6 +69,7 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
     plt.xlabel('x')
     plt.ylabel('y')
     plt.ylim(-1.5, 1.5)
+    plt.ylim(0, np.pi)
     plt.title('Sine and Cosine Functions', fontsize=18, fontweight='bold')
     plt.grid(True, linestyle='--', linewidth=0.5)
 
