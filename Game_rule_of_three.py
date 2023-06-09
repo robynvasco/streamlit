@@ -1,14 +1,17 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
-def visualize_direct_proportionality(a, b, c, x):
-    areas = [a, b, c, x]
+def visualize_direct_proportional_slope(a, b, c, x):
+    values = [a, b, c, x]
     labels = ['a', 'b', 'c', 'x']
     fig, ax = plt.subplots()
-    ax.bar(labels, areas)
-    ax.set_xlabel('Values')
-    ax.set_ylabel('Area')
-    ax.set_title('Direct Proportionality - Area Model')
+    ax.plot([1, 2], [a, c], marker='o', label='Known Values')
+    ax.annotate(f"Slope = {round((c - a) / (2 - 1), 2)}", xy=(1, a), xytext=(10, 10),
+                textcoords='offset points', ha='center')
+    ax.set_xlabel('Position')
+    ax.set_ylabel('Value')
+    ax.set_title('Direct Proportional Slope')
+    ax.legend()
 
     return fig
 
@@ -25,9 +28,9 @@ def main():
         x = (b * c) / a
         st.write(f"The unknown value 'x' is: {x}")
 
-        fig2 = visualize_direct_proportionality(a, b, c, x)
+        fig3 = visualize_direct_proportional_slope(a, b, c, x)
 
-        st.pyplot(fig2)
+        st.pyplot(fig3)
 
 if __name__ == "__main__":
     main()
