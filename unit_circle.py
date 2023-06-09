@@ -44,19 +44,20 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
     plt.text(0.3, 0.15, angle_text, ha='center', va='center', fontsize=10, color='grey')
 
     ######### Plot the sine and cosine functions
-	if show_sine or show_cosine:
-		plt.subplot(1, 2, 2)
-		if show_sine:
-			plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
-			plt.scatter(alpha, y, color=custom_palette[1], s=50)
-			plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=3)
-		if show_cosine:
-			plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
-			plt.scatter(alpha, x, color=custom_palette[0], s=50)
-			plt.plot([alpha, alpha], [0, x], '-', color=custom_palette[0], linewidth=2)
-	   else:
-		plt.subplot(1, 2, 2)
-		plt.axis('off')
+    if show_sine or show_cosine:
+        plt.subplot(1, 2, 2)
+        if show_sine:
+         plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
+         plt.scatter(alpha, y, color=custom_palette[1], s=50)
+         plt.plot([alpha, alpha], [0, y], '-', color=custom_palette[1], linewidth=3)
+        if show_cosine:
+         plt.plot(np.linspace(0, 2*np.pi, 100), np.cos(np.linspace(0, 2*np.pi, 100)), color=custom_palette[0], linewidth=2)
+         plt.scatter(alpha, x, color=custom_palette[0], s=50)
+         plt.plot([alpha, alpha], [0, x], '-', color=custom_palette[0], linewidth=2)
+    else:
+        plt.subplot(1, 2, 2)
+        plt.axis('off')
+
 
 
     tick_values = np.linspace(0, 2*np.pi, 5)
