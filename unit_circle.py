@@ -80,8 +80,8 @@ def main():
     alpha = st.slider('Select the angle \u03B1 in \u00B0', 0, 360, 45)
     alpha_rad = np.radians(alpha)
 
-    show_sine = st.checkbox('Show Sine', value=True)
-    show_cosine = st.checkbox('Show Cosine', value=True)
+    show_sine = st.checkbox('Show sin(\u03B1)', value=True)
+    show_cosine = st.checkbox('Show cos(\u03B1)', value=True)
 
     plot_unit_circle(alpha_rad, show_sine, show_cosine)
 
