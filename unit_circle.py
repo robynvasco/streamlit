@@ -78,9 +78,16 @@ def main():
     st.title('Unit Circle and Trigonometric Functions')
     st.write('### Why use the Unit Circle?')
     st.write('The unit circle is a circle with a radius of 1 unit and its center at the origin (0, 0) of a coordinate plane. It is widely used in trigonometry to understand the relationships between sine and cosine values at different angles. Here are a few reasons why we use the unit circle:')
+    st.markdown(
+        """
+        <div style='background-color: lightgray; padding: 10px; border-radius: 5px;'>
+        <p style='font-weight: bold;'>Angle Selection</p>
+        <p>Select the angle α in °:</p>
+        """
+    )
 
     with st.container():
-        alpha = st.slider('Select the angle α in °', 0, 360, 45)
+        alpha = st.slider(' ', 0, 360, 45)
         alpha_rad = np.radians(alpha)
 
         show_sine = st.checkbox('Show sin(α)', value=True)
