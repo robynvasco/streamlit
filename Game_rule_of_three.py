@@ -2,7 +2,8 @@ import streamlit as st
 
 def rule_of_three_calculator(a, b, c):
     # Calculate the unknown value using the Rule of Three
-    x = (b * c) / a
+    d = (b * c) / a
+    x=round(d)
     return x
 
 def main():
