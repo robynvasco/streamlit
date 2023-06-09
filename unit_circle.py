@@ -77,7 +77,7 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
 def main():
     st.title('Unit Circle and Trigonometric Functions')
     st.write('The unit circle is a circle with a radius of 1 unit and its center at the origin (0, 0) of a coordinate plane.')
-    st.write("By definition, sine of α is given by sin(α) = Gegenkathete / Hypotenuse. In the unit circle, the hypotenuse is always 1 since it is the radius of the circle. Therefore, sin(α) = Gegenkathete / 1 = Gegenkathete.')
+    st.write('By definition, sine of α is given by sin(α) = Gegenkathete / Hypotenuse. In the unit circle, the hypotenuse is always 1 since it is the radius of the circle. Therefore, sin(α) = Gegenkathete / 1 = Gegenkathete.')
     st.write('')
     with st.container():
         alpha = st.slider('Select the angle α in °', 0, 360, 45)
