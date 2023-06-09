@@ -1,60 +1,39 @@
 import streamlit as st
-import random
+import matplotlib.pyplot as plt
 
 def rule_of_three_calculator(a, b, c):
     # Calculate the unknown value using the Rule of Three
     x = (b * c) / a
     return x
 
-def generate_scenario():
-    # Generate random values for the scenario
-    a = random.randint(1, 10)
-    b = random.randint(1, 10)
-    c = random.randint(1, 10)
+def visualize_rule_of_three(a, b, c, x):
+    # Create a bar chart to visualize the proportions
+    values = [a, b, c, x]
+    labels = ['a', 'b', 'c', 'x']
 
-    # Calculate the unknown value using the Rule of Three
-    x = rule_of_three_calculator(a, b, c)
+    fig, ax = plt.subplots()
+    ax.bar(labels, values)
 
-    return a, b, c, x
+    ax.set_xlabel('Values')
+    ax.set_ylabel('Quantity')
+    ax.set_title('Rule of Three Visualization')
+
+    st.pyplot(fig)
 
 def main():
-    st.title("Rule of Three Adventure")
+    st.title("Rule of Three Visualization")
 
-    st.write("Welcome to the Rule of Three Adventure! You find yourself in a mysterious land where everything revolves around proportions. Your mission is to solve the Rule of Three puzzles and find your way back home.")
+    st.write("The Rule of Three is a mathematical principle that allows you to solve problems based on proportions. Given three known values, you can calculate the unknown value using the formula: (a / b = c / x)")
 
-    completed_levels = []
-    while len(completed_levels) < 3:
-        st.write("---")
-        level = len(completed_levels) + 1
-        st.write(f"Level {level}")
+    a = st.number_input("Enter value for 'a':", value=1, min_value=1, step=1)
+    b = st.number_input("Enter value for 'b':", value=1, min_value=1, step=1)
+    c = st.number_input("Enter value for 'c':", value=1, min_value=1, step=1)
 
-        if level not in completed_levels:
-            st.write("You encounter a wise old wizard who presents you with a challenge:")
+    if st.button("Calculate"):
+        x = rule_of_three_calculator(a, b, c)
+        st.write(f"The unknown value 'x' is: {x}")
 
-            # Generate a scenario
-            a, b, c, x = generate_scenario()
-
-            # Show the problem to the user
-            st.write(f"Scenario: If {a} {get_object_plural(a)} cost {b} gold coins, how many gold coins would {c} {get_object_plural(c)} cost?")
-
-            # Get user input for their answer
-            user_answer = st.number_input("Enter your answer:", key=f"level_{level}", value=0, min_value=0, step=1)
-
-            # Check if the user's answer is correct
-            if user_answer == int(x):
-                st.write("Correct! You have solved the puzzle.")
-                completed_levels.append(level)
-            else:
-                st.write("Oops! That's not the correct answer. Try again!")
-
-    st.write("---")
-    st.write("Congratulations! You have successfully completed all levels and found your way back home.")
-
-def get_object_plural(number):
-    if number == 1:
-        return "item"
-    else:
-        return "items"
+        visualize_rule_of_three(a, b, c, x)
 
 if __name__ == "__main__":
     main()
