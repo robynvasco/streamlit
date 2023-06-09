@@ -21,8 +21,6 @@ def main():
     # Calculate the unknown value using the Rule of Three
     x = rule_of_three_calculator(a, b, c)
 
-    # Show the problem and the calculated unknown value
-    st.write(f"If {a} apples cost ${b}, then {c} apples would cost ${x}.")
 
     # Get user input for their answer
     user_answer = st.number_input("Enter your answer:", value=0.0, step=0.01, format="%.2f")
