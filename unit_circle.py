@@ -41,9 +41,9 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
     arc = Arc((0, 0), 1, 1, 0, 0, theta1=0, theta2=angle_degrees, color="grey", linewidth=2)
     plt.gca().add_patch(arc)
     angle_text = f"\u03B1={int(angle_degrees)}\u00B0"
-    plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=10, color='black')
+    plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=10, color='grey')
 
-    # Plot the sine and cosine functions
+    ######### Plot the sine and cosine functions
     if show_sine:
         plt.subplot(1, 2, 2)
         plt.plot(np.linspace(0, 2*np.pi, 100), np.sin(np.linspace(0, 2*np.pi, 100)), color=custom_palette[1], linewidth=2)
