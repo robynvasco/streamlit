@@ -58,7 +58,7 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
     tick_values = np.linspace(0, 2*np.pi, 5)
     tick_labels = ['0', 'π/2', 'π', '3π/2', '2π']
     plt.xticks(tick_values, tick_labels)
-    tick_values = np.linspace(-1,-np.sqrt(3)/2,-np.sqrt(2)/2,-1/2,0,1/2,np.sqrt(2)/2,np.sqrt(3)/2,1)
+    tick_values = np.array([-1,-np.sqrt(3)/2,-np.sqrt(2)/2,-1/2,0,1/2,np.sqrt(2)/2,np.sqrt(3)/2,1])
     tick_labels = ['-1','-√3/2','-√2/2','-½', '0', '½', '√2/2', '√3/2', '1']
     plt.yticks(tick_values, tick_labels)
     plt.xlabel('x')
