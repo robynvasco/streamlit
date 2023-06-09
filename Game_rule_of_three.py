@@ -33,7 +33,7 @@ def main():
         st.write(f"The wizard says, 'If {a} {get_object_plural(a)} cost {b} gold coins, how many gold coins would {c} {get_object_plural(c)} cost?'")
         
         # Get user input for their answer
-        user_answer = st.number_input("Enter your answer:", value=0, min_value=0, step=1)
+        user_answer = st.number_input("Enter your answer:", key="wizard", value=0, min_value=0, step=1)
 
         # Check if the user's answer is correct
         if user_answer == int(x):
@@ -52,7 +52,7 @@ def main():
         st.write(f"The merchants ask you, 'If {a} {get_object_plural(a)} cost {b} silver coins, how many silver coins would {c} {get_object_plural(c)} cost?'")
 
         # Get user input for their answer
-        user_answer = st.number_input("Enter your answer:", value=0, min_value=0, step=1)
+        user_answer = st.number_input("Enter your answer:", key="merchants", value=0, min_value=0, step=1)
 
         # Check if the user's answer is correct
         if user_answer == int(x):
@@ -71,7 +71,7 @@ def main():
         st.write(f"The treasure chest is locked with a secret code. The inscription reads, 'If {a} {get_object_plural(a)} cost {b} gems, how many gems would {c} {get_object_plural(c)} cost?'")
 
         # Get user input for their answer
-        user_answer = st.number_input("Enter your answer:", value=0, min_value=0, step=1)
+        user_answer = st.number_input("Enter your answer:", key="treasure", value=0, min_value=0, step=1)
 
         # Check if the user's answer is correct
         if user_answer == int(x):
