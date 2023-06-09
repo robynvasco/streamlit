@@ -35,10 +35,10 @@ def main():
         answer = level["answer"]
         completed = level["completed"]
 
-        if not completed:
-            st.header(f"Level {level_index + 1}: {scenario}")
-            st.write(description)
+        st.header(f"Level {level_index + 1}: {scenario}")
+        st.write(description)
 
+        if not completed:
             # Input values
             st.subheader("Input Values:")
             a, b, c = values
@@ -49,17 +49,13 @@ def main():
             if user_answer == answer:
                 st.success("Congratulations! You provided the correct answer.")
                 level["completed"] = True
-                level_index += 1
-                if level_index < len(levels):
-                    st.info("Prepare for the next level!")
             elif user_answer != 0:
                 st.error("Oops! That's not the correct answer. Try again!")
-
-            break
+                break
 
         level_index += 1
 
-    if level_index == len(levels):
+    if all(level["completed"] for level in levels):
         st.balloons()
         st.success("You saved Planet X-42! Well done!")
 
