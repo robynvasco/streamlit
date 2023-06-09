@@ -38,10 +38,10 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
 
     # Draw the angle arc and annotate the angle value in degrees
     angle_degrees = np.degrees(alpha)
-    arc = Arc((0, 0), 1, 1, 0, 0, theta1=0, theta2=angle_degrees, color="grey", linewidth=2)
+    arc = Arc((0, 0), 2, 2, 0, 0, angle_degrees, color="grey", linewidth=2)
     plt.gca().add_patch(arc)
     angle_text = f"\u03B1={int(angle_degrees)}\u00B0"
-    plt.text(0.5, 0.15, angle_text, ha='center', va='center', fontsize=10, color='grey')
+    plt.text(0.7, 0.2, angle_text, ha='center', va='center', fontsize=10, color='black')
 
     ######### Plot the sine and cosine functions
     if show_sine:
