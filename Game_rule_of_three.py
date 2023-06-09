@@ -14,6 +14,12 @@ def visualize_rule_of_three(a, b, c, x):
     fig, ax = plt.subplots()
     ax.bar(labels, values)
 
+    ax.annotate(str(a), xy=('a', a), xytext=(0, 5), textcoords='offset points', ha='center')
+    ax.annotate(str(b), xy=('b', b), xytext=(0, 5), textcoords='offset points', ha='center')
+    ax.annotate(str(c), xy=('c', c), xytext=(0, 5), textcoords='offset points', ha='center')
+    ax.annotate(str(round(x, 2)), xy=('x', x), xytext=(0, 5), textcoords='offset points', ha='center')
+
+    ax.set_ylim(0, max(values) * 1.2)
     ax.set_xlabel('Values')
     ax.set_ylabel('Quantity')
     ax.set_title('Rule of Three Visualization')
