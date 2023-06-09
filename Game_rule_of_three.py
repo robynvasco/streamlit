@@ -49,6 +49,9 @@ def main():
             if user_answer == answer:
                 st.success("Congratulations! You provided the correct answer.")
                 level["completed"] = True
+                level_index += 1
+                if level_index < len(levels):
+                    st.info("Prepare for the next level!")
             elif user_answer != 0:
                 st.error("Oops! That's not the correct answer. Try again!")
 
