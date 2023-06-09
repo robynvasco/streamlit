@@ -1,52 +1,31 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import numpy as np
 
-def visualize_proportional_bridge(a, b, c, x):
-    fig, ax = plt.subplots()
-    
-    # Plot known values
-    ax.plot([0, 1], [0, a], color='blue', label='a')
-    ax.plot([0, 1], [0, c], color='red', label='c')
-    
-    # Plot unknown value
-    ax.plot([1, 2], [a, x], color='green', label='x')
-    
-    # Plot bridge lines
-    ax.plot([1, 1], [a, c], color='gray', linestyle='--')
-    ax.plot([1, 2], [c, c], color='gray', linestyle='--')
-    
-    # Add labels and annotations
-    ax.text(-0.1, a, 'a', ha='right', va='center')
-    ax.text(-0.1, c, 'c', ha='right', va='center')
-    ax.text(2.1, x, 'x', ha='left', va='center')
-    ax.text(0.5, (a + c) / 2, 'b', ha='center', va='center')
-    
-    ax.set_xlim([-0.5, 2.5])
-    ax.set_ylim([0, max(a, c, x) * 1.2])
-    ax.set_xlabel('Bridge')
-    ax.set_ylabel('Values')
-    ax.set_title('Proportional Bridge')
-    ax.legend()
-
-    return fig
+def calculate_unknown_value(a, b, c):
+    # Applying the Rule of Three to calculate the unknown value
+    unknown_value = (c * b) / a
+    return unknown_value
 
 def main():
-    st.title("Rule of Three Visualization")
+    st.title("Planet Saver: The Rule of Three Adventure")
+    st.write("Welcome, young scientist! The fate of Planet X-42 depends on your mathematical skills.")
 
-    st.write("The Rule of Three is a mathematical principle that allows you to solve problems based on proportions. Given three known values, you can calculate the unknown value using the formula: (a / b = c / x)")
+    # Example scenario
+    st.header("Scenario: Oxygen Production")
+    st.write("Planet X-42 is running out of oxygen, and we need to find the right proportions of resources to save it!")
+    st.write("We have 20 oxygen tanks that last for 5 days. How many days will 50 oxygen tanks last?")
 
-    a = st.number_input("Enter value for 'a':", value=1, min_value=1, step=1)
-    b = st.number_input("Enter value for 'b':", value=1, min_value=1, step=1)
-    c = st.number_input("Enter value for 'c':", value=1, min_value=1, step=1)
+    # Input values
+    st.subheader("Input Values:")
+    a = st.number_input("Number of oxygen tanks (1st value)", value=20)
+    b = st.number_input("Number of days (1st value)", value=5)
+    c = st.number_input("Number of oxygen tanks (2nd value)", value=50)
 
-    if st.button("Calculate"):
-        x = (b * c) / a
-        st.write(f"The unknown value 'x' is: {x}")
+    # Calculate unknown value
+    unknown_value = calculate_unknown_value(a, b, c)
 
-        fig = visualize_proportional_bridge(a, b, c, x)
-
-        st.pyplot(fig)
+    # Display result
+    st.subheader("Result:")
+    st.write(f"With {c} oxygen tanks, it will last approximately {unknown_value} days.")
 
 if __name__ == "__main__":
     main()
