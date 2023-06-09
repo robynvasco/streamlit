@@ -1,31 +1,51 @@
 import streamlit as st
 
-def calculate_rule_of_three(value1, value2, value3):
-    # Check if any value is zero to avoid division by zero
-    if value1 == 0:
-        return "Value 1 cannot be zero!"
-    elif value2 == 0:
-        return "Value 2 cannot be zero!"
-    elif value3 == 0:
-        return "Value 3 cannot be zero!"
-
-    # Apply the rule of three
-    result = (value2 * value3) / value1
-    return result
+def rule_of_three_calculator(a, b, c):
+    # Calculate the unknown value using the Rule of Three
+    x = (b * c) / a
+    return x
 
 def main():
     st.title("Rule of Three Game")
 
-    st.write("Enter the values for the rule of three equation:")
+    st.write("Welcome to the Rule of Three Game! In this game, you will practice using the Rule of Three to solve problems based on proportions.")
 
-    value1 = st.number_input("Value 1:", min_value=0.01, step=0.01)
-    value2 = st.number_input("Value 2:", min_value=0.01, step=0.01)
-    value3 = st.number_input("Value 3:", min_value=0.01, step=0.01)
+    st.write("Let's start with a simple example:")
+    st.write("If 2 apples cost $3, how much would 5 apples cost?")
 
-    if st.button("Calculate"):
-        result = calculate_rule_of_three(value1, value2, value3)
-        st.success(f"The result is: {result}")
+    # Get user input for the known values
+    a = 2
+    b = 3
+    c = 5
+
+    # Calculate the unknown value using the Rule of Three
+    x = rule_of_three_calculator(a, b, c)
+
+    # Show the problem and the calculated unknown value
+    st.write(f"If {a} apples cost ${b}, then {c} apples would cost ${x}.")
+
+    # Get user input for their answer
+    user_answer = st.number_input("Enter your answer:", value=0, step=0.01)
+
+    # Check if the user's answer is correct
+    if abs(user_answer - x) < 0.01:
+        st.write("Congratulations! Your answer is correct.")
+    else:
+        st.write(f"Oops! Your answer is incorrect. The correct answer is ${x}.")
+
+    st.write("---")
+    st.write("Let's try another example!")
+
+    # Get user input for a new set of known values
+    a = st.number_input("Enter the first number (a):", value=0, step=0.01)
+    b = st.number_input("Enter the second number (b):", value=0, step=0.01)
+    c = st.number_input("Enter the third number (c):", value=0, step=0.01)
+
+    # Calculate the unknown value using the Rule of Three
+    x = rule_of_three_calculator(a, b, c)
+
+    # Show the problem and the calculated unknown value
+    st.write(f"The unknown value (x) is: {x}")
 
 if __name__ == "__main__":
     main()
-
