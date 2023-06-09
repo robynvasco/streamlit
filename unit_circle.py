@@ -76,28 +76,15 @@ def plot_unit_circle(alpha, show_sine=True, show_cosine=True):
 
 def main():
     st.title('Unit Circle and Trigonometric Functions')
-    st.write('### Why use the Unit Circle?')
-    st.write('The unit circle is a circle with a radius of 1 unit and its center at the origin (0, 0) of a coordinate plane. It is widely used in trigonometry to understand the relationships between sine and cosine values at different angles. Here are a few reasons why we use the unit circle:')
-    with st.beta_container():
-        st.markdown(
-            """
-            <style>
-            .box {
-                background-color: lightgray;
-                padding: 10px;
-                border-radius: 5px;
-            }
-            </style>
-            """
-        )
-
-        st.markdown('<div class="box">', unsafe_allow_html=True)
-        st.write('**Angle Selection**')
+    st.write('The unit circle is a circle with a radius of 1 unit and its center at the origin (0, 0) of a coordinate plane.')
+    st.write("By definition, sine of α is given by sin(α) = Gegenkathete / Hypotenuse. In the unit circle, the hypotenuse is always 1 since it is the radius of the circle. Therefore, sin(α) = Gegenkathete / 1 = Gegenkathete.')
+    st.write('')
+    with st.container():
         alpha = st.slider('Select the angle α in °', 0, 360, 45)
         alpha_rad = np.radians(alpha)
+
         show_sine = st.checkbox('Show sin(α)', value=True)
         show_cosine = st.checkbox('Show cos(α)', value=True)
-        st.markdown('</div>', unsafe_allow_html=True)
         
     plot_unit_circle(alpha_rad, show_sine, show_cosine)
 
