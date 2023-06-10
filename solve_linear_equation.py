@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 def solve_linear_equation():
     st.title("Linear Equation Term Identification and Reverse Operation Visualization")
@@ -35,9 +36,9 @@ def solve_linear_equation():
 
 def generate_linear_equation():
     # Generate a linear equation in the form ax + b = c
-    a = st.random.randint(-10, 10)
-    b = st.random.randint(-10, 10)
-    c = st.random.randint(-10, 10)
+    a = random.randint(-10, 10)
+    b = random.randint(-10, 10)
+    c = random.randint(-10, 10)
 
     equation = f"{a}x + {b} = {c}"
     solution = (c - b) / a
