@@ -11,15 +11,15 @@ def main():
 
     levels = [
         {
-            "scenario": "Oxygen Supply for the Space Station",
-            "description": "Our space station is running low on oxygen reserves. To sustain the crew for 50 days, we need to determine how many oxygen cylinders (a) are needed if each cylinder lasts for 5 days (b). The current number of oxygen cylinders available (c) is 20. Calculate the unknown value.",
-            "answer": 12,
+            "scenario": "Oxygen Rescue Mission",
+            "description": "Our spacecraft has crash-landed on an alien planet. To survive, we need to calculate how many oxygen cylinders are needed for a 10-day expedition. Each cylinder provides enough oxygen for 2 days. The remaining oxygen cylinders are 8. Calculate the unknown value.",
+            "answer": 20,
             "completed": False
         },
         {
-            "scenario": "Food Rations for Interstellar Journey",
-            "description": "We are embarking on a long interstellar journey, and we need to calculate the amount of food rations required for the crew's sustenance. Each crew member requires 3 rations per day (b). The journey will last for 9 days, and we have 15 crew members on board. Calculate the unknown value (a), the total number of food rations needed (c).",
-            "answer": 45,
+            "scenario": "Power Generation for Warp Engine",
+            "description": "We're stranded in deep space without power! We must calculate the amount of energy cells required to activate the warp engine for a hyperspace jump. Each cell powers the engine for 3 hours, and the journey will take 12 hours. Calculate the unknown value, the total number of energy cells needed.",
+            "answer": 4,
             "completed": False
         }
     ]
