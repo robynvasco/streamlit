@@ -12,13 +12,13 @@ def main():
     levels = [
         {
             "scenario": "Oxygen Rescue Mission",
-            "description": "Our spacecraft has crash-landed on an alien planet. To survive, we need to calculate how many oxygen cylinders are needed for a 10-day expedition. Each cylinder provides enough oxygen for 2 days. The remaining oxygen cylinders are 8. Calculate the unknown value.",
-            "answer": 20,
+            "description": "As a brave explorer, you have landed on an alien planet called Zephyria. Your mission is to rescue a team of stranded astronauts. Upon arrival, the alien inhabitants provided you with a map of the planet's surface. According to the map, 5 centimeters represent 600 meters in reality. The location of the astronauts' base camp is marked 8 centimeters away from your landing site on the map. How far, in meters, is the base camp from your landing site?",
+            "answer": 960,
             "completed": False
         },
         {
-            "scenario": "Power Generation for Warp Engine",
-            "description": "We're stranded in deep space without power! We must calculate the amount of energy cells required to activate the warp engine for a hyperspace jump. Each cell powers the engine for 3 hours, and the journey will take 12 hours. Calculate the unknown value, the total number of energy cells needed.",
+            "scenario": "Cargo Transport Mission",
+            "description": "In a nearby star system, there is a bustling trade between planets. Yesterday, 2 cargo ships transported goods from a distant planet to the spaceport. Today, 3 cargo ships of the same size as yesterday need to transport the same amount of goods from the spaceport to the intergalactic mall. However, each ship can only make one trip. How many trips did each cargo ship make yesterday?",
             "answer": 4,
             "completed": False
         }
