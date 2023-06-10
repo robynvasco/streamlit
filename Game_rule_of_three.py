@@ -18,8 +18,8 @@ def main():
         },
         {
             "scenario": "Cargo Transport Mission",
-            "description": "In a nearby star system, there is a bustling trade between planets. Yesterday, 2 cargo ships transported goods from a distant planet to the spaceport. Today, 3 cargo ships of the same size as yesterday need to transport the same amount of goods from the spaceport to the intergalactic mall. However, each ship can only make one trip. How many trips did each cargo ship make yesterday?",
-            "answer": 4,
+            "description": "In a nearby star system, there is a bustling trade between planets. Yesterday, 2 cargo ships transported goods from a distant planet to the spaceport. Today, 3 cargo ships of the same size as yesterday, made 6 trips to transport the same amount of goods from the spaceport to the intergalactic mall. How many trips did each cargo ship make yesterday?",
+            "answer": 9,
             "completed": False
         }
     ]
