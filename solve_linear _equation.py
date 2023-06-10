@@ -1,34 +1,37 @@
 import streamlit as st
 
 def solve_linear_equation():
-    st.title("Linear Equation Solver Game")
-    st.write("Welcome to the Linear Equation Solver Game! Let's practice solving linear equations together.")
+    st.title("Linear Equation Term Identification and Reverse Operation Visualization")
+    st.write("Let's practice identifying the terms and reverse operations in linear equations.")
 
     # Generate a linear equation and its solution
     equation, solution = generate_linear_equation()
 
     # Display the equation to the user
-    st.header("Solve the following equation:")
+    st.header("Identify the terms and choose the reverse operation:")
     st.latex(equation)
 
-    # Collect the user's steps to solve the equation
-    steps = []
-    while True:
-        user_input = st.text_input("Enter your next step:")
-        if user_input:
-            steps.append(user_input)
-        else:
-            break
+    # Split the equation into left-hand side and right-hand side
+    lhs, rhs = equation.split('=')
 
-    # Check if the user's steps lead to the correct solution
-    is_solution_correct = check_solution(steps, equation, solution)
+    # Split the left-hand side into individual terms
+    terms = lhs.split('+')
+
+    # Display the terms and prompt the user to select the reverse operation
+    for i, term in enumerate(terms):
+        st.write(f"Term {i+1}: {term.strip()}")
+
+    reverse_operation = st.selectbox("Select the reverse operation for the terms:", ["Addition", "Subtraction", "Multiplication", "Division"])
+
+    # Check if the user's selection is correct
+    is_selection_correct = check_reverse_operation(reverse_operation, terms, solution)
 
     # Display the results to the user
     st.header("Results")
-    if is_solution_correct:
-        st.success("Congratulations! Your solution is correct.")
+    if is_selection_correct:
+        st.success("Congratulations! Your selection is correct.")
     else:
-        st.error("Oops! Your solution is incorrect.")
+        st.error("Oops! Your selection is incorrect.")
 
 def generate_linear_equation():
     # Generate a linear equation in the form ax + b = c
@@ -41,16 +44,24 @@ def generate_linear_equation():
 
     return equation, solution
 
-def check_solution(steps, equation, solution):
-    # Evaluate the user's steps and check if they lead to the correct solution
-    x = None
+def check_reverse_operation(selection, terms, solution):
+    # Check if the user's selection matches the correct reverse operation
+    if selection == "Addition":
+        reverse_operation = "+"
+    elif selection == "Subtraction":
+        reverse_operation = "-"
+    elif selection == "Multiplication":
+        reverse_operation = "*"
+    elif selection == "Division":
+        reverse_operation = "/"
+
+    # Check if applying the reverse operation leads to the correct solution
     try:
-        for step in steps:
-            exec(step, globals())
-        x_correct = eval('x')
+        for term in terms:
+            exec(f"result = x {reverse_operation} {term.strip()}", globals())
     except:
         return False
 
-    return x_correct == solution
+    return result == solution
 
 solve_linear_equation()
