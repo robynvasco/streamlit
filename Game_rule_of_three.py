@@ -6,20 +6,20 @@ def calculate_unknown_value(a, b, c):
     return unknown_value
 
 def main():
-    st.title("Planet Saver: The Rule of Three Adventure")
-    st.write("Welcome, young scientist! The fate of Planet X-42 depends on your mathematical skills.")
+    st.title("Galactic Explorer: The Rule of Three Adventure")
+    st.write("Welcome, young space explorer! Your mathematical skills are crucial for our galactic mission.")
 
     levels = [
         {
-            "scenario": "Oxygen Production",
-            "description": "Planet X-42 is running out of oxygen, and we need to find the right proportions of resources to save it!",
+            "scenario": "Oxygen Supply for the Space Station",
+            "description": "Our space station is running low on oxygen reserves. We need to determine the optimal number of oxygen cylinders to sustain the crew.",
             "values": (20, 5, 50),
             "answer": 12,
             "completed": False
         },
         {
-            "scenario": "Water Conservation",
-            "description": "Planet X-42 is facing a severe water shortage. Let's calculate how much water we need to save!",
+            "scenario": "Food Rations for Interstellar Journey",
+            "description": "We are embarking on a long interstellar journey, and we need to calculate the amount of food rations required for the crew's sustenance.",
             "values": (15, 3, 9),
             "answer": 45,
             "completed": False
@@ -57,7 +57,7 @@ def main():
 
     if all(level["completed"] for level in levels):
         st.balloons()
-        st.success("You saved Planet X-42! Well done!")
+        st.success("Congratulations, Galactic Explorer! You have successfully completed all missions.")
 
 if __name__ == "__main__":
     main()
