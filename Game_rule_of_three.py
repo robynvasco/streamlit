@@ -12,15 +12,13 @@ def main():
     levels = [
         {
             "scenario": "Oxygen Supply for the Space Station",
-            "description": "Our space station is running low on oxygen reserves. We need to determine the optimal number of oxygen cylinders to sustain the crew.",
-            "values": (20, 5, 50),
+            "description": "Our space station is running low on oxygen reserves. To sustain the crew for 50 days, we need to determine how many oxygen cylinders (a) are needed if each cylinder lasts for 5 days (b). The current number of oxygen cylinders available (c) is 20. Calculate the unknown value.",
             "answer": 12,
             "completed": False
         },
         {
             "scenario": "Food Rations for Interstellar Journey",
-            "description": "We are embarking on a long interstellar journey, and we need to calculate the amount of food rations required for the crew's sustenance.",
-            "values": (15, 3, 9),
+            "description": "We are embarking on a long interstellar journey, and we need to calculate the amount of food rations required for the crew's sustenance. Each crew member requires 3 rations per day (b). The journey will last for 9 days, and we have 15 crew members on board. Calculate the unknown value (a), the total number of food rations needed (c).",
             "answer": 45,
             "completed": False
         }
@@ -31,7 +29,6 @@ def main():
         level = levels[level_index]
         scenario = level["scenario"]
         description = level["description"]
-        values = level["values"]
         answer = level["answer"]
         completed = level["completed"]
 
@@ -39,13 +36,7 @@ def main():
         st.write(description)
 
         if not completed:
-            # Input values
-            st.subheader("Input Values:")
-            a, b, c = values
-
-            st.write(f"a = {a}, b = {b}, c = {c}")
-
-            user_answer = st.number_input("How many units are needed?", value=0, min_value=0, key=f"answer_{level_index}")
+            user_answer = st.number_input("Enter your answer:", value=0, min_value=0, key=f"answer_{level_index}")
 
             # Check answer
             if user_answer == answer:
