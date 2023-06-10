@@ -32,25 +32,24 @@ def main():
         answer = level["answer"]
         completed = level["completed"]
 
-        st.header(f"Level {level_index + 1}: {scenario}")
-        st.write(description)
-
-        if not completed:
-            user_answer = st.number_input("Enter your answer:", value=0, min_value=0, key=f"answer_{level_index}")
-
-            # Check answer
-            if user_answer == answer:
-                st.success("Congratulations! You provided the correct answer.")
-                level["completed"] = True
-            elif user_answer != 0:
-                st.error("Oops! That's not the correct answer. Try again!")
-                break
-
-        # Show the next scenario only if the current level is completed
         if level_index == 0 or levels[level_index - 1]["completed"]:
-            level_index += 1
+            st.header(f"Level {level_index + 1}: {scenario}")
+            st.write(description)
+
+            if not completed:
+                user_answer = st.number_input("Enter your answer:", value=0, min_value=0, key=f"answer_{level_index}")
+
+                # Check answer
+                if user_answer == answer:
+                    st.success("Congratulations! You provided the correct answer.")
+                    level["completed"] = True
+                elif user_answer != 0:
+                    st.error("Oops! That's not the correct answer. Try again!")
+                    break
         else:
             break
+
+        level_index += 1
 
     if all(level["completed"] for level in levels):
         st.balloons()
