@@ -46,7 +46,11 @@ def main():
                 st.error("Oops! That's not the correct answer. Try again!")
                 break
 
-        level_index += 1
+        # Show the next scenario only if the current level is completed
+        if level_index == 0 or levels[level_index - 1]["completed"]:
+            level_index += 1
+        else:
+            break
 
     if all(level["completed"] for level in levels):
         st.balloons()
