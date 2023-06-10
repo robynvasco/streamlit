@@ -43,7 +43,9 @@ def main():
             st.subheader("Input Values:")
             a, b, c = values
 
-            user_answer = st.number_input("How many days will it last?", value=0, min_value=0, key=f"answer_{level_index}")
+            st.write(f"a = {a}, b = {b}, c = {c}")
+
+            user_answer = st.number_input("How many units are needed?", value=0, min_value=0, key=f"answer_{level_index}")
 
             # Check answer
             if user_answer == answer:
