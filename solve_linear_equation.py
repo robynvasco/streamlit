@@ -21,16 +21,19 @@ def update_equation(term, operation, equation):
     
     return updated_equation
 
+def format_equation(equation):
+    return sp.pretty(equation, use_unicode=True)
+
 def main():
     equation = (sp.Symbol('x') + 3) / 15 + 3
     st.title("Equation Calculator")
-    st.write(f"Initial equation: {sp.pretty(equation)}")
+    st.write(f"Initial equation: {format_equation(equation)}")
 
     term = st.text_input("Enter a term:")
     operation = st.selectbox("Select an operation:", ['Add', 'Subtract', 'Multiply', 'Divide'])
     equation = update_equation(term, operation, equation)
 
-    st.write(f"Updated equation: {sp.pretty(equation)}")
+    st.write(f"Updated equation: {format_equation(equation)}")
 
 if __name__ == '__main__':
     main()
