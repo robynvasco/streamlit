@@ -25,7 +25,7 @@ def main():
         equation = apply_term_to_equation(term, st.session_state['equation'])
         st.session_state['equation'] = equation
         st.markdown("Updated Equation:")
-        st.latex(latex(equation))
+        st.latex(latex(st.session_state['equation']))
 
 if __name__ == "__main__":
     main()
