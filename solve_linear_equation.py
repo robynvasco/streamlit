@@ -32,5 +32,14 @@ def main():
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
+    # Display the updated equations
+    with original_eq_container:
+        st.markdown("---")
+        st.markdown("Updated Equations:")
+
+        for equation in st.session_state['equations']:
+            st.latex(latex(equation))
+            st.markdown("---")
+
 if __name__ == "__main__":
     main()
