@@ -23,13 +23,9 @@ def main():
         st.latex(latex(st.session_state['equation']))
 
    
-    col1, col2 = st.columns(2)
-
-    with col1:
-        term = st.text_input("Enter a term to apply to the equation (e.g. +1 or *2/3):")
-    with col2:
-        st.write("")
-        st.button("Apply Term", on_click=apply_term)
+    term = st.text_input("Enter a term to apply to the equation (e.g. +1 or *2/3):")
+    st.write("")
+    st.button("Apply Term", on_click=apply_term)
 
     with updated_eq_container:
         st.markdown("Updated Equation:")
