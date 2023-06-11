@@ -18,28 +18,28 @@ def main():
     st.info("Isolate x for the following equation")
     original_eq_container = st.container()
     
-
     term = st.text_input(
         "",
         label_visibility="collapsed",
         disabled=False,
-        placeholder="eg. +1 or *(1/2)",
+        placeholder="e.g., +1 or *(1/2)",
     )
     term = str(term) if term else ""
     
     if term:
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
- 
-
+    
     if st.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
- 
+    
+    if st.button("Go One Step Back"):
+        if len(st.session_state['equations']) > 1:
+            st.session_state['equations'].pop()
     
     # Display the updated equations
     with original_eq_container:
-
         for equation in st.session_state['equations']:
             st.latex(latex(equation))
             st.markdown("---")
