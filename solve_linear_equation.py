@@ -1,30 +1,32 @@
 import streamlit as st
-import sympy as sp
+import re
 
 def apply_term(equation, term):
-    x = sp.symbols('x')
-    if term.isnumeric():
-        term_expr = sp.Rational(int(term))
-    else:
-        term_expr = sp.sympify(term)  # Parse the term as a symbolic expression
-    equation_expr = sp.Eq(equation.lhs, equation.rhs)
-    new_equation_expr = sp.Eq(equation_expr.lhs + term_expr, equation_expr.rhs + term_expr)
-    new_equation = sp.simplify(new_equation_expr)
-    return new_equation
+    equation_parts = re.split(r'(\+|\-|\*|/)', equation)
+    new_parts = []
+
+    for part in equation_parts:
+        if part.strip() == '':
+            continue
+
+        if part.isnumeric():
+            new_parts.append(str(eval(part + term)))
+        else:
+            new_parts.append(part)
+
+    return ''.join(new_parts)
 
 def main():
-    st.title("Equation Manipulator")
-    equation = sp.Eq((sp.symbols('x') + 3) / 15 + 3, 5)
-    
-    st.subheader("Initial Equation:")
-    st.latex(sp.latex(equation))
+    st.title("Equation App")
+    equation = "(x+3)/15+3=5"
+    st.write("Current equation:", equation)
 
-    term = st.text_input("Enter a term to apply to both sides of the equation:")
+    term = st.text_input("Enter a term to apply to the equation (e.g., +1, *2/3)")
+
     if st.button("Apply Term"):
-        if term:
-            equation = apply_term(equation, term)
-            st.subheader("Updated Equation:")
-            st.latex(sp.latex(equation))
+        new_equation = apply_term(equation, term)
+        st.write("Updated equation:", new_equation)
+        equation = new_equation
 
 if __name__ == "__main__":
     main()
