@@ -14,7 +14,7 @@ def main():
     start_equation=Eq((Symbol('x') + 3) / 15 + 3, 5)
     
     st.markdown("Original Equation:")
-    st.latex(latex(start_equation)
+    st.latex(latex(start_equation))
 
     if 'equation' not in st.session_state:
         st.session_state['equation'] = start_equation
