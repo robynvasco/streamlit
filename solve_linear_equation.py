@@ -18,16 +18,15 @@ def main():
 
     if 'equation' not in st.session_state:
         st.session_state['equation'] = start_equation
-
+    
+    if st.button("Apply Term"):
+        equation = apply_term_to_equation(term, st.session_state['equation'])
+        st.session_state['equation'] = equation
+        
     st.latex(latex(st.session_state['equation']))
 
     term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
     term = str(term) if term else ""
-
-    if st.button("Apply Term"):
-        equation = apply_term_to_equation(term, st.session_state['equation'])
-        st.session_state['equation'] = equation
-
    
 
 if __name__ == "__main__":
