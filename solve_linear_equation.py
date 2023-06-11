@@ -29,12 +29,7 @@ def main():
     if st.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
-    text_input = st.text_input(
-        "Enter some text 👇",
-        label_visibility=st.session_state.visibility,
-        disabled=st.session_state.disabled,
-        placeholder=st.session_state.placeholder,
-    )
+ 
     
     # Display the updated equations
     with original_eq_container:
