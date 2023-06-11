@@ -20,6 +20,7 @@ def main():
     
 
     term = st.text_input(
+        "",
         label_visibility="collapsed",
         disabled=False,
         placeholder="eg. +1 or *(1/2)",
