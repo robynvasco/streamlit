@@ -14,7 +14,9 @@ def main():
 
     if 'equations' not in st.session_state:
         st.session_state['equations'] = [Eq((Symbol('x') + 3) / 15 + 3, 5)]
-
+     
+    
+    original_eq_container = st.container()
     input_container = st.container()
 
 
