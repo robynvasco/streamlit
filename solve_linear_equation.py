@@ -3,7 +3,8 @@ import sympy as sp
 
 def apply_term(equation, term):
     x = sp.symbols('x')
-    new_equation = equation + term
+    term_expr = sp.sympify(term)  # Parse the term as a symbolic expression
+    new_equation = equation + term_expr
     new_equation = sp.simplify(new_equation)
     return new_equation
 
