@@ -15,21 +15,27 @@ def main():
     if 'equation' not in st.session_state:
         st.session_state['equation'] = Eq((Symbol('x') + 3) / 15 + 3, 5)
 
-    st.markdown("Original Equation:")
-    st.latex(latex(st.session_state['equation']))
+    original_eq_container = st.container()
+    updated_eq_container = st.container()
 
-    term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):", key="term")
-    term = str(term) if term else ""
+    with original_eq_container:
+        st.markdown("Original Equation:")
+        st.latex(latex(st.session_state['equation']))
 
     col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Apply Term"):
-            equation = apply_term_to_equation(term, st.session_state['equation'])
-            st.session_state['equation'] = equation
 
+    with col1:
+        term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
     with col2:
+        st.button("Apply Term", on_click=apply_term)
+
+    with updated_eq_container:
         st.markdown("Updated Equation:")
         st.latex(latex(st.session_state['equation']))
+
+def apply_term():
+    equation = apply_term_to_equation(term, st.session_state['equation'])
+    st.session_state['equation'] = equation
 
 if __name__ == "__main__":
     main()
