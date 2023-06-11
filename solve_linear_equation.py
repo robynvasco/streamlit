@@ -1,15 +1,7 @@
 import streamlit as st
 from sympy import Symbol, Eq, parse_expr, latex
 
-def apply_term_to_equation_enter(term, equation):
-    x = Symbol('x')
-    left_side, right_side = equation.args
-    new_left_side = parse_expr("("+str(left_side)+")" + term)
-    new_right_side = parse_expr("("+str(right_side)+")" + term)
-    new_equation = Eq(new_left_side, new_right_side)
-    return new_equation
-
-def apply_term_to_equation_button(term, equation):
+def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
     new_left_side = parse_expr("("+str(left_side)+")" + term)
@@ -39,15 +31,12 @@ def main():
         label_visibility="collapsed",
         disabled=False,
         placeholder="e.g., +1 or *(1/2)",
+        on_change=lambda value: st.session_state.update({'text_input_value': value})
     )
     term = str(term) if term else ""
 
-    if col2.button("Apply Term"):  # Modified condition
-        equation = apply_term_to_equation_button(term, st.session_state['equations'][-1])
-        st.session_state['equations'].append(equation)
-        
-    if term:  # Modified condition
-        equation = apply_term_to_equation_enter(term, st.session_state['equations'][-1])
+    if col2.button("Apply Term") or term:
+        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
     if len(st.session_state['equations']) > 2:
