@@ -26,8 +26,9 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        term = st.text_input()
+        term = st.text_input("")
     with col2:
+        st.write("")
         st.button("Apply Term", on_click=apply_term)
 
     with updated_eq_container:
