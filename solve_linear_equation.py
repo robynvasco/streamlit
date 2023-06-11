@@ -4,8 +4,8 @@ from sympy import Symbol, Eq, parse_expr, latex
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
-    new_left_side = parse_expr(str(left_side) + term)
-    new_right_side = parse_expr(str(right_side) + term)
+    new_left_side = parse_expr("("+str(left_side)+")" + term)
+    new_right_side = parse_expr("("+str(right_side)+")" + term)
     new_equation = Eq(new_left_side, new_right_side)
     return new_equation
 
