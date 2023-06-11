@@ -11,7 +11,7 @@ def apply_term_to_equation(term, equation):
 
 def undo_last_action():
     if len(st.session_state['equations']) > 1:
-        st.session_state['equations'].pop()
+        del st.session_state['equations'][-1]
 
 def main():
     st.title("Equation Manipulator")
