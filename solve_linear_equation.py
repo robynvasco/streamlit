@@ -15,7 +15,7 @@ def main():
     if 'equations' not in st.session_state:
         st.session_state['equations'] = [Eq((Symbol('x') + 3) / 15 + 3, 5)]
      
-    
+    st.info("Isolate x for the following equation")
     original_eq_container = st.container()
     input_container = st.container()
 
@@ -29,8 +29,6 @@ def main():
 
     # Display the updated equations
     with original_eq_container:
-        st.markdown("---")
-        st.markdown("Updated Equations:")
 
         for equation in st.session_state['equations']:
             st.latex(latex(equation))
