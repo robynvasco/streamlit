@@ -20,7 +20,6 @@ def main():
     
 
     term = st.text_input(
-        "Enter a term to apply to the equation (e.g., +1 or *2/3):",
         label_visibility="collapsed",
         disabled=False,
         placeholder="eg. +1 or *(1/2)",
