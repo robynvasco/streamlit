@@ -15,15 +15,8 @@ def main():
     if 'equations' not in st.session_state:
         st.session_state['equations'] = [Eq((Symbol('x') + 3) / 15 + 3, 5)]
 
-    original_eq_container = st.container()
     input_container = st.container()
 
-    with original_eq_container:
-        st.markdown("Equations:")
-
-        for equation in st.session_state['equations']:
-            st.latex(latex(equation))
-            st.markdown("---")
 
     term = input_container.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
     term = str(term) if term else ""
