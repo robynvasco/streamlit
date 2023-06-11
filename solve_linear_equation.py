@@ -18,14 +18,18 @@ def main():
     st.markdown("Original Equation:")
     st.latex(latex(st.session_state['equation']))
 
+    st.markdown("---")
+
     term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
     term = str(term) if term else ""
 
     if st.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equation'])
         st.session_state['equation'] = equation
-        st.markdown("Updated Equation:")
-        st.latex(latex(st.session_state['equation']))
+
+    st.markdown("---")
+    st.markdown("Updated Equation:")
+    st.latex(latex(st.session_state['equation']))
 
 if __name__ == "__main__":
     main()
