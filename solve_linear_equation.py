@@ -28,7 +28,7 @@ def main():
     with col1:
         term = st.text_input("Enter a term to apply to the equation (e.g., +1 to add one or *2/3 to multiply with 2/3):")
     with col2:
-        st.write(" ")
+        st.write("Blick on Button or press enter to apply the term ")
         st.button("Apply Term", on_click=apply_term)
 
     with updated_eq_container:
