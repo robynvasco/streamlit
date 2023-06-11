@@ -21,7 +21,7 @@ def main():
     term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):", key="term")
     term = str(term) if term else ""
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         if st.button("Apply Term"):
             equation = apply_term_to_equation(term, st.session_state['equation'])
