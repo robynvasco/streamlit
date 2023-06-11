@@ -3,7 +3,11 @@ import sympy as sp
 
 def update_equation(term, operation, equation):
     x = sp.symbols('x')
-    term_expr = sp.sympify(term)
+    if term:
+        term_expr = sp.sympify(term)
+    else:
+        term_expr = 0
+
     if operation == 'Add':
         updated_equation = equation + term_expr
     elif operation == 'Subtract':
