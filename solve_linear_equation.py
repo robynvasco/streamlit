@@ -13,6 +13,7 @@ def undo_last_action():
     if len(st.session_state['equations']) > 1:
         equations_copy = st.session_state['equations'][:-1]
         st.session_state['equations'] = equations_copy
+        st.write(equations_copy)
 
 def main():
     st.title("Equation Manipulator")
