@@ -11,7 +11,7 @@ def apply_term_to_equation(term, equation):
 
 def undo_last_action():
     if len(st.session_state['equations']) > 1:
-        del st.session_state['equations'][-2]
+        st.session_state['equations'] = st.session_state['equations'][:-2]
         st.write(st.session_state['equations'])
 
 def main():
@@ -37,11 +37,11 @@ def main():
     if col2.button("Apply Term") or term:
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
-        st.write("apply")
+       
 
     if col3.button("Undo"):
         undo_last_action()
-        st.write("undo")
+       
 
     # Display the updated equations
     with original_eq_container:
