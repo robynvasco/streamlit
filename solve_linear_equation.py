@@ -46,7 +46,7 @@ def main():
         equation = apply_term_to_equation_button(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
         
-     if term:  # Modified condition
+    if term:  # Modified condition
         equation = apply_term_to_equation_enter(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
