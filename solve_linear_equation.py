@@ -11,14 +11,15 @@ def apply_term_to_equation(term, equation):
 
 def main():
     st.title("Equation Manipulator")
+    start_equation=Eq((Symbol('x') + 3) / 15 + 3, 5)
+    
+    st.markdown("Original Equation:")
+    st.latex(latex(start_equation)
 
     if 'equation' not in st.session_state:
-        st.session_state['equation'] = Eq((Symbol('x') + 3) / 15 + 3, 5)
+        st.session_state['equation'] = start_equation
 
-    st.markdown("Original Equation:")
     st.latex(latex(st.session_state['equation']))
-
-    st.markdown("---")
 
     term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
     term = str(term) if term else ""
@@ -27,9 +28,7 @@ def main():
         equation = apply_term_to_equation(term, st.session_state['equation'])
         st.session_state['equation'] = equation
 
-    st.markdown("---")
-    st.markdown("Updated Equation:")
-    st.latex(latex(st.session_state['equation']))
+   
 
 if __name__ == "__main__":
     main()
