@@ -26,6 +26,11 @@ def main():
         placeholder="eg. +1 or *(1/2)",
     )
     term = str(term) if term else ""
+    
+    if term:
+        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
+        st.session_state['equations'].append(equation)
+ 
 
     if st.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
