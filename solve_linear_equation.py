@@ -27,9 +27,7 @@ def main():
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
         
-     if text_input:
-        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
-        st.session_state['equations'].append(equation)
+    
 
     # Display the updated equations
     with original_eq_container:
