@@ -2,6 +2,7 @@ import streamlit as st
 from sympy import Symbol, Eq, simplify, latex
 from streamlit.legacy_caching.hashing import _CodeHasher
 
+
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
