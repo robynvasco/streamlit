@@ -42,9 +42,11 @@ def main():
 
     # Display the updated equations
     with original_eq_container:
-        for equation in st.session_state['equations']:
+        equations = st.session_state['equations']
+        for i, equation in enumerate(equations):
             st.latex(latex(equation))
-            st.markdown("---")
+            if i < len(equations) - 1:
+                st.markdown("---")
 
 if __name__ == "__main__":
     main()
