@@ -17,23 +17,22 @@ def main():
 
     original_eq_container = st.container()
     updated_eq_container = st.container()
+    input_container = st.container()
 
     with original_eq_container:
         st.markdown("Original Equation:")
         st.latex(latex(st.session_state['equation']))
 
-   
-    term = st.text_input("Enter a term to apply to the equation (e.g. +1 or *2/3):")
-    st.write("")
-    st.button("Apply Term", on_click=apply_term)
+    term = input_container.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
+    term = str(term) if term else ""
+
+    if input_container.button("Apply Term"):
+        equation = apply_term_to_equation(term, st.session_state['equation'])
+        st.session_state['equation'] = equation
 
     with updated_eq_container:
         st.markdown("Updated Equation:")
         st.latex(latex(st.session_state['equation']))
-
-def apply_term():
-    equation = apply_term_to_equation(term, st.session_state['equation'])
-    st.session_state['equation'] = equation
 
 if __name__ == "__main__":
     main()
