@@ -10,8 +10,9 @@ def apply_term_to_equation(term, equation):
     return new_equation
 
 def undo_last_action():
-    st.session_state['equations'].pop(-1)
-    st.write("Equation List:", st.session_state['equations'])
+    if len(st.session_state['equations']) > 1:
+        equations_copy = st.session_state['equations'][:-1]
+        st.session_state['equations'] = equations_copy
 
 def main():
     st.title("Equation Manipulator")
