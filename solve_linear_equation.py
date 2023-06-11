@@ -11,7 +11,7 @@ def apply_term_to_equation(term, equation):
 
 def undo_last_action():
     if len(st.session_state['equations']) > 1:
-        del st.session_state['equations'][-1]
+        st.session_state['equations'] = st.session_state['equations'][:-1]
 
 def main():
     st.title("Equation Manipulator")
@@ -26,7 +26,7 @@ def main():
     col1, col2, col3 = st.columns([3, 1, 1])
 
     term = col1.text_input(
-        "",
+        "Write term to add",
         label_visibility="collapsed",
         disabled=False,
         placeholder="e.g., +1 or *(1/2)",
