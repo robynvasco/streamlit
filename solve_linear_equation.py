@@ -19,7 +19,7 @@ def main():
     original_eq_container = st.container()
 
     # Create a column layout
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([3, 1])
 
     term = col1.text_input(
         "",
