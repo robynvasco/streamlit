@@ -37,9 +37,11 @@ def main():
     if col2.button("Apply Term") or term:
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
+        print("apply")
 
     if col3.button("Undo"):
         undo_last_action()
+        print("undo")
 
     # Display the updated equations
     with original_eq_container:
