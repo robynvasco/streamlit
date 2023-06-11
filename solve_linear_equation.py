@@ -31,7 +31,7 @@ def main():
         label_visibility="collapsed",
         disabled=False,
         placeholder="e.g., +1 or *(1/2)",
-        on_change=lambda value: st.session_state.update({'text_input_value': value})
+        on_change=lambda: st.session_state.update({'text_input_value': term})
     )
     term = str(term) if term else ""
 
