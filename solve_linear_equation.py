@@ -1,39 +1,32 @@
 import streamlit as st
-import sympy as sp
+from sympy import Symbol, Eq, simplify
 
-def update_equation(term, operation, equation):
-    x = sp.symbols('x')
-    if term:
-        term_expr = sp.sympify(term)
-    else:
-        term_expr = 0
-
-    if operation == 'Add':
-        updated_equation = equation + term_expr
-    elif operation == 'Subtract':
-        updated_equation = equation - term_expr
-    elif operation == 'Multiply':
-        updated_equation = equation * term_expr
-    elif operation == 'Divide':
-        updated_equation = equation / term_expr
-    else:
-        updated_equation = equation
-    
-    return updated_equation
-
-def format_equation(equation):
-    return sp.pretty(equation, use_unicode=True)
+def apply_term_to_equation(equation, term, operator):
+    x = Symbol('x')
+    equation_term = f'{term} {operator} 0'
+    term_expr = eval(equation_term)
+    new_equation = Eq(simplify(equation.lhs + term_expr), simplify(equation.rhs + term_expr))
+    return new_equation
 
 def main():
-    equation = (sp.Symbol('x') + 3) / 15 + 3
-    st.title("Equation Calculator")
-    st.write(f"Initial equation: {format_equation(equation)}")
+    st.title("Equation Manipulator")
+    st.write("Start with the equation (x+3)/15+3 = 5")
 
-    term = st.text_input("Enter a term:")
-    operation = st.selectbox("Select an operation:", ['Add', 'Subtract', 'Multiply', 'Divide'])
-    equation = update_equation(term, operation, equation)
+    # Initial equation
+    equation = Eq((Symbol('x') + 3) / 15 + 3, 5)
 
-    st.write(f"Updated equation: {format_equation(equation)}")
+    # User input
+    term_input = st.text_input("Enter a term:")
 
-if __name__ == '__main__':
+    # Choose operator
+    operator = st.selectbox("Choose an operator:", ('+', '-', '*', '/'))
+
+    # Apply term to equation
+    if st.button("Apply Term"):
+        new_equation = apply_term_to_equation(equation, term_input, operator)
+        equation = new_equation
+
+    st.write(f"Equation: {equation}")
+
+if __name__ == "__main__":
     main()
