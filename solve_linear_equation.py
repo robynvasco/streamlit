@@ -19,13 +19,23 @@ def main():
     original_eq_container = st.container()
     
 
-    term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
+    term = st.text_input(
+        "Enter a term to apply to the equation (e.g., +1 or *2/3):",
+        label_visibility="collapsed",
+        disabled=False,
+        placeholder="eg. +1 or *(1/2)",
+    )
     term = str(term) if term else ""
 
     if st.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
-        
+    text_input = st.text_input(
+        "Enter some text 👇",
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        placeholder=st.session_state.placeholder,
+    )
     
     # Display the updated equations
     with original_eq_container:
