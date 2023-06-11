@@ -17,18 +17,16 @@ def main():
      
     st.info("Isolate x for the following equation")
     original_eq_container = st.container()
-    input_container = st.container()
-
     
-    term = input_container.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
+
+    term = st.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
     term = str(term) if term else ""
 
-    if input_container.button("Apply Term"):
+    if st.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
         
     
-
     # Display the updated equations
     with original_eq_container:
 
