@@ -19,20 +19,21 @@ def main():
     original_eq_container = st.container()
     input_container = st.container()
 
-    term = input_container.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):", key="term_input")
+    
+    term = input_container.text_input("Enter a term to apply to the equation (e.g., +1 or *2/3):")
     term = str(term) if term else ""
 
-    def apply_term_callback():
+    if input_container.button("Apply Term"):
+        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
+        st.session_state['equations'].append(equation)
+        
+     if text_input:
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
-    input_container.text_input("Hidden Input", key="hidden_input", on_change=apply_term_callback, hidden=True)
-
-    if input_container.button("Apply Term"):
-        apply_term_callback()
-
     # Display the updated equations
     with original_eq_container:
+
         for equation in st.session_state['equations']:
             st.latex(latex(equation))
             st.markdown("---")
