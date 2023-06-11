@@ -5,11 +5,11 @@ def apply_term(equation, term):
     x = sp.symbols('x')
     if term.isnumeric():
         term_expr = sp.Rational(int(term))
-        new_equation = sp.Add(equation.lhs, term_expr) == equation.rhs
     else:
         term_expr = sp.sympify(term)  # Parse the term as a symbolic expression
-        new_equation = equation + term_expr
-    new_equation = sp.simplify(new_equation)
+    equation_expr = sp.Eq(equation.lhs, equation.rhs)
+    new_equation_expr = sp.Eq(equation_expr.lhs + term_expr, equation_expr.rhs + term_expr)
+    new_equation = sp.simplify(new_equation_expr)
     return new_equation
 
 def main():
