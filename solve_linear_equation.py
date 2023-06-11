@@ -26,7 +26,7 @@ def main():
         new_equation = apply_term_to_equation(equation, term_input, operator)
         equation = new_equation
 
-    st.write(f"Equation: {equation}")
+    st.write(f"Equation: {equation.lhs} = {equation.rhs}")
 
 if __name__ == "__main__":
     main()
