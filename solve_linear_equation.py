@@ -76,7 +76,7 @@ def main():
     if col2.button("Apply Term", key="apply"):
         apply_clicked = True
         
-    if len(st.session_state['equations']) > 1:
+    if st.session_state['terms']:
         if col3.button("Undo", key="undo"):
             undo_triggered = True
             undo_last_action()
