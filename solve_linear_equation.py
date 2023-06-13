@@ -73,7 +73,7 @@ def main():
     st.write("")
 
     # Create a column layout
-    col1, col2, col3 = st.columns([3, 1, 1])
+    col1, col2, col3 = st.columns([3, 1])
 
     term = col1.text_input(
         "b",
