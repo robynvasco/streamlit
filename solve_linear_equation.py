@@ -97,9 +97,10 @@ def main():
             apply=True
             
     
-    if st.session_state['run_count'] <2:
+    if st.session_state['run_count'] > 2:
         if col3.button("Undo", key="undo"):
             undo=True
+            st.session_state['run_count'] -= 1
             undo_last_action()
             
     if term and not undo and not apply:
