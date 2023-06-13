@@ -9,6 +9,7 @@ def apply_term(new_term):
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
+        
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
@@ -38,6 +39,7 @@ def apply_term_to_equation(term, equation):
 def undo_last_action():
     st.session_state['equations'] = st.session_state['equations'][:-1]
     st.session_state['terms'] = st.session_state['terms'][:-1]
+    st.session_state['run_count'] -= 1
 
 
 def add_multiplication_operator(match):
@@ -63,8 +65,13 @@ def start_new_game():
 
 
 def main():
-    st.title("Equation Manipulator")
+    st.title("Free x")
+    
+    # Initialize the counter variable
+    if 'run_count' not in st.session_state:
+        st.session_state['run_count'] = 0
 
+    
     if 'equations' not in st.session_state:
         start_new_game()
 
@@ -84,11 +91,13 @@ def main():
     
     undo=False
     apply=False
-    
+    st.session_state['run_count'] += 1
+
     if col2.button("Apply term", key="apply"):
             apply=True
+            
     
-    if terms[0]:
+    if st.session_state['run_count'] <2:
         if col3.button("Undo", key="undo"):
             undo=True
             undo_last_action()
