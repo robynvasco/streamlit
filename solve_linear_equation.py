@@ -24,7 +24,6 @@ def apply_term_to_equation(term, equation):
 
 def undo_last_action():
     if len(st.session_state['equations']) > 1:
-        undo_triggered = True
         st.session_state['equations'] = st.session_state['equations'][:-1]
         st.session_state['terms'] = st.session_state['terms'][:-1]
         
@@ -92,6 +91,7 @@ def main():
 
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo"):
+            undo_triggered = True
             undo_last_action()
 
     # Display the updated equations and applied terms
