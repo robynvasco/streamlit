@@ -72,6 +72,7 @@ def main():
     term = str(term) if term else ""
 
     apply_clicked = False
+    undo_triggered = False
 
     if col2.button("Apply Term", key="apply"):
         apply_clicked = True
