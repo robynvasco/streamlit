@@ -85,7 +85,9 @@ def main():
                 if i < len(equations) - 1:
                     st.markdown("---")
             with term_col:
-                st.latex(latex(f"|  {terms[i] if i < len(terms) else ''}"))
+                 term = terms[i] if i < len(terms) else ''
+                 term_text = f"|    {term.replace('*', '⋅')}"
+                 st.markdown(term_text)
 
 
 if __name__ == "__main__":
