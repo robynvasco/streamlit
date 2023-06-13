@@ -26,6 +26,7 @@ def undo_last_action():
     if len(st.session_state['equations']) > 1:
         st.session_state['equations'] = st.session_state['equations'][:-1]
         st.session_state['terms'] = st.session_state['terms'][:-1]
+        st.session_state['undo_in_progress'] = True
 
 
 def add_multiplication_operator(match):
@@ -48,6 +49,7 @@ def start_new_game():
     random_equation = random.choice(equation_database)
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
+    st.session_state['undo_in_progress'] = False
 
 
 def main():
@@ -67,7 +69,6 @@ def main():
         "b",
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
-        key="term_input"
     )
     term = str(term) if term else ""
 
@@ -82,6 +83,7 @@ def main():
         if equation != st.session_state['equations'][-1]:
             st.session_state['equations'].append(equation)
             st.session_state['terms'].append(term)
+            st.session_state['undo_in_progress'] = False
 
             # Check if x is isolated
             if equation.lhs == Symbol('x'):
@@ -90,7 +92,7 @@ def main():
                 st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
 
     if len(st.session_state['equations']) > 1:
-        if col3.button("Undo", key="undo"):
+        if col3.button("Undo", key="undo") and not st.session_state.get('undo_in_progress', False):
             undo_last_action()
 
     # Display the updated equations and applied terms
