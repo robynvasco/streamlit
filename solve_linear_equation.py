@@ -82,7 +82,7 @@ def main():
         for i, equation in enumerate(equations):
             eq_col, term_col = st.columns([3, 1])
             with eq_col:
-                st.latex(latex(equation))
+                st.latex(equation)
                 if i < len(equations) - 1:
                     st.markdown("---")
             with term_col:
