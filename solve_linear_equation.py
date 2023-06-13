@@ -9,14 +9,12 @@ def apply_term(new_term):
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
-        
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
             st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
-
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -35,22 +33,17 @@ def apply_term_to_equation(term, equation):
         st.error("Invalid term. Please check the syntax and mismatched parentheses.")
         return equation
 
-
 def undo_last_action():
     st.session_state['equations'] = st.session_state['equations'][:-1]
     st.session_state['terms'] = st.session_state['terms'][:-1]
-    
-
 
 def add_multiplication_operator(match):
     return match.group(1) + '*' + match.group(2)
-
 
 def insert_multiplication_operators(term):
     term = re.sub(r'(\d)([a-zA-Z\(])', add_multiplication_operator, term)
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
-
 
 def start_new_game():
     equation_database = [
@@ -63,11 +56,9 @@ def start_new_game():
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
 
-
 def main():
     st.title("Free x")
 
-    
     if 'equations' not in st.session_state:
         start_new_game()
 
@@ -75,8 +66,12 @@ def main():
     original_eq_container = st.container()
     st.write("")
 
+    # Sidebar
+    st.sidebar.title("Levels")
+    selected_level = st.sidebar.selectbox("Select level", range(1, 11), index=0)
+
     # Create a column layout
-    col1, col2, col3 = st.columns([3,1, 1])
+    col1, col2, col3 = st.columns([3, 1, 1])
 
     term = col1.text_input(
         "b",
@@ -84,25 +79,20 @@ def main():
         placeholder="e.g., +1 or *(1/2)",
     )
     term = str(term) if term else ""
-    
-    undo=False
-    apply=False
-    
+
+    undo = False
+    apply = False
 
     if col2.button("Apply term", key="apply"):
-            apply=True
-            
-    
+        apply = True
+
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo"):
-            undo=True
+            undo = True
             undo_last_action()
-            
+
     if term and not undo and not apply:
         apply_term(term)
-     
-        
-    
 
     # Display the updated equations and applied terms
     with original_eq_container:
@@ -118,7 +108,6 @@ def main():
                 term = terms[i] if i < len(terms) else ''
                 term_text = f"|    {term.replace('*', '⋅')}"
                 st.latex(term_text)
-
 
 if __name__ == "__main__":
     main()
