@@ -75,6 +75,11 @@ def main():
 
     if col2.button("Apply Term", key="apply"):
         apply_clicked = True
+        
+    if len(st.session_state['equations']) > 1:
+        if col3.button("Undo", key="undo"):
+            undo_triggered = True
+            undo_last_action()
 
     if term and not apply_clicked and not undo_triggered:
         term = insert_multiplication_operators(term)
@@ -89,10 +94,7 @@ def main():
                 st.success("Congratulations! You have isolated x and found the solution!")
                 st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
 
-    if len(st.session_state['equations']) > 1:
-        if col3.button("Undo", key="undo"):
-            undo_triggered = True
-            undo_last_action()
+  
 
     # Display the updated equations and applied terms
     with original_eq_container:
