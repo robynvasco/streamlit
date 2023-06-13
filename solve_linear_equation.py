@@ -88,7 +88,7 @@ def main():
             with term_col:
                 term = terms[i] if i < len(terms) else ''
                 term_text = f"|    {term.replace('*', '⋅')}"
-                st.latex(latex(f" \cdot {term_text}"))
+                st.latex(latex(\cdot))
 
     
 
