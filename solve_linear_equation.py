@@ -3,6 +3,19 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
+def apply_term(new_term):
+    term = insert_multiplication_operators(new_term)
+    equation = apply_term_to_equation(term, st.session_state['equations'][-1])
+    if equation != st.session_state['equations'][-1]:
+        st.session_state['equations'].append(equation)
+        st.session_state['terms'].append(term)
+
+        # Check if x is isolated
+        if equation.lhs == Symbol('x'):
+            st.balloons()
+            st.success("Congratulations! You have isolated x and found the solution!")
+            st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
+
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -23,9 +36,8 @@ def apply_term_to_equation(term, equation):
 
 
 def undo_last_action():
-        st.session_state['equations'] = st.session_state['equations'][:-1]
-        st.session_state['terms'] = st.session_state['terms'][:-1]
-        
+    st.session_state['equations'] = st.session_state['equations'][:-1]
+    st.session_state['terms'] = st.session_state['terms'][:-1]
 
 
 def add_multiplication_operator(match):
@@ -67,35 +79,15 @@ def main():
         "b",
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
+        on_change=apply_term
     )
     term = str(term) if term else ""
+    term = insert_multiplication_operators(term)
 
-    apply_clicked = False
-    undo_triggered = False
-    
-  
-
-  
-    if term:
-        term1 = insert_multiplication_operators(term)
-        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
-        if equation != st.session_state['equations'][-1]:
-            st.session_state['equations'].append(equation)
-            st.session_state['terms'].append(term1)
-    
-            # Check if x is isolated
-            if equation.lhs == Symbol('x'):
-                st.balloons()
-                st.success("Congratulations! You have isolated x and found the solution!")
-                st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
-    
-    if col2.button("Apply Term", key="apply"):
-        apply_clicked = True
-        
-    if st.session_state['terms']:
+    if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo"):
             undo_last_action()
-    
+
     # Display the updated equations and applied terms
     with original_eq_container:
         equations = st.session_state['equations']
