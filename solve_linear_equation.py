@@ -24,7 +24,7 @@ def apply_term_to_equation(term, equation):
 def undo_last_action():
     if len(st.session_state['equations']) > 1:
         st.session_state['equations'] = st.session_state['equations'][:-1]
-        st.write(st.session_state['equations'])
+        st.session_state['terms'] = st.session_state['terms'][:-1]
 
 
 def add_multiplication_operator(match):
@@ -48,7 +48,7 @@ def main():
     original_eq_container = st.container()
 
     # Create a column layout
-    col1, col2, col3, col4 = st.columns([3, 1, 1, 1])
+    col1, col2, col3 = st.columns([3, 1, 1])
 
     term = col1.text_input(
         "b",
@@ -74,18 +74,18 @@ def main():
         if col3.button("Undo"):
             undo_last_action()
 
-    # Display the updated equations
+    # Display the updated equations and applied terms
     with original_eq_container:
         equations = st.session_state['equations']
         terms = st.session_state['terms']
         for i, equation in enumerate(equations):
-            st.latex(latex(equation))
-            if i < len(equations) - 1:
-                st.markdown("---")
-        if terms:
-            st.write("Applied Terms:")
-            for term in terms:
-                st.write(term)
+            eq_col, term_col = st.columns([3, 1])
+            with eq_col:
+                st.latex(latex(equation))
+                if i < len(equations) - 1:
+                    st.markdown("---")
+            with term_col:
+                st.write(f"Term: {terms[i] if i < len(terms) else ''}")
 
 
 if __name__ == "__main__":
