@@ -2,22 +2,21 @@ import streamlit as st
 from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 
-
-from sympy.parsing.sympy_parser import parse_expr
+ if "()" in term:
+        st.error("Invalid term. Empty parentheses.")
+        return None
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
     try:
-        if term.count('(') != term.count(')'):
-            raise SympifyError("Mismatched parentheses")
         new_left_side = parse_expr(f"({left_side}){term}")
         new_right_side = parse_expr(f"({right_side}){term}")
         new_equation = Eq(new_left_side, new_right_side)
         return new_equation
     except SympifyError:
         st.error("Invalid term. Please check the syntax.")
-        return equation
+        return None
 
 
 
