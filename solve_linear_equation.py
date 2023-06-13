@@ -24,9 +24,10 @@ def apply_term_to_equation(term, equation):
 
 def undo_last_action():
     if len(st.session_state['equations']) > 1:
+        undo_triggered = True
         st.session_state['equations'] = st.session_state['equations'][:-1]
         st.session_state['terms'] = st.session_state['terms'][:-1]
-        st.session_state['undo_triggered'] = True
+        
 
 
 def add_multiplication_operator(match):
@@ -49,7 +50,6 @@ def start_new_game():
     random_equation = random.choice(equation_database)
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
-    st.session_state['undo_triggered'] = False
 
 
 def main():
@@ -77,7 +77,7 @@ def main():
     if col2.button("Apply Term", key="apply"):
         apply_clicked = True
 
-    if term and not apply_clicked and not st.session_state.get('undo_triggered', False):
+    if term and not apply_clicked and not undo_triggered:
         term = insert_multiplication_operators(term)
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         if equation != st.session_state['equations'][-1]:
