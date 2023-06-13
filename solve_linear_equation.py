@@ -79,7 +79,8 @@ def main():
         "b",
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
-        on_change=apply_term
+        on_change=apply_term,
+        args=(term)
     )
     term = str(term) if term else ""
 
