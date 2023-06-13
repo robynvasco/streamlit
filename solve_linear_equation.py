@@ -82,9 +82,8 @@ def main():
         on_change=apply_term
     )
     term = str(term) if term else ""
-    term = insert_multiplication_operators(term)
 
-    if len(st.session_state['equations']) > 1:
+    if st.session_state['terms']:
         if col3.button("Undo", key="undo"):
             undo_last_action()
 
