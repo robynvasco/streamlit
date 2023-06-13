@@ -88,6 +88,9 @@ def main():
                  term = terms[i] if i < len(terms) else ''
                  term_text = f"|    {term.replace('*', '⋅')}"
                  st.markdown(term_text)
+    
+    # Clear the input field
+    col1.text_input('', value='', key='input_field')
 
 
 if __name__ == "__main__":
