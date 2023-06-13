@@ -84,13 +84,15 @@ def main():
     
     undo=False
     
-    if term and not undo:
-        apply_term(term)
-        
-    if len(st.session_state['terms']) > 1:
+    if len(st.session_state['terms']) > 0:
         if col3.button("Undo", key="undo"):
             undo=True
             undo_last_action()
+            
+    if term and not undo:
+        apply_term(term)
+        
+    
 
     # Display the updated equations and applied terms
     with original_eq_container:
