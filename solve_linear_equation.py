@@ -45,13 +45,28 @@ def insert_multiplication_operators(term):
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
 
-def start_new_game():
-    equation_database = [
-        Eq((Symbol('x') + 3) / 15 + 3, 5),
-        Eq((Symbol('x') - 2) * 4 - 10, 6),
-        Eq((Symbol('x') ** 2 + 5) / 2, 8),
-        # Add more equations to the database
-    ]
+def start_new_game(level):
+    equation_databases = {
+        "Level 1": [
+            Eq((Symbol('x') + 3) / 15 + 3, 5),
+            Eq((Symbol('x') - 2) * 4 - 10, 6),
+            Eq((Symbol('x') ** 2 + 5) / 2, 8),
+            # Add more equations to the database for Level 1
+        ],
+        "Level 2": [
+            Eq((Symbol('x') + 1) / 2 - 3, 5),
+            Eq((Symbol('x') + 5) * 3 - 8, 12),
+            # Add more equations to the database for Level 2
+        ],
+        # Add more levels and equation databases
+    }
+
+    equation_database = equation_databases.get(level, [])
+
+    if not equation_database:
+        st.error("Invalid level selected.")
+        return
+
     random_equation = random.choice(equation_database)
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
@@ -60,19 +75,16 @@ def main():
     st.title("Free x")
 
     if 'equations' not in st.session_state:
-        start_new_game()
+        start_new_game("Level 1")
 
     st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
     st.write("")
 
-    # Sidebar
-    st.sidebar.title("Levels")
-    level_names = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10"]
-    selected_level = st.sidebar.selectbox("Select level", level_names, index=0)
-
     # Create a column layout
     col1, col2, col3 = st.columns([3, 1, 1])
+
+    level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
 
     term = col1.text_input(
         "b",
