@@ -83,3 +83,8 @@ def main():
             col4.write(f"Term: {term}")
             if i < len(equations) - 1:
                 st.markdown("---")
+          
+        
+if __name__ == "__main__":
+    main()
+
