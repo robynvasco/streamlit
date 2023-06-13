@@ -73,6 +73,20 @@ def main():
     apply_clicked = False
     undo_triggered = False
 
+  
+    if term and not apply_clicked and not undo_triggered:
+        term = insert_multiplication_operators(term)
+        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
+        if equation != st.session_state['equations'][-1]:
+            st.session_state['equations'].append(equation)
+            st.session_state['terms'].append(term)
+    
+            # Check if x is isolated
+            if equation.lhs == Symbol('x'):
+                st.balloons()
+                st.success("Congratulations! You have isolated x and found the solution!")
+                st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
+    
     if col2.button("Apply Term", key="apply"):
         apply_clicked = True
         
@@ -80,22 +94,7 @@ def main():
         if col3.button("Undo", key="undo"):
             undo_triggered = True
             undo_last_action()
-
-    if term and not apply_clicked and not undo_triggered:
-        term = insert_multiplication_operators(term)
-        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
-        if equation != st.session_state['equations'][-1]:
-            st.session_state['equations'].append(equation)
-            st.session_state['terms'].append(term)
-
-            # Check if x is isolated
-            if equation.lhs == Symbol('x'):
-                st.balloons()
-                st.success("Congratulations! You have isolated x and found the solution!")
-                st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
-
-  
-
+    
     # Display the updated equations and applied terms
     with original_eq_container:
         equations = st.session_state['equations']
