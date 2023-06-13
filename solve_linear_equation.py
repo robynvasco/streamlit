@@ -10,7 +10,7 @@ def apply_term_to_equation(term, equation):
    
     if "()" in term:
         st.error("Invalid term. Empty parentheses.")
-        return None
+        return equation
       
     try:
         new_left_side = sympify(f"({left_side}){term}")
@@ -19,7 +19,7 @@ def apply_term_to_equation(term, equation):
         return new_equation
     except SympifyError:
         st.error("Invalid term. Please check the syntax and mismatched parantheses.")
-        return None
+        return equation
 
 
 
@@ -64,7 +64,8 @@ def main():
     if term and not apply_clicked:
         term = insert_multiplication_operators(term)
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
-        st.session_state['equations'].append(equation)
+        if equation != st.session_state['equations'][-1]:
+            st.session_state['equations'].append(equation)
 
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo"):
