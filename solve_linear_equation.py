@@ -73,7 +73,7 @@ def main():
     st.write("")
 
     # Create a column layout
-    col1, col3 = st.columns([3, 1])
+    col1, col2, col3 = st.columns([3,1, 1])
 
     term = col1.text_input(
         "b",
@@ -83,13 +83,17 @@ def main():
     term = str(term) if term else ""
     
     undo=False
+    apply=False
+    
+    if col2.button("Apply term", key="apply"):
+            apply=True
     
     if len(st.session_state['terms']) > 0:
         if col3.button("Undo", key="undo"):
             undo=True
             undo_last_action()
             
-    if term and not undo:
+    if term and not undo and not apply:
         apply_term(term)
         
     
