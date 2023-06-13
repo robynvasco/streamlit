@@ -1,3 +1,41 @@
+import streamlit as st
+from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
+import re
+
+
+
+def apply_term_to_equation(term, equation):
+    x = Symbol('x')
+    left_side, right_side = equation.args
+   
+    if "()" in term:
+        st.error("Invalid term. Empty parentheses.")
+        return equation
+      
+    try:
+        new_left_side = sympify(f"({left_side}){term}")
+        new_right_side = sympify(f"({right_side}){term}")
+        new_equation = Eq(new_left_side, new_right_side)
+        return new_equation
+    except SympifyError:
+        st.error("Invalid term. Please check the syntax and mismatched parantheses.")
+        return equation
+
+
+
+def undo_last_action():
+    if len(st.session_state['equations']) > 2:
+        st.session_state['equations'] = st.session_state['equations'][:-2]
+        st.write(st.session_state['equations'])
+
+def add_multiplication_operator(match):
+    return match.group(1) + '*' + match.group(2)
+
+def insert_multiplication_operators(term):
+    term = re.sub(r'(\d)([a-zA-Z\(])', add_multiplication_operator, term)
+    term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
+    return term
+
 def main():
     st.title("Equation Manipulator")
 
