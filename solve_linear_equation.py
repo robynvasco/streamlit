@@ -66,10 +66,6 @@ def start_new_game():
 
 def main():
     st.title("Free x")
-    
-    # Initialize the counter variable
-    if 'run_count' not in st.session_state:
-        st.session_state['run_count'] = 0
 
     
     if 'equations' not in st.session_state:
@@ -97,15 +93,14 @@ def main():
             apply=True
             
     
-    if st.session_state['run_count'] > 1:
+    if len(st.session_state['equations']) > 0:
         if col3.button("Undo", key="undo"):
             undo=True
-            st.session_state['run_count'] -= 1
             undo_last_action()
             
     if term and not undo and not apply:
         apply_term(term)
-        st.session_state['run_count'] += 1
+     
         
     
 
