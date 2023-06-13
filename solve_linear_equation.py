@@ -31,11 +31,13 @@ def main():
         label_visibility="collapsed",
         disabled=False,
         placeholder="e.g., +1 or *(1/2)",
-        on_change=lambda: st.session_state.update({'text_input_value': term})
     )
     term = str(term) if term else ""
 
-    if col2.button("Apply Term") or term:
+    if col2.button("Apply Term"):
+        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
+        st.session_state['equations'].append(equation)
+    elif term:
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
