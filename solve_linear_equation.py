@@ -70,6 +70,10 @@ def main():
         if equation != st.session_state['equations'][-1]:
             st.session_state['equations'].append(equation)
             st.session_state['terms'].append(term)
+            
+            # Check if x is isolated
+            if equation.lhs == Symbol('x'):
+                st.balloons()
 
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo"):
@@ -89,10 +93,6 @@ def main():
                 term = terms[i] if i < len(terms) else ''
                 term_text = f"|    {term.replace('*', '⋅')}"
                 st.latex(term_text)
-
-
-
-    
 
 
 if __name__ == "__main__":
