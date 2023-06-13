@@ -88,9 +88,9 @@ def main():
             with term_col:
                 term = terms[i] if i < len(terms) else ''
                 term_text = f"|    {term.replace('*', '⋅')}"
-                st.latex(r'''\begin{flalign*}
+                st.latex(r'''\begin{align*}
                 & | \quad {term_text}
-                \end{flalign*}''')
+                \end{align*}''')
 
     
 
