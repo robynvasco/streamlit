@@ -39,7 +39,7 @@ def apply_term_to_equation(term, equation):
 def undo_last_action():
     st.session_state['equations'] = st.session_state['equations'][:-1]
     st.session_state['terms'] = st.session_state['terms'][:-1]
-    st.session_state['run_count'] -= 1
+    
 
 
 def add_multiplication_operator(match):
@@ -100,7 +100,7 @@ def main():
     if st.session_state['run_count'] > 1:
         if col3.button("Undo", key="undo"):
             undo=True
-            st.session_state['run_count'] -= 1
+            st.session_state['run_count'] -= 2
             undo_last_action()
             
     if term and not undo and not apply:
