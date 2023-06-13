@@ -28,7 +28,7 @@ def undo_last_action():
 
 
 def add_multiplication_operator(match):
-    return match.group(1) + '*' + match.group(2)
+    return match.group(1) + '\cdot' + match.group(2)
 
 
 def insert_multiplication_operators(term):
