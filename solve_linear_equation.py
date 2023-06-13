@@ -91,7 +91,7 @@ def main():
     
     undo=False
     apply=False
-    st.session_state['run_count'] += 1
+    
 
     if col2.button("Apply term", key="apply"):
             apply=True
@@ -105,6 +105,7 @@ def main():
             
     if term and not undo and not apply:
         apply_term(term)
+        st.session_state['run_count'] += 1
         
     
 
