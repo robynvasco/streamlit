@@ -44,7 +44,7 @@ def main():
         st.session_state['equations'] = [Eq((Symbol('x') + 3) / 15 + 3, 5)]
         st.session_state['terms'] = []
 
-    st.info("Isolate x for the following equation")
+    st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
 
     # Create a column layout
@@ -53,7 +53,6 @@ def main():
     term = col1.text_input(
         "b",
         label_visibility="collapsed",
-        disabled=False,
         placeholder="e.g., +1 or *(1/2)",
     )
     term = str(term) if term else ""
@@ -89,8 +88,6 @@ def main():
                  term_text = f"|    {term.replace('*', '⋅')}"
                  st.markdown(term_text)
     
-    # Clear the input field
-    col1.text_input('', value='', key='input_field')
 
 
 if __name__ == "__main__":
