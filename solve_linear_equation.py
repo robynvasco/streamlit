@@ -1,7 +1,7 @@
 import streamlit as st
-from sympy import Symbol, Eq, parse_expr, latex
+from sympy import Symbol, Eq, parse_expr, latex,  SympifyError
 import re
-from sympy.core.sympify import SympifyError
+
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
