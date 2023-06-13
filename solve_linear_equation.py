@@ -71,17 +71,12 @@ def main():
     term = str(term) if term else ""
 
     apply_clicked = False
-    undo_triggered = False
+    undo_triggered = True
     
-    if col2.button("Apply Term", key="apply"):
-        apply_clicked = True
-        
-    if st.session_state['terms']:
-        if col3.button("Undo", key="undo"):
-            undo_triggered = True
+  
 
   
-    if term and not apply_clicked and not undo_triggered:
+    if term:
         term = insert_multiplication_operators(term)
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         if equation != st.session_state['equations'][-1]:
