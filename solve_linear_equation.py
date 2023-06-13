@@ -1,5 +1,6 @@
 import streamlit as st
 from sympy import Symbol, Eq, parse_expr, latex
+import re
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -13,6 +14,14 @@ def undo_last_action():
     if len(st.session_state['equations']) > 2:
         st.session_state['equations'] = st.session_state['equations'][:-2]
         st.write(st.session_state['equations'])
+
+def add_multiplication_operator(match):
+    return match.group(1) + '*' + match.group(2)
+
+def insert_multiplication_operators(term):
+    term = re.sub(r'(\d)([a-zA-Z\(])', add_multiplication_operator, term)
+    term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
+    return term
 
 def main():
     st.title("Equation Manipulator")
@@ -40,6 +49,7 @@ def main():
         apply_clicked = True
 
     if term and not apply_clicked:
+        term = insert_multiplication_operators(term)
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
