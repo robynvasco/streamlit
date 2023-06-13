@@ -42,7 +42,7 @@ def start_new_game():
     equation_database = [
         Eq((Symbol('x') + 3) / 15 + 3, 5),
         Eq((Symbol('x') - 2) * 4 - 10, 6),
-        Eq((Symbol('x') ** 2 + 5) / 2, 8),
+        Eq((Symbol('x')* 2 + 5) / 2, 8),
         # Add more equations to the database
     ]
     random_equation = random.choice(equation_database)
