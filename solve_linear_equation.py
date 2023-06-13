@@ -71,17 +71,17 @@ def main():
     term = str(term) if term else ""
 
     apply_clicked = False
-    undo_triggered = True
+    undo_triggered = False
     
   
 
   
     if term:
-        term = insert_multiplication_operators(term)
+        term1 = insert_multiplication_operators(term)
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         if equation != st.session_state['equations'][-1]:
             st.session_state['equations'].append(equation)
-            st.session_state['terms'].append(term)
+            st.session_state['terms'].append(term1)
     
             # Check if x is isolated
             if equation.lhs == Symbol('x'):
