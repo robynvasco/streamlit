@@ -82,13 +82,13 @@ def main():
         for i, equation in enumerate(equations):
             eq_col, term_col = st.columns([3, 1])
             with eq_col:
-                st.latex(equation)
+                st.latex(latex(equation))
                 if i < len(equations) - 1:
                     st.markdown("---")
             with term_col:
                  term = terms[i] if i < len(terms) else ''
                  term_text = f"|    {term.replace('*', '⋅')}"
-                 st.latex(term_text)
+                 st.latex(latex(\raggedleft term_text))
     
 
 
