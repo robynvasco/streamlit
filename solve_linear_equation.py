@@ -73,7 +73,7 @@ def main():
 
     st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
-    st.write(st.session_state['run_count'])
+    st.write("")
 
     # Create a column layout
     col1, col2, col3 = st.columns([3,1, 1])
