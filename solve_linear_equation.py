@@ -86,9 +86,10 @@ def main():
                 if i < len(equations) - 1:
                     st.markdown("---")
             with term_col:
-                 term = terms[i] if i < len(terms) else ''
-                 term_text = f"|    {term.replace('*', '⋅')}"
-                 st.latex(latex(\raggedleft term_text))
+                term = terms[i] if i < len(terms) else ''
+                term_text = f"|    {term.replace('*', '⋅')}"
+                st.latex(f"$$\\raggedright {term_text}$$")
+
     
 
 
