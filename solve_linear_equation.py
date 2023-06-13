@@ -73,7 +73,7 @@ def main():
             
             # Check if x is isolated
             if equation.lhs == Symbol('x'):
-                st.balloons()
+                st.balloons("Congratulations! You have isolated x!", 'success')
 
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo"):
