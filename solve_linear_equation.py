@@ -36,8 +36,8 @@ def apply_term_to_equation(term, equation):
 
 
 def undo_last_action():
-    st.session_state['equations'] = st.session_state['equations'][:-2]
-    st.session_state['terms'] = st.session_state['terms'][:-2]
+    st.session_state['equations'] = st.session_state['equations'][:-1]
+    st.session_state['terms'] = st.session_state['terms'][:-1]
 
 
 def add_multiplication_operator(match):
