@@ -7,11 +7,11 @@ def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
     try:
-        new_left_side = parse_expr(f"({left_side}){term}")
-        new_right_side = parse_expr(f"({right_side}){term}")
+        new_left_side = parse_expr(f"({left_side}){term}", evaluate=False)
+        new_right_side = parse_expr(f"({right_side}){term}", evaluate=False)
         new_equation = Eq(new_left_side, new_right_side)
         return new_equation
-    except SympifyError:
+    except (SympifyError, SyntaxError):
         # Handle the syntax error here
         st.error("Invalid term. Please check the syntax.")
         return equation  # Return the original equation unchanged
