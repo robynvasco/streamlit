@@ -18,7 +18,7 @@ def apply_term_to_equation(term, equation):
         new_equation = Eq(new_left_side, new_right_side)
         new_left_side_raw = parse_expr(f"({left_side}){term}", evaluate=False)
         new_right_side_raw = parse_expr(f"({right_side}){term}", evaluate=False)
-        unsimplified_equation = Eq(new_left_side, new_right_side)
+        unsimplified_equation = Eq(new_left_side_raw, new_right_side_raw)
             
         return unsimplified_equation, new_equation
     except SympifyError:
