@@ -67,6 +67,7 @@ def main():
         "b",
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
+        key="term_input"
     )
     term = str(term) if term else ""
 
