@@ -68,7 +68,8 @@ def main():
 
     # Sidebar
     st.sidebar.title("Levels")
-    selected_level = st.sidebar.selectbox("Select level", range(1, 11), index=0)
+    level_names = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10"]
+    selected_level = st.sidebar.selectbox("Select level", level_names, index=0)
 
     # Create a column layout
     col1, col2, col3 = st.columns([3, 1, 1])
@@ -79,7 +80,7 @@ def main():
         placeholder="e.g., +1 or *(1/2)",
     )
     term = str(term) if term else ""
-
+    
     undo = False
     apply = False
 
