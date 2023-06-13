@@ -87,7 +87,7 @@ def main():
     if term and not undo:
         apply_term(term)
         
-    if st.session_state['terms']:
+    if len(st.session_state['terms']) > 1:
         if col3.button("Undo", key="undo"):
             undo=True
             undo_last_action()
