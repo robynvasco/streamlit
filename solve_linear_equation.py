@@ -16,7 +16,11 @@ def apply_term_to_equation(term, equation):
         new_left_side = sympify(f"({left_side}){term}")
         new_right_side = sympify(f"({right_side}){term}")
         new_equation = Eq(new_left_side, new_right_side)
-        return new_equation
+        new_left_side_raw = parse_expr(f"({left_side}){term}", evaluate=False)
+        new_right_side_raw = parse_expr(f"({right_side}){term}", evaluate=False)
+        unsimplified_equation = Eq(new_left_side, new_right_side)
+            
+        return unsimplified_equation, new_equation
     except SympifyError:
         st.error("Invalid term. Please check the syntax and mismatched parantheses.")
         return equation
@@ -63,9 +67,10 @@ def main():
 
     if term and not apply_clicked:
         term = insert_multiplication_operators(term)
-        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
-        if equation != st.session_state['equations'][-1]:
-            st.session_state['equations'].append(equation)
+        equations = apply_term_to_equation(term, st.session_state['equations'][-1])
+        for equation in equations:
+            if equation != st.session_state['equations'][-1]:
+                st.session_state['equations'].append(equation)
 
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo"):
