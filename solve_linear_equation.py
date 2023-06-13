@@ -72,6 +72,13 @@ def main():
 
     apply_clicked = False
     undo_triggered = False
+    
+    if col2.button("Apply Term", key="apply"):
+        apply_clicked = True
+        
+    if st.session_state['terms']:
+        if col3.button("Undo", key="undo"):
+            undo_triggered = True
 
   
     if term and not apply_clicked and not undo_triggered:
@@ -92,7 +99,6 @@ def main():
         
     if st.session_state['terms']:
         if col3.button("Undo", key="undo"):
-            undo_triggered = True
             undo_last_action()
     
     # Display the updated equations and applied terms
