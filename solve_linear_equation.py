@@ -37,7 +37,8 @@ def main():
     if col2.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
-    elif term:
+
+    if term and not col2.button("Apply Term"):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
