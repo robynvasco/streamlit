@@ -66,7 +66,7 @@ def main():
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
-    if len(st.session_state['equations']) > 2:
+    if len(st.session_state['equations']) > 1:
         if col3.button("Undo"):
             undo_last_action()
        
