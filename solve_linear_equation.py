@@ -1,6 +1,7 @@
 import streamlit as st
 from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
+import random
 
 
 def apply_term_to_equation(term, equation):
@@ -37,12 +38,23 @@ def insert_multiplication_operators(term):
     return term
 
 
+def start_new_game():
+    equation_database = [
+        Eq((Symbol('x') + 3) / 15 + 3, 5),
+        Eq((Symbol('x') - 2) * 4 - 10, 6),
+        Eq((Symbol('x') ** 2 + 5) / 2, 8),
+        # Add more equations to the database
+    ]
+    random_equation = random.choice(equation_database)
+    st.session_state['equations'] = [random_equation]
+    st.session_state['terms'] = []
+
+
 def main():
     st.title("Equation Manipulator")
 
     if 'equations' not in st.session_state:
-        st.session_state['equations'] = [Eq((Symbol('x') + 3) / 15 + 3, 5)]
-        st.session_state['terms'] = []
+        start_new_game()
 
     st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
@@ -51,7 +63,6 @@ def main():
     # Create a column layout
     col1, col2, col3 = st.columns([3, 1, 1])
     
-
     term = col1.text_input(
         "b",
         label_visibility="collapsed",
@@ -75,7 +86,7 @@ def main():
             if equation.lhs == Symbol('x'):
                 st.balloons()
                 st.success("Congratulations! You have isolated x and found the solution!")
-                st.button("Click here to begin a new game")
+                st.button("Click here to begin a new game", on_click=start_new_game)
 
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo"):
