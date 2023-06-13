@@ -1,5 +1,5 @@
 import streamlit as st
-from sympy import Symbol, Eq, parse_expr, latex, SympifyError
+from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 
 
