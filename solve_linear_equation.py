@@ -1,14 +1,20 @@
 import streamlit as st
 from sympy import Symbol, Eq, parse_expr, latex
 import re
+from sympy.core.sympify import SympifyError
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
-    new_left_side = parse_expr(f"({left_side}){term}")
-    new_right_side = parse_expr(f"({right_side}){term}")
-    new_equation = Eq(new_left_side, new_right_side)
-    return new_equation
+    try:
+        new_left_side = parse_expr(f"({left_side}){term}")
+        new_right_side = parse_expr(f"({right_side}){term}")
+        new_equation = Eq(new_left_side, new_right_side)
+        return new_equation
+    except SympifyError:
+        # Handle the syntax error here
+        st.error("Invalid term. Please check the syntax.")
+        return equation  # Return the original equation unchanged
 
 def undo_last_action():
     if len(st.session_state['equations']) > 2:
