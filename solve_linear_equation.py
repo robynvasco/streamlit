@@ -88,7 +88,7 @@ def main():
     if col2.button("Apply term", key="apply"):
             apply=True
     
-    if len(st.session_state['terms']) > 0:
+    if terms[0]:
         if col3.button("Undo", key="undo"):
             undo=True
             undo_last_action()
