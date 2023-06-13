@@ -7,14 +7,16 @@ def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
     try:
+        if term.count('(') != term.count(')'):
+            raise SympifyError("Mismatched parentheses")
         new_left_side = sympify(f"({left_side}){term}")
         new_right_side = sympify(f"({right_side}){term}")
         new_equation = Eq(new_left_side, new_right_side)
         return new_equation
     except SympifyError:
-        # Handle the syntax error here
         st.error("Invalid term. Please check the syntax.")
-        return equation  # Return the original equation unchanged
+        return equation
+
 
 def undo_last_action():
     if len(st.session_state['equations']) > 2:
