@@ -79,13 +79,17 @@ def main():
         "b",
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
-        on_change=apply_term,
-        args=(term)
     )
     term = str(term) if term else ""
-
+    
+    undo=False
+    
+    if term and not undo:
+        apply_term(term)
+        
     if st.session_state['terms']:
         if col3.button("Undo", key="undo"):
+            undo=True
             undo_last_action()
 
     # Display the updated equations and applied terms
