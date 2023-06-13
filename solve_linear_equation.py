@@ -34,11 +34,12 @@ def main():
     )
     term = str(term) if term else ""
 
-    if col2.button("Apply Term", key="apply_button"):
-        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
-        st.session_state['equations'].append(equation)
+    apply_clicked = False
 
-    if term and not col2.button("Apply Term", key="dummy_button"):
+    if col2.button("Apply Term"):
+        apply_clicked = True
+
+    if term and not apply_clicked:
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
         st.session_state['equations'].append(equation)
 
