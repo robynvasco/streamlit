@@ -3,6 +3,9 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
+def clear_text():
+    st.session_state["input"] = ""
+
 def apply_term(new_term, level):
     term = insert_multiplication_operators(new_term)
     equation = apply_term_to_equation(term, st.session_state['equations'][-1])
@@ -72,7 +75,7 @@ def start_new_game(level):
 
 def main():
     st.title("Free x")
-    term=""
+    value=""
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
@@ -87,10 +90,11 @@ def main():
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
 
     term = col1.text_input(
-        "b",
+        "input",
         label_visibility="collapsed",
         value="",
         placeholder="e.g., +1 or *(1/2)",
+        key="input"
     )
     term = str(term) if term else ""
     
@@ -101,7 +105,7 @@ def main():
         apply = True
 
     if len(st.session_state['equations']) > 1:
-        if col3.button("Undo", key="undo"):
+        if col3.button("Undo", key="undo", on_click=clear_text):
             undo = True
             undo_last_action()
 
