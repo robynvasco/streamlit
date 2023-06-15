@@ -92,7 +92,6 @@ def main():
         "input",
         label_visibility="collapsed",
         value="",
-        on_change=lambda: apply_term(term, level),
         placeholder="e.g., +1 or *(1/2)",
         key="input"
     )
@@ -108,6 +107,10 @@ def main():
         if col3.button("Undo", key="undo", on_click=clear_text):
             undo = True
             undo_last_action()
+    
+    if term: 
+        apply_term(term, level)
+        
 
    
 
