@@ -14,7 +14,7 @@ def apply_term(new_term):
         if equation.lhs == Symbol('x'):
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
-            if st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
+            st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
                
 
 def apply_term_to_equation(term, equation):
