@@ -71,6 +71,7 @@ def start_new_game(level):
 
 def main():
     st.title("Free x")
+    
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
@@ -87,6 +88,7 @@ def main():
     term = col1.text_input(
         "b",
         label_visibility="collapsed",
+        value="",
         placeholder="e.g., +1 or *(1/2)",
     )
     term = str(term) if term else ""
