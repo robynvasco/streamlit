@@ -45,7 +45,8 @@ def insert_multiplication_operators(term):
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
 
-def start_new_game(level):
+def start_new_game():
+    level = st.session_state["selected_level"]
     equation_databases = {
         "Level 1": [
             Eq((Symbol('x') + 3) / 15 + 3, 5),
@@ -70,6 +71,7 @@ def start_new_game(level):
     random_equation = random.choice(equation_database)
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
+
 
 def main():
     st.title("Free x")
