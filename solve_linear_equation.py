@@ -14,7 +14,8 @@ def apply_term(new_term):
         if equation.lhs == Symbol('x'):
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
-            st.button("Click here to begin a new game", key="new_game", on_click=start_new_game)
+            if st.button("Click here to begin a new game", key="new_game",):
+                start_new_game(level)
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -45,8 +46,7 @@ def insert_multiplication_operators(term):
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
 
-def start_new_game():
-    level = st.session_state["selected_level"]
+def start_new_game(level):
     equation_databases = {
         "Level 1": [
             Eq((Symbol('x') + 3) / 15 + 3, 5),
