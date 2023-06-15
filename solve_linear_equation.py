@@ -3,7 +3,7 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
-def apply_term(new_term):
+def apply_term(new_term, level):
     term = insert_multiplication_operators(new_term)
     equation = apply_term_to_equation(term, st.session_state['equations'][-1])
     if equation != st.session_state['equations'][-1]:
@@ -103,7 +103,7 @@ def main():
             undo_last_action()
 
     if term and not undo and not apply:
-        apply_term(term)
+        apply_term(term, level)
 
     # Display the updated equations and applied terms
     with original_eq_container:
