@@ -76,6 +76,8 @@ def start_new_game(level, state):
 
 def main():
     st.title("Free x")
+    
+    state = SessionState.get(key=0)
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
@@ -89,7 +91,6 @@ def main():
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
 
-    state = SessionState.get(key=0)
 
     term = col1.text_input(
         "input",
