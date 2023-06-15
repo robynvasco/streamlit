@@ -107,7 +107,7 @@ def main():
             undo = True
             undo_last_action()
 
-    if term
+    if term:
         apply_term(term, level)
 
     # Display the updated equations and applied terms
