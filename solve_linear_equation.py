@@ -77,7 +77,7 @@ def start_new_game(level, state):
 def main():
     st.title("Free x")
     
-    state = SessionState.get(key=0)
+    state = st.session_state.get(key=0)
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
