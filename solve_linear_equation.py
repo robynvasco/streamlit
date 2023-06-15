@@ -124,3 +124,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    st.text_input("b", value="", key="input_text")
