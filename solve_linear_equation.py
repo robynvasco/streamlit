@@ -92,7 +92,7 @@ def main():
         "input",
         label_visibility="collapsed",
         value="",
-        on_change=clear_text,
+        on_change=lambda: apply_term(term, level),
         placeholder="e.g., +1 or *(1/2)",
         key="input"
     )
@@ -109,8 +109,7 @@ def main():
             undo = True
             undo_last_action()
 
-    if term:
-        apply_term(term, level)
+   
 
     # Display the updated equations and applied terms
     with original_eq_container:
