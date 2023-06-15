@@ -110,6 +110,7 @@ def main():
     
     if term: 
         apply_term(term, level)
+        clear_text()
         
 
    
