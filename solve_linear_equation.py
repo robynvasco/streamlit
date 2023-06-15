@@ -80,7 +80,7 @@ def main():
     state = st.session_state.get(key=0)
 
     if 'equations' not in st.session_state:
-        start_new_game("Level 1")
+        start_new_game("Level 1", state)
 
     st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
