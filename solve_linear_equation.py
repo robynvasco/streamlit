@@ -12,7 +12,6 @@ def apply_term(new_term, level):
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
-        term=""
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
@@ -75,7 +74,6 @@ def start_new_game(level):
 
 def main():
     st.title("Free x")
-    value=""
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
@@ -101,7 +99,7 @@ def main():
     undo = False
     apply = False
 
-    if col2.button("Apply term", key="apply"):
+    if col2.button("Apply term", key="apply", on_click=clear_text):
         apply = True
 
     if len(st.session_state['equations']) > 1:
@@ -109,7 +107,7 @@ def main():
             undo = True
             undo_last_action()
 
-    if term and not undo and not apply:
+    if term
         apply_term(term, level)
 
     # Display the updated equations and applied terms
