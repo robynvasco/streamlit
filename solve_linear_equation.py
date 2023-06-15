@@ -3,16 +3,16 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
-def clear_text():
-    st.session_state["input"] = ""
+def clear_text(state):
+    state.key += 1
 
-def apply_term(new_term, level):
+def apply_term(new_term, level, state):
     term = insert_multiplication_operators(new_term)
     equation = apply_term_to_equation(term, st.session_state['equations'][-1])
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
-        st.session_state["input"] = ""
+        state.key += 1
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
@@ -50,7 +50,7 @@ def insert_multiplication_operators(term):
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
 
-def start_new_game(level):
+def start_new_game(level, state):
     st.session_state["input"] = ""
     equation_databases = {
         "Level 1": [
@@ -89,33 +89,31 @@ def main():
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
 
+    state = SessionState.get(key=0)
+
     term = col1.text_input(
         "input",
         label_visibility="collapsed",
         value="",
         placeholder="e.g., +1 or *(1/2)",
-        key="input"
+        key=state.key
     )
     term = str(term) if term else ""
     
     undo = False
     apply = False
 
-    if col2.button("Apply term", key="apply", on_click=clear_text):
+    if col2.button("Apply term", key="apply", on_click=lambda: clear_text(state)):
         apply = True
 
     if len(st.session_state['equations']) > 1:
-        if col3.button("Undo", key="undo", on_click=clear_text):
+        if col3.button("Undo", key="undo", on_click=lambda: clear_text(state)):
             undo = True
             undo_last_action()
     
     if term: 
-        apply_term(term, level)
+        apply_term(term, level, state)
        
-        
-
-   
-
     # Display the updated equations and applied terms
     with original_eq_container:
         equations = st.session_state['equations']
@@ -133,4 +131,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
