@@ -14,8 +14,9 @@ def apply_term(new_term):
         if equation.lhs == Symbol('x'):
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
-            if st.button("Click here to begin a new game", key="new_game",):
+            if st.button("Click here to begin a new game", key="new_game"):
                 start_new_game(level)
+                st.write("start game")
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -63,10 +64,6 @@ def start_new_game(level):
     }
 
     equation_database = equation_databases.get(level, [])
-
-    if not equation_database:
-        st.error("Invalid level selected.")
-        return
 
     random_equation = random.choice(equation_database)
     st.session_state['equations'] = [random_equation]
