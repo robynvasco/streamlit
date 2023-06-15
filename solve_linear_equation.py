@@ -71,7 +71,7 @@ def start_new_game(level):
 
 def main():
     st.title("Free x")
-    
+    term=""
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
@@ -124,4 +124,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    st.text_input("b", value="", key="input_text")
+    
