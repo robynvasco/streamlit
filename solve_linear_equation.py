@@ -92,7 +92,7 @@ def main():
         "input",
         label_visibility="collapsed",
         value="",
-        on_change=clear_input,
+        on_change=clear_text,
         placeholder="e.g., +1 or *(1/2)",
         key="input"
     )
