@@ -12,6 +12,7 @@ def apply_term(new_term, level):
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
+        st.session_state["input"] = ""
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
