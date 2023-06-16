@@ -103,7 +103,7 @@ def main():
     undo = False
     apply = False
 
-    if col2.button("Apply term", key="apply", on_click=lambda: apply_term(term, level)):
+    if col2.button("Apply term", key="apply", on_click=lambda: apply_term(st.session_state.saved_input, level)):
         apply = True
 
     if len(st.session_state['equations']) > 1:
@@ -111,7 +111,7 @@ def main():
             apply = True
             undo_last_action()
 
-    if term:
+    if st.session_state.saved_input:
         apply_term(st.session_state.saved_input, level)
 
 
