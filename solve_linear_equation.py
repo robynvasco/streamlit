@@ -4,6 +4,7 @@ import re
 import random
 
 def clear_text():
+    st.session_state.saved_input=st.session_state.key
     st.session_state.key += 1
 
 def apply_term(new_term, level):
@@ -111,8 +112,8 @@ def main():
             undo_last_action()
     
     if term and not apply: 
-        st.write("Hello")
-        apply_term(term, level)
+        st.write("st.session_state.saved_input")
+        apply_term(st.session_state.saved_input, level)
         
        
     # Display the updated equations and applied terms
