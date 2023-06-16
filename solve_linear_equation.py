@@ -104,7 +104,7 @@ def main():
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
         key="input", 
-        on_change=lambda: enter(level) if not apply else None
+        on_change=lambda: enter(level) if not st.session_state.apply else None
     )
     
     
