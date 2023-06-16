@@ -3,14 +3,10 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
-def stop_apply():
-    st.session_state.apply=True
-  
 def enter(level):
-    if not st.session_state.apply:
+    if not st.session_state.get('apply', False):
         apply_term(st.session_state.input, level)
     st.session_state.input = ''
- 
 
 def clear_text():
     st.session_state.input = ""
@@ -96,18 +92,16 @@ def main():
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
     
-   
-
     term = col1.text_input(
         "input",
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
-        key="input", 
-        on_change=lambda: enter(level) if not st.session_state.apply else None
+        key="input",
+        on_change=lambda: enter(level)
     )
-    
-    if col2.button("Apply term", on_click=stop_apply):
-        None
+
+    if col2.button("Apply term"):
+        st.session_state.apply = True
    
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
