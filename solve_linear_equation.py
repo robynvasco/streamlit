@@ -90,25 +90,25 @@ def main():
     col1, col2, col3 = st.columns([3, 1, 1])
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
-    if term:
-        enter(level)
+    
+    apply = False  # Initialize the 'apply' variable
 
     term = col1.text_input(
         "input",
         label_visibility="collapsed",
         value="",
         placeholder="e.g., +1 or *(1/2)",
-        key="input",    
+        key="input", 
+        on_change=lambda: enter(level) if not apply else None
     )
-    if term:
-        enter(level)
-        
+   
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
+            apply = True
             undo_last_action()
             
     if col2.button("Apply term", on_click=clear_text):
-        clear=True
+        apply = True
             
  
         
