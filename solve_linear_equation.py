@@ -107,7 +107,7 @@ def main():
         apply = True
 
     if len(st.session_state['equations']) > 1:
-        if col3.button("Undo", key="undo", on_click=undo_last_action):
+        if col3.button("Undo", key="undo"):
             apply = True
             undo_last_action()
 
