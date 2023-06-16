@@ -5,6 +5,7 @@ import random
 
 def clear_text():
     st.session_state.saved_input=st.session_state.key
+    st.write(st.session_state.saved_input)
     st.session_state.key += 1
 
 def apply_term(new_term, level):
