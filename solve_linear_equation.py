@@ -9,7 +9,7 @@ def enter(level):
     apply_term(st.session_state.saved_input, level)
 
 def clear_text():
-    st.session_state.input = ''
+    st.session_state["input"] = ""
 
 def apply_term(new_term, level):
     term = insert_multiplication_operators(new_term)
