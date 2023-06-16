@@ -95,9 +95,7 @@ def main():
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
     
-    
-    if col2.button("Apply term", on_click=stop_apply):
-        st.session_state.apply=False
+   
 
     term = col1.text_input(
         "input",
@@ -107,8 +105,8 @@ def main():
         on_change=lambda: enter(level) if not st.session_state.apply else None
     )
     
-    
-        
+    if col2.button("Apply term", on_click=stop_apply):
+        st.session_state.apply=False  
    
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
