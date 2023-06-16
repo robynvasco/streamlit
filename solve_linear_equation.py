@@ -72,15 +72,35 @@ def start_new_game(level):
             Eq((Symbol('x') + 3) * 2, 5),
             Eq((Symbol('x') - 2) / 4, 6),
             Eq((Symbol('x') * 2) / 3, 8),
-            Eq((Symbol('x') - 2) / 3, 8),
+            Eq(Symbol('x') - 2/3, 8),
             Eq((Symbol('x') + 1) * 2, 10),
             Eq((Symbol('x') - 5) / 2, 3),
-            Eq((Symbol('x') * 3) / 4, 9),
+            Eq((Symbol('x') * 3) / 4+2, 9),
             Eq((Symbol('x') + 2) / 3, 5),
             Eq((Symbol('x') - 1) * 2, 8),
             Eq((Symbol('x') + 4) / 2, 6),
         ],
-        
+        "Level 3": [
+            Eq(2 / Symbol('x'), 6),
+            Eq(2 / (3 +Symbol('x')), 8),
+            Eq((Symbol('x') + 1) * 2, 10*Symbol('x')),
+            Eq((Symbol('x') - 5) / 2, 3+Symbol('x')),
+            Eq((Symbol('x') * 3)+Symbol('x') / 4, 9),
+            Eq((Symbol('x') + 2) + Symbol('x') / 3, 5),
+            Eq((Symbol('x') - 1) * 2, 8),
+            Eq((Symbol('x') + 4) / (2+Symbol('x'), 6),
+        ],
+         "Level 3": [
+            Eq((Symbol('x') - 2) / Symbol('x'), 6),
+            Eq((Symbol('x') - 2) / 3 *Symbol('x'), 8),
+            Eq((Symbol('x') + 1) * 2, 10*Symbol('x')),
+            Eq((Symbol('x') - 5) / 2, 3+Symbol('x')),
+            Eq((Symbol('x') * 3)+Symbol('x') / 4, 9),
+            Eq((Symbol('x') + 2) + Symbol('x') / 3, 5),
+            Eq((Symbol('x') - 1) * 2, 8),
+            Eq((Symbol('x') + 4) / (2+Symbol('x'), 6),
+        ],
+
         # Add more levels and equation databases
     }
 
