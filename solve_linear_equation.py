@@ -96,11 +96,11 @@ def main():
         label_visibility="collapsed",
         value="",
         placeholder="e.g., +1 or *(1/2)",
-        key="input",
-        on_change=lambda: enter(level)
+        key="input",    
     )
-   
-
+    if term:
+        enter(level)
+        
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
             undo_last_action()
