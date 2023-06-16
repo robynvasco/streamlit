@@ -53,7 +53,7 @@ def insert_multiplication_operators(term):
     return term
 
 def start_new_game(level):
-    st.session_state.input = ""
+    st.session_state.saved_input = ""
     equation_databases = {
         "Level 1": [
             Eq((Symbol('x') + 3) / 15 + 3, 5),
