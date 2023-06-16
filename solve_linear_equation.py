@@ -18,7 +18,7 @@ def apply_term(new_term, level):
         if equation.lhs == Symbol('x'):
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
-            st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level, state))
+            st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level)
                
 
 def apply_term_to_equation(term, equation):
@@ -50,7 +50,7 @@ def insert_multiplication_operators(term):
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
 
-def start_new_game(level, state):
+def start_new_game(level):
     st.session_state.key=0
     equation_databases = {
         "Level 1": [
@@ -80,7 +80,7 @@ def main():
     st.session_state.key=0
 
     if 'equations' not in st.session_state:
-        start_new_game("Level 1", state)
+        start_new_game("Level 1")
 
     st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
