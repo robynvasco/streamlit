@@ -110,6 +110,7 @@ def main():
             undo_last_action()
     
     if term and not apply: 
+        st.write("Hello")
         apply_term(term, level)
         clear_text()
        
