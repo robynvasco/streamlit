@@ -7,7 +7,8 @@ def stop_apply():
     st.session_state.apply=True
   
 def enter(level):
-    apply_term(st.session_state.input, level)
+    if not st.session_state.apply:
+        apply_term(st.session_state.input, level)
     st.session_state.input = ''
  
 
