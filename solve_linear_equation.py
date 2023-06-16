@@ -90,6 +90,8 @@ def main():
     col1, col2, col3 = st.columns([3, 1, 1])
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
+    if term:
+        enter(level)
 
     term = col1.text_input(
         "input",
