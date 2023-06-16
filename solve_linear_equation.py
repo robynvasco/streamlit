@@ -12,7 +12,7 @@ def apply_term(new_term, level):
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
-        st.session_state.key += 1
+        
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
@@ -97,7 +97,6 @@ def main():
         placeholder="e.g., +1 or *(1/2)",
         key=st.session_state.key
     )
-    term = str(term) if term else ""
     
     undo = False
     apply = False
@@ -112,6 +111,7 @@ def main():
     
     if term and not apply: 
         apply_term(term, level)
+        clear_text()
        
     # Display the updated equations and applied terms
     with original_eq_container:
