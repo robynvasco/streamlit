@@ -94,7 +94,6 @@ def main():
     term = col1.text_input(
         "input",
         label_visibility="collapsed",
-        value="",
         placeholder="e.g., +1 or *(1/2)",
         key=st.session_state.key
     )
@@ -103,7 +102,7 @@ def main():
     undo = False
     apply = False
 
-    if col2.button("Apply term", key="apply", on_click=clear_text):
+    if col2.button("Apply term", key="apply"):
         apply = True
 
     if len(st.session_state['equations']) > 1:
