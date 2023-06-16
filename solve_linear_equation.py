@@ -124,7 +124,7 @@ def main():
     # Create a column layout
     col1, col2, col3 = st.columns([3, 1, 1])
 
-    level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2",, "Level 3", "Level 4"])  # Add more levels
+    level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2", "Level 3", "Level 4"])  # Add more levels
     
     if st.session_state.level != level:
         start_new_game(level)
