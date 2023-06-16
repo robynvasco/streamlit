@@ -113,7 +113,7 @@ def main():
             
     if term:
         enter()
-        apply_term(st.session_state.input, level)
+        apply_term(st.session_state.saved_input, level)
 
     # Display the updated equations and applied terms
     with original_eq_container:
