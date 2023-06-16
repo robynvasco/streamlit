@@ -9,7 +9,7 @@ def enter(level):
     apply_term(st.session_state.saved_input, level)
 
 def clear_text():
-    st.session_state["input"] = ""
+    st.session_state.input = ""
 
 def apply_term(new_term, level):
     term = insert_multiplication_operators(new_term)
@@ -104,7 +104,7 @@ def main():
     
     if col2.button("Apply term", on_click=clear_text):
         apply = True
-        apply_term(term, level)
+        
    
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
