@@ -92,18 +92,18 @@ def main():
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
     
     apply = False  # Initialize the 'apply' variable
+    if col2.button("Apply term", on_click=clear_text):
+        apply = True
 
     term = col1.text_input(
         "input",
         label_visibility="collapsed",
-        value="",
         placeholder="e.g., +1 or *(1/2)",
         key="input", 
         on_change=lambda: enter(level) if not apply else None
     )
     
-    if col2.button("Apply term", on_click=clear_text):
-        apply = True
+    
         
    
     if len(st.session_state['equations']) > 1:
