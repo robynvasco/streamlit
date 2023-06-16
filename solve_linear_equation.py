@@ -3,13 +3,8 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
-def enter(level):
-    if not st.session_state.get('apply', False):
-        apply_term(st.session_state.input, level)
-    st.session_state.input = ''
-
 def clear_text():
-    st.session_state.input = ""
+    st.session_state.key += 1
 
 def apply_term(new_term, level):
     term = insert_multiplication_operators(new_term)
@@ -17,12 +12,14 @@ def apply_term(new_term, level):
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
+        st.session_state.key += 1
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
-            st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
+            st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level, state))
+               
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -53,9 +50,8 @@ def insert_multiplication_operators(term):
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
 
-def start_new_game(level):
-    st.session_state.apply_term = False
-    st.session_state.input = ""
+def start_new_game(level, state):
+    st.session_state.key=0
     equation_databases = {
         "Level 1": [
             Eq((Symbol('x') + 3) / 15 + 3, 5),
@@ -77,11 +73,14 @@ def start_new_game(level):
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
 
+
 def main():
     st.title("Free x")
+    
+    st.session_state.key=0
 
     if 'equations' not in st.session_state:
-        start_new_game("Level 1")
+        start_new_game("Level 1", state)
 
     st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
@@ -91,25 +90,31 @@ def main():
     col1, col2, col3 = st.columns([3, 1, 1])
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
-    
+
+
     term = col1.text_input(
         "input",
         label_visibility="collapsed",
+        value="",
         placeholder="e.g., +1 or *(1/2)",
-        key="input",
-        on_change=lambda: enter(level)
+        key=st.session_state.key
     )
+    term = str(term) if term else ""
+    
+    undo = False
+    apply = False
 
-    if col2.button("Apply term"):
-        st.session_state.apply = True
-   
+    if col2.button("Apply term", key="apply", on_click=clear_text):
+        apply = True
+
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
+            apply = True
             undo_last_action()
-    st.session_state.apply=False 
-            
-
-
+    
+    if term and not apply: 
+        apply_term(term, level)
+       
     # Display the updated equations and applied terms
     with original_eq_container:
         equations = st.session_state['equations']
@@ -127,4 +132,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
