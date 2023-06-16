@@ -104,7 +104,7 @@ def main():
     undo = False
     apply = False
 
-    if col2.button("Apply term", key="apply"):
+    if col2.button("Apply term", key="apply", on_click=clear_text):
         apply = True
 
     if len(st.session_state['equations']) > 1:
