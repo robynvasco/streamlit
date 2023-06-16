@@ -102,7 +102,7 @@ def main():
    
 
     if col2.button("Apply term", key="apply"):
-        clear_text()
+        clear=True
 
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
