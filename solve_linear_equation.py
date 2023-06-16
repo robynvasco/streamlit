@@ -97,7 +97,7 @@ def main():
     
     apply = False  # Initialize the 'apply' variable
     
-    if col2.button("Apply term", on_click=):
+    if col2.button("Apply term"):
         stop_apply()
 
     term = col1.text_input(
