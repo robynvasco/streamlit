@@ -1,5 +1,5 @@
 import streamlit as st
-from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
+from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols
 import re
 import random
 
@@ -18,7 +18,7 @@ def apply_term(new_term, level):
         st.session_state['terms'].append(term)
 
         # Check if x is isolated
-        if equation.lhs == Symbol('x'):
+        if equation.lhs == Symbol('x') and symbols('x') not in equation.rhs.free_symbols:
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
             st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
