@@ -98,7 +98,7 @@ def main():
         key="input",
         on_change=enter
     )
-    term = str(term) if term else ""
+    
 
     undo = False
     apply = False
@@ -106,7 +106,7 @@ def main():
     if col2.button("Apply term", key="apply"):
         apply = True
 
-    if len(st.session_state['equations']) > 1:
+    if len(st.session_state['equations']) >=1:
         if col3.button("Undo", key="undo"):
             apply = True
             undo_last_action()
