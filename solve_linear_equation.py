@@ -94,6 +94,7 @@ def main():
     apply = False  # Initialize the 'apply' variable
     if col2.button("Apply term", on_click=clear_text):
         apply = True
+        undo_last_action()
 
     term = col1.text_input(
         "input",
