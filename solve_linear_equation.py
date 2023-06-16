@@ -3,7 +3,7 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
-def apply():
+def stop_apply():
     st.session_state.apply=True
   
 def enter(level):
@@ -97,8 +97,8 @@ def main():
     
     apply = False  # Initialize the 'apply' variable
     
-    if col2.button("Apply term", on_click=apply):
-        apply=True
+    if col2.button("Apply term", on_click=):
+        stop_apply()
 
     term = col1.text_input(
         "input",
