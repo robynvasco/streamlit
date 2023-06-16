@@ -3,9 +3,10 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
-def enter():
+def enter(level):
     st.session_state.saved_input = st.session_state.input
     st.session_state.input = ''
+    apply_term(st.session_state.saved_input, level)
 
 def clear_text():
     st.session_state.input = ''
@@ -96,7 +97,7 @@ def main():
         value="",
         placeholder="e.g., +1 or *(1/2)",
         key="input",
-        on_change=enter
+        on_change=lambda: enter(level)
     )
     term = str(term) if term else ""
 
@@ -111,9 +112,8 @@ def main():
             undo = True
             undo_last_action()
             
-    if term:
-        enter()
-        apply_term(st.session_state.saved_input, level)
+ 
+        
 
     # Display the updated equations and applied terms
     with original_eq_container:
