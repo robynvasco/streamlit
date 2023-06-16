@@ -3,10 +3,12 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
+def enter():
+    st.session_state.saved_input = st.session_state.input
+    st.session_state.input = ''
+
 def clear_text():
-    st.session_state.saved_input=st.session_state.key
-    st.write(st.session_state.saved_input)
-    st.session_state.key += 1
+    st.session_state.input = ''
 
 def apply_term(new_term, level):
     term = insert_multiplication_operators(new_term)
@@ -14,14 +16,12 @@ def apply_term(new_term, level):
     if equation != st.session_state['equations'][-1]:
         st.session_state['equations'].append(equation)
         st.session_state['terms'].append(term)
-        
 
         # Check if x is isolated
         if equation.lhs == Symbol('x'):
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
             st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
-               
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -53,7 +53,7 @@ def insert_multiplication_operators(term):
     return term
 
 def start_new_game(level):
-    st.session_state.key=0
+    st.session_state.input = ""
     equation_databases = {
         "Level 1": [
             Eq((Symbol('x') + 3) / 15 + 3, 5),
@@ -75,10 +75,8 @@ def start_new_game(level):
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
 
-
 def main():
     st.title("Free x")
-    
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
@@ -92,31 +90,31 @@ def main():
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
 
-
     term = col1.text_input(
         "input",
         label_visibility="collapsed",
+        value="",
         placeholder="e.g., +1 or *(1/2)",
-        key=st.session_state.key,
-        on_change=clear_text
+        key="input",
+        on_change=enter
     )
-    
+    term = str(term) if term else ""
+
     undo = False
     apply = False
 
-    if col2.button("Apply term", key="apply"):
+    if col2.button("Apply term", key="apply", on_click=lambda: apply_term(term, level)):
         apply = True
 
     if len(st.session_state['equations']) > 1:
-        if col3.button("Undo", key="undo", on_click=clear_text):
+        if col3.button("Undo", key="undo", on_click=undo_last_action):
             apply = True
             undo_last_action()
-    
-    if term and not apply: 
-        st.write("st.session_state.saved_input")
+
+    if term:
         apply_term(st.session_state.saved_input, level)
-        
-       
+
+
     # Display the updated equations and applied terms
     with original_eq_container:
         equations = st.session_state['equations']
