@@ -3,6 +3,9 @@ from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify
 import re
 import random
 
+def apply():
+    st.session_state.apply=True
+  
 def enter(level):
     st.session_state.saved_input = st.session_state.input
     st.session_state.input = ''
@@ -92,9 +95,9 @@ def main():
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
     
     apply = False  # Initialize the 'apply' variable
-    if col2.button("Apply term", on_click=clear_text):
-        apply = True
-        undo_last_action()
+    
+    if col2.button("Apply term", on_click=apply):
+        
 
     term = col1.text_input(
         "input",
