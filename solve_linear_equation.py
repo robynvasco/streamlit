@@ -95,10 +95,9 @@ def main():
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
     
-    apply = False  # Initialize the 'apply' variable
     
-    if col2.button("Apply term"):
-        stop_apply()
+    if col2.button("Apply term", on_click=stop_apply):
+        None
 
     term = col1.text_input(
         "input",
