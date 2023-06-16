@@ -57,16 +57,30 @@ def start_new_game(level):
     st.session_state.saved_input = ""
     equation_databases = {
         "Level 1": [
-            Eq((Symbol('x') + 3) / 15 + 3, 5),
-            Eq((Symbol('x') - 2) * 4 - 10, 6),
-            Eq((Symbol('x') ** 2 + 5) / 2, 8),
-            # Add more equations to the database for Level 1
+            Eq(Symbol('x') + 3, 5),
+            Eq(Symbol('x') - 2, 4),
+            Eq(Symbol('x') * 2, 8),
+            Eq(Symbol('x') / 3, 2),
+            Eq(Symbol('x') + 7, 10),
+            Eq(Symbol('x') - 5, 1),
+            Eq(Symbol('x') * 4, 12),
+            Eq(Symbol('x') / 2, 3),
+            Eq(Symbol('x') + 2, 6),
+            Eq(Symbol('x') - 1, 3),
         ],
         "Level 2": [
-            Eq((Symbol('x') + 1) / 2 - 3, 5),
-            Eq((Symbol('x') + 5) * 3 - 8, 12),
-            # Add more equations to the database for Level 2
+            Eq((Symbol('x') + 3) * 2, 5),
+            Eq((Symbol('x') - 2) / 4, 6),
+            Eq((Symbol('x') * 2) / 3, 8),
+            Eq((Symbol('x') - 2) / 3, 8),
+            Eq((Symbol('x') + 1) * 2, 10),
+            Eq((Symbol('x') - 5) / 2, 3),
+            Eq((Symbol('x') * 3) / 4, 9),
+            Eq((Symbol('x') + 2) / 3, 5),
+            Eq((Symbol('x') - 1) * 2, 8),
+            Eq((Symbol('x') + 4) / 2, 6),
         ],
+        
         # Add more levels and equation databases
     }
 
