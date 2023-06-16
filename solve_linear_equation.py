@@ -99,7 +99,7 @@ def main():
         key="input",
         on_change=lambda: enter(level)
     )
-    term = str(term) if term else ""
+    
 
     undo = False
     apply = False
