@@ -57,6 +57,7 @@ def insert_multiplication_operators(term):
     return term
 
 def start_new_game(level):
+    st.session_state.apply_term = False
     st.session_state.input = ""
     equation_databases = {
         "Level 1": [
@@ -115,10 +116,7 @@ def main():
             apply = True
             undo_last_action()
             
-    
-            
- 
-        
+
 
     # Display the updated equations and applied terms
     with original_eq_container:
@@ -137,3 +135,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    st.session_state.apply=False
