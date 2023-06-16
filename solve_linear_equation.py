@@ -90,7 +90,7 @@ def start_new_game(level):
             Eq((Symbol('x') - 1) * 2, 8),
             Eq((Symbol('x') + 4) / (2+Symbol('x'), 6),
         ],
-         "Level 3": [
+         "Level 4": [
             Eq((Symbol('x') - 2) / Symbol('x'), 6),
             Eq((Symbol('x') - 2) / 3 *Symbol('x'), 8),
             Eq((Symbol('x') + 1) * 2, 10*Symbol('x')),
@@ -99,7 +99,7 @@ def start_new_game(level):
             Eq((Symbol('x') + 2) + Symbol('x') / 3, 5),
             Eq((Symbol('x') - 1) * 2, 8),
             Eq((Symbol('x') + 4) / (2+Symbol('x'), 6),
-        ],
+        ]
 
         # Add more levels and equation databases
     }
@@ -124,7 +124,7 @@ def main():
     # Create a column layout
     col1, col2, col3 = st.columns([3, 1, 1])
 
-    level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2"])  # Add more levels
+    level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2",, "Level 3", "Level 4"])  # Add more levels
     
     if st.session_state.level != level:
         start_new_game(level)
