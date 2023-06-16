@@ -95,7 +95,8 @@ def main():
         "input",
         label_visibility="collapsed",
         placeholder="e.g., +1 or *(1/2)",
-        key=st.session_state.key
+        key=st.session_state.key,
+        on_change=clear_text
     )
     
     undo = False
@@ -112,7 +113,7 @@ def main():
     if term and not apply: 
         st.write("Hello")
         apply_term(term, level)
-        clear_text()
+        
        
     # Display the updated equations and applied terms
     with original_eq_container:
