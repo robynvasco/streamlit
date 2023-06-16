@@ -106,11 +106,12 @@ def main():
     )
     
     if col2.button("Apply term", on_click=stop_apply):
-        st.session_state.apply=False  
+        None
    
     if len(st.session_state['equations']) > 1:
         if col3.button("Undo", key="undo", on_click=clear_text):
             undo_last_action()
+    st.session_state.apply=False 
             
 
 
