@@ -128,7 +128,7 @@ def start_new_game(level):
             Eq((Symbol('x') + 1) * 2, (1+Symbol('x'))/2),
             Eq((Symbol('x') - 5) / 2, 3+Symbol('x')),
             Eq((Symbol('x') * 3)+Symbol('x') / 4, 9),
-            Eq((Symbol('x') + 2) + Symbol('x') / 3, 5),
+            Eq((Symbol('x') + 2) + Symbol('x') / 3, 5+Symbol('x')),
         ]
 
         # Add more levels and equation databases
