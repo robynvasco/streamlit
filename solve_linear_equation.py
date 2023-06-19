@@ -18,9 +18,10 @@ def apply_term(new_term, level):
         st.session_state['terms'].append(term)
 
         # Check if x is isolated
-        if equation.lhs == Symbol('x') and symbols('x') not in equation.rhs.free_symbols:
+         if isinstance(equation.lhs, Symbol) and equation.lhs == Symbol('x') and not equation.rhs.free_symbols:
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
+            
             
 
 def apply_term_to_equation(term, equation):
