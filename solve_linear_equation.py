@@ -1,6 +1,7 @@
 import streamlit as st
 from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols
 import re
+import random
 
 def enter():
     st.session_state.saved_input = st.session_state.input
@@ -99,11 +100,14 @@ def start_new_game(level):
             Eq((Symbol('x') - 1) * 2, 8),
             Eq((Symbol('x') + 4) / (2+Symbol('x')), 6),
         ]
+
         # Add more levels and equation databases
     }
 
     equation_database = equation_databases.get(level, [])
-    st.session_state['equations'] = equation_database
+
+    random_equation = random.choice(equation_database)
+    st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
 
 def main():
@@ -111,8 +115,7 @@ def main():
 
     if 'equations' not in st.session_state:
         start_new_game("Level 1")
-        st.session_state.level = "Level 1"
-        st.session_state.equation_index = 0
+        st.session_state.level="Level 1"
 
     st.info("You can enter a term and apply it to both sides of the equation. Your aim is to isolate x to find a solution.")
     original_eq_container = st.container()
@@ -127,14 +130,16 @@ def main():
         start_new_game(level)
         st.session_state.level = level
 
+
     term = col1.text_input(
-        "Input",
+        "input",
         label_visibility="collapsed",
         value="",
         placeholder="e.g., +1 or *(1/2)",
         key="input",
         on_change=enter
     )
+    
 
     undo = False
     apply = False
@@ -142,7 +147,7 @@ def main():
     if col2.button("Apply term", key="apply"):
         apply = True
 
-    if len(st.session_state['equations']) >= 1:
+    if len(st.session_state['equations']) >=1:
         if col3.button("Undo", key="undo"):
             apply = True
             undo_last_action()
@@ -150,31 +155,21 @@ def main():
     if st.session_state.saved_input and not apply:
         apply_term(st.session_state.saved_input, level)
 
+
     # Display the updated equations and applied terms
     with original_eq_container:
         equations = st.session_state['equations']
         terms = st.session_state['terms']
-        equation_index = st.session_state.get('equation_index', 0)
-        if equation_index < 0:
-            equation_index = 0
-        elif equation_index >= len(equations):
-            equation_index = len(equations) - 1
-        st.session_state.equation_index = equation_index
-        equation = equations[equation_index]
-
-        equation_row = st.row()
-        equation_row.latex(latex(equation))
-
-        term_row = st.row()
-        term = terms[equation_index] if equation_index < len(terms) else ''
-        term_text = f"|    {term.replace('*', '⋅')}"
-        term_row.latex(term_text)
-
-        prev_button, next_button = st.columns(2)
-        if prev_button.button("Previous Equation") and equation_index > 0:
-            st.session_state.equation_index -= 1
-        if next_button.button("Next Equation") and equation_index < len(equations) - 1:
-            st.session_state.equation_index += 1
+        for i, equation in enumerate(equations):
+            eq_col, term_col = st.columns([3, 1])
+            with eq_col:
+                st.latex(latex(equation))
+                if i < len(equations) - 1:
+                    st.markdown("---")
+            with term_col:
+                term = terms[i] if i < len(terms) else ''
+                term_text = f"|    {term.replace('*', '⋅')}"
+                st.latex(term_text)
 
 if __name__ == "__main__":
     main()
