@@ -21,7 +21,7 @@ def apply_term(new_term, level):
         if equation.lhs == Symbol('x') and symbols('x') not in equation.rhs.free_symbols:
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
-            st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
+            
 
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
@@ -75,12 +75,24 @@ def start_new_game(level):
             Eq(Symbol('x') - 2/3, 8),
             Eq((Symbol('x') + 1) * 2, 10),
             Eq((Symbol('x') - 5) / 2, 3),
-            Eq((Symbol('x') * 3) / 4+2, 9),
+            Eq(((Symbol('x') * 3) / 4)+2, 9),
             Eq((Symbol('x') + 2) / 3, 5),
             Eq((Symbol('x') - 1) * 2, 8),
             Eq((Symbol('x') + 4) / 2, 6),
         ],
         "Level 3": [
+            Eq(5/(Symbol('x') + 3), 5),
+            Eq(1/Symbol('x') - 1/2 , 6),
+            Eq(4/(Symbol('x') * 2), 8),
+            Eq(1/Symbol('x') - 2/3, 8),
+            Eq(4/(Symbol('x') + 1), 10),
+            Eq(3/(Symbol('x'), 3),
+            Eq(8/(Symbol('x') * 3), 9),
+            Eq(9/Symbol('x') + 2, 5),
+            Eq(9/(Symbol('x'), 8),
+            Eq(1/(Symbol('x') + 4), 6),
+        ],
+        "Level 4": [
             Eq(2 / Symbol('x'), 6),
             Eq(2 / (3 +Symbol('x')), 8),
             Eq((Symbol('x') + 1) * 2, 10*Symbol('x')),
@@ -90,7 +102,7 @@ def start_new_game(level):
             Eq((Symbol('x') - 1) * 2, 8),
             Eq((Symbol('x') + 4) / (2+Symbol('x')), 6),
         ],
-         "Level 4": [
+         "Level 5": [
             Eq((Symbol('x') - 2) / Symbol('x'), 6),
             Eq((Symbol('x') - 2) / 3 *Symbol('x'), 8),
             Eq((Symbol('x') + 1) * 2, 10*Symbol('x')),
@@ -124,7 +136,7 @@ def main():
     # Create a column layout
     col1, col2, col3 = st.columns([3, 1, 1])
 
-    level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2", "Level 3", "Level 4"])  # Add more levels
+    level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2", "Level 3", "Level 4","Level 5"])  # Add more levels
     
     if st.session_state.level != level:
         start_new_game(level)
@@ -170,6 +182,8 @@ def main():
                 term = terms[i] if i < len(terms) else ''
                 term_text = f"|    {term.replace('*', '⋅')}"
                 st.latex(term_text)
+
+    st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
 
 if __name__ == "__main__":
     main()
