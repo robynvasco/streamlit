@@ -18,12 +18,11 @@ def apply_term(new_term, level):
         st.session_state['terms'].append(term)
 
         # Check if x is isolated
-        if isinstance(equation.lhs, Symbol) and equation.lhs == Symbol('x') and not equation.rhs.free_symbols:
+        variables = equation.free_symbols
+        variable_isolated = all(var == Symbol('x') and not equation.rhs.free_symbols for var in variables)
+        if variable_isolated:
             st.balloons()
-            st.success("Congratulations! You have isolated x and found the solution!")
-        elif isinstance(equation.rhs, Symbol) and equation.rhs == Symbol('x') and not equation.lhs.free_symbols:
-            st.balloons()
-            st.success("Congratulations! You have isolated x and found the solution!")
+            st.success("Congratulations! You have isolated the variable and found the solution!")
             
             
             
@@ -121,7 +120,7 @@ def start_new_game(level):
             Eq(Symbol('x') / (Symbol('x')-2), 6),
             Eq(2 / Symbol('x')+5, 6/Symbol('x')),
             Eq(3 / (Symbol('x')+5), 3/Symbol('x')),
-            Eq(3 / (Symbol('x')+5), 3/Symbol('x')),
+            Eq(1 / (Symbol('x')+2), 3/Symbol('x')),
             Eq((Symbol('x') - 4) / 3 ,Symbol('x')+ 8),
             Eq((Symbol('x') + 1) * 2, 10*Symbol('x')),
             Eq((Symbol('x') - 5) / 2, 3+Symbol('x')),
