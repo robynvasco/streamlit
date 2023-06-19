@@ -1,5 +1,5 @@
 import streamlit as st
-from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols, Rational, nsimplify, Float
+from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols, Rational, nsimplify, Float, Mul
 import re
 import random
 
@@ -147,18 +147,16 @@ def start_new_game(level):
     st.session_state['terms'] = []
 
 def replace_decimals_with_fractions(equation):
-    new_equation = equation
-    x = Symbol('x')
-
-    if equation.lhs.has(Float):
-        new_lhs = nsimplify(equation.lhs)
-        new_equation = Eq(new_lhs, equation.rhs)
-
-    if equation.rhs.has(Float):
-        new_rhs = nsimplify(equation.rhs)
-        new_equation = Eq(equation.lhs, new_rhs)
-
-    return new_equation
+    if isinstance(equation, Eq):
+        lhs = replace_decimals_with_fractions(equation.lhs)
+        rhs = replace_decimals_with_fractions(equation.rhs)
+        return Eq(lhs, rhs)
+    elif isinstance(equation, Mul):
+        return Mul(*[replace_decimals_with_fractions(arg) for arg in equation.args])
+    elif isinstance(equation, Float):
+        return equation.as_numer_denom()[0] / equation.as_numer_denom()[1]
+    else:
+        return equation
 
 
 
