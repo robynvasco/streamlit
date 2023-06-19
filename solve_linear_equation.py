@@ -183,6 +183,10 @@ def main():
                 term_text = f"|    {term.replace('*', '⋅')}"
                 st.latex(term_text)
 
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
 
 if __name__ == "__main__":
