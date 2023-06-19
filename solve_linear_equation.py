@@ -1,5 +1,5 @@
 import streamlit as st
-from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols, Rational
+from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols, Rational, nsimplify
 import re
 import random
 
@@ -40,19 +40,7 @@ def apply_term_to_equation(term, equation):
         st.error("Invalid term. Please check the syntax and mismatched parentheses.")
         return equation
 
-def replace_decimals_with_fractions(equation):
-    new_equation = equation
-    x = Symbol('x')
 
-    if isinstance(sympify(equation.lhs), Rational):
-        new_lhs = Rational(equation.lhs)
-        new_equation = Eq(new_lhs, equation.rhs)
-
-    if isinstance(sympify(equation.rhs), Rational):
-        new_rhs = Rational(equation.rhs)
-        new_equation = Eq(equation.lhs, new_rhs)
-
-    return new_equation
 
 def undo_last_action():
     if len(st.session_state['equations']) > 1:
@@ -136,6 +124,22 @@ def start_new_game(level):
     random_equation = replace_decimals_with_fractions(random_equation)
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
+
+def replace_decimals_with_fractions(equation):
+    new_equation = equation
+    x = Symbol('x')
+
+    if equation.lhs.has(Float):
+        new_lhs = nsimplify(equation.lhs)
+        new_equation = Eq(new_lhs, equation.rhs)
+
+    if equation.rhs.has(Float):
+        new_rhs = nsimplify(equation.rhs)
+        new_equation = Eq(equation.lhs, new_rhs)
+
+    return new_equation
+
+
 
 def main():
     st.title("Free x")
