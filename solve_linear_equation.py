@@ -86,7 +86,7 @@ def start_new_game(level):
             Eq(4/(Symbol('x') * 2), 8),
             Eq(1/Symbol('x') - 2/3, 8),
             Eq(4/(Symbol('x') + 1), 10),
-            Eq(3/(Symbol('x'), 3),
+            Eq(3/Symbol('x'), 3),
             Eq(8/(Symbol('x') * 3), 9),
             Eq(9/Symbol('x') + 2, 5),
             Eq(9/Symbol('x'), 8),
