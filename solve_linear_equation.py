@@ -101,10 +101,10 @@ def start_new_game(level):
         "Level 4": [
             Eq((Symbol('x') - 2) , 6* Symbol('x')),
             Eq(Symbol('x')+5, 6+Symbol('x')),
-            Eq((Symbol('x') - 2) / 6, Symbol('x')),
-            Eq((Symbol('x') + 1), 10*Symbol('x')),
+            Eq((Symbol('x') - 2), 2*Symbol('x')),
+            Eq((Symbol('x') + 1), 1*Symbol('x')/2),
             Eq((Symbol('x') - 5), 3+Symbol('x')),
-            Eq((Symbol('x') * 3), (Symbol('x') + 4)/3),
+            Eq((Symbol('x') * 3), (Symbol('x')/3 + 4)),
             Eq((Symbol('x') + 2) , Symbol('x') / 3),
             Eq((Symbol('x') - 1) , 1+Symbol('x')),
             Eq((Symbol('x') + 1) , 10*Symbol('x')),
