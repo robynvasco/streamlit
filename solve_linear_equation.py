@@ -21,6 +21,9 @@ def apply_term(new_term, level):
         if isinstance(equation.lhs, Symbol) and equation.lhs == Symbol('x') and not equation.rhs.free_symbols:
             st.balloons()
             st.success("Congratulations! You have isolated x and found the solution!")
+        if isinstance(equation.rhs, Symbol) and equation.rhs == Symbol('x') and not equation.lhs.free_symbols:
+            st.balloons()
+            st.success("Congratulations! You have isolated x and found the solution!")
             
             
 
