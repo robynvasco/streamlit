@@ -107,7 +107,6 @@ def start_new_game(level):
             Eq((Symbol('x') - 5), 3+Symbol('x')),
             Eq((Symbol('x') * 3),Symbol('x') / 4),
             Eq((Symbol('x') + 2), Symbol('x') / 3),
-          
         ],
          "Level 5": [
             Eq((Symbol('x') - 2) / Symbol('x'), 6),
