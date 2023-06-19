@@ -44,11 +44,11 @@ def replace_decimals_with_fractions(equation):
     new_equation = equation
     x = Symbol('x')
 
-    if isinstance(equation.lhs, Float):
+    if isinstance(sympify(equation.lhs), Rational):
         new_lhs = Rational(equation.lhs)
         new_equation = Eq(new_lhs, equation.rhs)
 
-    if isinstance(equation.rhs, Float):
+    if isinstance(sympify(equation.rhs), Rational):
         new_rhs = Rational(equation.rhs)
         new_equation = Eq(equation.lhs, new_rhs)
 
