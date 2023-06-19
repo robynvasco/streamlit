@@ -155,7 +155,7 @@ def replace_decimals_with_fractions(equation):
         args = [replace_decimals_with_fractions(arg) for arg in equation.args]
         return Mul(*args)
     elif isinstance(equation, Float):
-        return Rational(equation).limit_denominator()
+        return Rational(str(equation)).limit_denominator()
     else:
         return equation
 
