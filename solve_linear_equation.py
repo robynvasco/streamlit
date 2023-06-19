@@ -142,23 +142,10 @@ def start_new_game(level):
     equation_database = equation_databases.get(level, [])
 
     random_equation = random.choice(equation_database)
-    random_equation = replace_decimals_with_fractions(random_equation)
     st.session_state['equations'] = [random_equation]
     st.session_state['terms'] = []
 
-def replace_decimals_with_fractions(equation):
-    new_equation = equation
-    x = Symbol('x')
 
-    if equation.lhs.has(Float):
-        new_lhs = nsimplify(equation.lhs)
-        new_equation = Eq(new_lhs, equation.rhs)
-
-    if equation.rhs.has(Float):
-        new_rhs = nsimplify(equation.rhs)
-        new_equation = Eq(equation.lhs, new_rhs)
-
-    return new_equation
 
 
 
