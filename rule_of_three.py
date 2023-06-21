@@ -92,41 +92,56 @@ def inverse_rule_of_three():
     st.title('Inverse Rule of Three')
 
     # Constants
-    a = 2
-    c = 5
+    a = 20
+    b = 10
 
-    # Calculate b
-    b = lambda x: (a * x) / c
+    # Calculate c
+    c = lambda x: (a * b) / x
 
-    st.info("If two centimeters on a map are equivalent to 3 km, what is the distance on the map between two points that are 4 km apart in real life?")
+    st.info("At a farm, it takes 10 days for 20 ducks to eat the food that’s left out for them. How much time would it take for a different number of ducks to eat the same food?")
     # User input for x
-    x = st.slider('Real Distance x in km', min_value=1, max_value=10, value=3)
+    x = st.slider('Number of Ducks (x)', min_value=1, max_value=30, value=20)
 
-    # Plot triangle
-    plot_triangle(a, b(x), c)
+    # Calculate c
+    new_c = c(x)
 
-    # Calculate distance
-    distance = b(4)
+    # Plot subplots
+    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+    fig.suptitle('Proportional Relationship: a * b = c * x', fontsize=16)
 
-    # Display formula in st.info
-    st.info(f"a is to b as c is to x.\n\n"
-            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
+    # Plot a * b
+    axes[0].bar(0, a * b, color='orange')
+    axes[0].text(0, a * b + 1, str(a * b), ha='center')
+    axes[0].set_ylim(0, a * b + 10)
+    axes[0].set_xlim(-1, 1)
+    axes[0].set_axis_off()
+    axes[0].set_title('a * b')
 
-    with st.expander("Explanation"):
-        st.write("The inverse rule of three is used when we want to find a value on one side of the ratio given the value on the other side. In this case, we know the values of a and c, and we want to find the value of b. We can rearrange the equation:")
-        st.latex(r"b = \frac{{a \cdot x}}{{c}}")
-        st.write("This equation states that the ratio of a to b is equal to the ratio of c to x. By rearranging the equation, we can solve for b.")
+    # Plot c * x
+    axes[1].bar(0, new_c * x, color='orange')
+    axes[1].text(0, new_c * x + 1, str(new_c * x), ha='center')
+    axes[1].set_ylim(0, new_c * x + 10)
+    axes[1].set_xlim(-1, 1)
+    axes[1].set_axis_off()
+    axes[1].set_title('c * x')
+
+    # Adjust subplot spacing
+    plt.tight_layout()
+
+    # Show plot
+    st.pyplot(fig)
 
     st.write("")
-    answer = st.text_input("What is the distance on the map between two points that are 4 km apart in real life? Enter your answer for b in cm:", placeholder="Type your answer here, e.g., 6.0 or 9.5")
+    answer = st.text_input("How many ducks would it take to eat the same food in the given time? Enter your answer for c (number of ducks):", placeholder="Type your answer here, e.g., 15")
     if answer:
         try:
-            if float(answer) == distance:
-                st.success(f"That's correct! A real distance of 4 km corresponds to a map distance of b = {distance} cm.")
+            if float(answer) == new_c:
+                st.success(f"That's correct! It would take approximately {new_c} ducks to eat the same food in {x} days.")
             else:
                 st.error("That's incorrect. Try again!")
         except ValueError:
             st.error("Invalid input. Please enter a number.")
+
 
 def main():
     st.title("Rule of Three and Inverse Rule of Three")
