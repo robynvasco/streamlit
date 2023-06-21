@@ -65,8 +65,8 @@ def main():
     st.info(f"a is to b as c is to x.\n\n"
             f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
     
-    st.write(f"How far is the real distance between two points on the map that are 5 cm apart")
-    answer = st.text_input("Enter your answer for x (real distance in km):")
+    st.write("")
+    answer = st.text_input("How far is the real distance between two points on the map that are 5 cm apart? Enter your answer for x (real distance in km):")
     if answer:
         try:
             if float(answer) == distance:
