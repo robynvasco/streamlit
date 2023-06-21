@@ -69,14 +69,15 @@ def main():
     
     # Display formula in st.info
  
-    st.info(f"a is to b as c is to x.\n\n"
-            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
-    with st.expander("Explanation"):
-        st.write("The rule of three, also known as the proportionality rule, is a mathematical concept that allows us to solve proportional relationships between different quantities. It is based on the idea that if two ratios are equal, then the corresponding values in those ratios are also equal.")
-        st.write("In the sentence 'a is to b as c is to x,' implies that the ratio of a to b is equal to the ratio of c to x. So in our example, if the distance of two points on the map gets bigger, the real distance gets bigger proportionally.")
-        st.write("To use this sentence, we can interpret it as a mathematical equation:")
-        st.latex(r"\frac{a}{b} = \frac{c}{x}")
-        st.write("It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
+    with st.info(f"a is to b as c is to x.\n\n"
+            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n"):
+            with st.expander("Explanation"):
+                st.write("The rule of three, also known as the proportionality rule, is a mathematical concept that allows us to solve proportional relationships between different quantities. It is based on the idea that if two ratios are equal, then the corresponding values in those ratios are also equal.")
+                st.write("In the sentence 'a is to b as c is to x,' implies that the ratio of a to b is equal to the ratio of c to x. So in our example, if the distance of two points on the map gets bigger, the real distance gets bigger proportionally.")
+                st.write("To use this sentence, we can interpret it as a mathematical equation:")
+                st.latex(r"\frac{a}{b} = \frac{c}{x}")
+                st.write("It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
+        
     
     st.write("")
     answer = st.text_input("How far is the real distance between two points on the map that are 5 cm apart? Enter your answer for x in km:", placeholder="type here your answer e.g. 3.0 or 4.5")
