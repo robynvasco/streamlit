@@ -101,14 +101,16 @@ def main():
     st.info("The table below provides a quick reference for the sine values of common angles. Your task is to fill in the cosine values for each angle. Choose the correct value from the given options and select it from the dropdown menu next to each angle. If all the values are correct, you will see a success message.")
 
     options = ['','1', '√3/2', '√2/2', '½', '0']
-    df = pd.DataFrame(table_data)
-
-    # Render the table
-    st.table(df)
+    
 
     for i, angle in enumerate(table_data['Angle']):
         cos_choice = st.selectbox(f'cos({angle})', options, key=f'cos_{i}')
         table_data['cos(α)'].append(cos_choice)
+    
+    df = pd.DataFrame(table_data)
+
+    # Render the table
+    st.table(df)
 
     
 
