@@ -57,19 +57,19 @@ def main():
     # Plot triangle
     plot_triangle(a, b, c)
     # Calculate distance
-    distance = x(c)
+    distance = x(5)
     
     # Display formula in st.info
  
     st.info(f"a is to b as c is to x.\n\n"
             f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
     
-    st.write(f"A distance of {c} cm on the map is equivalent to a real distance of x=")
+    st.write(f"How far is the real distance between two points on the map that are 5 cm apart")
     answer = st.text_input("Enter your answer for x (real distance in km):")
     if answer:
         try:
             if float(answer) == distance:
-                st.success("That's correct!")
+                st.success(f"That's correct! A distance of {c} cm on the map is equivalent to a real distance of x={distance} km")
             else:
                 st.error("That's incorrect. Try again!")
         except ValueError:
