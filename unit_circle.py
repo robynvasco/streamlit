@@ -92,11 +92,22 @@ def main():
     st.write('### Trigonometric Values')
     table_data = {
         'α in degrees': ['0°', '30°', '45°', '60°', '90°'],
-        'α in radians': ['0', 'π/6', 'π/4', 'π/3', 'π/2'],
-        'sin(α)': ['0', '½', '√2/2', '√3/2', '1'],
-        'Memory Aid for sin(α)': ['√0/2', '√1/2', '√2/2', '√3/2', '√4/2'],
-        'cos(α)': ['1', '√3/2', '√2/2', '½', '0']
+        'α in radians': [],
+        'sin(α)': [],
+        'Memory Aid for sin(α)': [],
+        'cos(α)': []
     }
+
+    for i in range(5):
+        radians_input = st.text_input(f'α in radians ({i+1}/5)', key=f'rad_{i}')
+        sin_input = st.text_input(f'sin(α) ({i+1}/5)', key=f'sin_{i}')
+        memory_aid_input = st.text_input(f'Memory Aid for sin(α) ({i+1}/5)', key=f'mem_{i}')
+        cos_input = st.text_input(f'cos(α) ({i+1}/5)', key=f'cos_{i}')
+
+        table_data['α in radians'].append(radians_input)
+        table_data['sin(α)'].append(sin_input)
+        table_data['Memory Aid for sin(α)'].append(memory_aid_input)
+        table_data['cos(α)'].append(cos_input)
 
     df = pd.DataFrame(table_data)
 
