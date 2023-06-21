@@ -110,10 +110,7 @@ def main():
         cos_choice = st.selectbox(f'cos({angle})', options, key=f'cos_{i}')
         table_data['cos(α)'].append(cos_choice)
 
-    df = pd.DataFrame(table_data)
-
-    # Render the table
-    st.table(df)
+    
 
     # Check if all values are correct
     correct_values = ['1', '√3/2', '√2/2', '½', '0']
