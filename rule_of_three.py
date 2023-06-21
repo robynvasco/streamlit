@@ -60,9 +60,9 @@ def main():
     # Display formula in st.info
  
     st.info(f"a is to b as c is to x.\n\n"
-         f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n\n"
-         f"\n$x = \\frac{{3\\,\\mathrm{{km}}}}{{2\\,\\mathrm{{cm}}}} \\cdot {c}\\,\\mathrm{{cm}} = {distance} \\mathrm{{km}}$\n\n "
-         f"A distance of {c} cm on the map is equivalent to a real distance of x={distance} km.")
+            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n\n"
+            f"\n$x = \\frac{{3\\,\\mathrm{{km}}}}{{2\\,\\mathrm{{cm}}}} \\cdot {c}\\,\\mathrm{{cm}} = {distance} \\mathrm{{km}}$\n\n "
+            f"A distance of {c} cm on the map is equivalent to a real distance of x={distance} km.")
 
    
 
