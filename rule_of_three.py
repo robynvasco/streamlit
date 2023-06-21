@@ -17,9 +17,9 @@ def plot_triangle(a, b, c):
   
     
     # Add labels
-    ax.text(a/2, 0, "a", ha='center', va='bottom', color='#00BFFF')
+    ax.text(a/2, -0.5, "a", ha='center', va='bottom', color='#00BFFF')
     ax.text(a-0.1, b/2, "b", ha='right', va='center', color='#006F5F')
-    ax.text(c-0.5, 0, "c", ha='center', va='bottom', color='#7FDBFF')
+    ax.text(c-0.5, -0.5, "c", ha='center', va='bottom', color='#7FDBFF')
     ax.text(c-0.1, x/2, "x", ha='right', va='center', color='#00B894')
     
     # Set plot limits
