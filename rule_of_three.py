@@ -22,8 +22,8 @@ def plot_triangle(a, b, c):
     ax.text(c, x/2-0.5, "x", ha='right', va='center', color='#7FDBFF')
     
     # Set plot limits
-    ax.set_xlim(0, max(a, c) + 1)
-    ax.set_ylim(0, max(b, x) + 1)
+    ax.set_xlim(0, 11)
+    ax.set_ylim(0, 16)
    
     
     # Hide axes and background
