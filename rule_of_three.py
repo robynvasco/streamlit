@@ -148,9 +148,9 @@ def main():
     
     tab1, tab2 = st.tabs(["Rule of Three", "Inverse Rule of Three"])
     
-    if tab1:
+    with tab1:
         rule_of_three()
-    elif tab2:
+    with tab2:
         inverse_rule_of_three()
 
 if __name__ == '__main__':
