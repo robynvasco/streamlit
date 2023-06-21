@@ -10,9 +10,9 @@ def plot_triangle(a, b, c):
     # Colors
     map_color = '#CCCCCC'
     a_color = '#c20420'
-    b_color = '#408ccc'
-    c_color = '#ed6478'
-    x_color = '#ccdae3'
+    b_color = '#0a6ca8'
+    c_color = '#f28d9b'
+    x_color = '#accee3'
 
     # Plot triangle
     x = (b * c) / a
