@@ -51,21 +51,20 @@ def main():
     # User input for c
     c = st.slider('Map Distance c in cm', min_value=1, max_value=10, value=4)
     
+    
+    # Plot triangle
+    plot_triangle(a, b, c)
     # Calculate distance
     distance = x(c)
     
     # Display formula in st.info
     st.info("a is to b as c is to x.\n\n" + r"$\frac{a}{b} = \frac{c}{x}$" + "\n\n" + r"$x = \frac{b}{a} \cdot c$")
    
-    
-    
 
      # Print distance
     st.write(f"A distance of {c} cm on the map is equivalent to a real distance of x={distance} km.")
     
     
-    # Plot triangle
-    plot_triangle(a, b, c)
 
 if __name__ == '__main__':
     main()
