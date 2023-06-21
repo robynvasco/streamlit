@@ -98,7 +98,7 @@ def main():
         'cos(α)': []
     }
 
-    options = ['1', '√3/2', '√2/2', '½', '0']
+    options = ['','1', '√3/2', '√2/2', '½', '0']
 
     for i, angle in enumerate(table_data['Angle']):
         cos_choice = st.selectbox(f'cos({angle})', options, key=f'cos_{i}')
