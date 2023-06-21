@@ -73,13 +73,13 @@ def main():
             f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
     with st.expander("Explanation"):
         st.write("The rule of three, also known as the proportionality rule, is a mathematical concept that allows us to solve proportional relationships between different quantities. It is based on the idea that if two ratios are equal, then the corresponding values in those ratios are also equal.")
-        st.write("In the sentence 'a is to b as c is to x,' we have a proportionality statement comparing two sets of quantities: a and b, and c and x. This statement implies that the ratio of a to b is equal to the ratio of c to x. In other words, the relationship between a and b is the same as the relationship between c and x.")
-        st.write("To understand this sentence, we can interpret it as a mathematical equation:")
+        st.write("In the sentence 'a is to b as c is to x,' implies that the ratio of a to b is equal to the ratio of c to x. So in our example, if the distance of two points on the map gets bigger, the real distance gets bigger proportionally.")
+        st.write("To use this sentence, we can interpret it as a mathematical equation:")
         st.latex(r"\frac{a}{b} = \frac{c}{x}")
-        st.write("This equation states that the ratio of a to b is equal to the ratio of c to x. It implies that if we know the values of a, b, and c, we can solve for x.")
+        st.write("It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
     
     st.write("")
-    answer = st.text_input("How far is the real distance between two points on the map that are 5 cm apart? Enter your answer for x (real distance in km):")
+    answer = st.text_input("How far is the real distance between two points on the map that are 5 cm apart? Enter your answer for x in km:", placeholder="type here your answer e.g. 3.0 or 4.5")
     if answer:
         try:
             if float(answer) == distance:
