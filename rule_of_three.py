@@ -7,13 +7,13 @@ def plot_triangle(a, b, c):
     x = (b * c) / a
     fig = mpl_fig.Figure()
     ax = fig.add_subplot(111)
-    ax.plot([0, a], [0, 0], color='#00B894', label=f'Map Distance a = {a} cm')
-    ax.plot([a, a], [0, b], color='#00A8FF', label=f'Real Distance b = {b} km')
-    ax.plot([0, a], [0, b], color='#F53B57', label=f'Map Distance c = {c} cm')
-    ax.plot([0, c], [0, 0], color='#00B894', label=f'Real Distance x = {x} km')
-    ax.plot([c, c], [0, x], color='#00B894')
+    ax.plot([c, c], [0, x], color='#CCCCCC')
     ax.plot([0, c], [0, x], color='#CCCCCC')
-    
+    ax.plot([0, c], [0, 0], color='#128C7E', label=f'Real Distance x = {x} km')
+    ax.plot([0, a], [0, b], color='#7FDBFF', label=f'Map Distance c = {c} cm')
+    ax.plot([0, a], [0, 0], color='#128C7E', label=f'Map Distance a = {a} cm')
+    ax.plot([a, a], [0, b], color='#00BFFF', label=f'Real Distance b = {b} km')
+   
     
     # Add labels
     ax.text(a/2, 0, "a", ha='center', va='bottom')
@@ -60,6 +60,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-  
-   
