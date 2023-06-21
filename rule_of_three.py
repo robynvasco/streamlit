@@ -54,8 +54,9 @@ def main():
     # Calculate distance
     distance = x(c)
     
-    st.info("a is to b as c is to x.\n" + str(st.latex(r"\frac{a}{b} = \frac{c}{x}")) + "\n" + str(st.latex(r"x = \frac{b}{a} \cdot c")))
-    # Display fractions using LaTeX
+    # Display formula in st.info
+    st.info("a is to b as c is to x.\n\n" + r"$\frac{a}{b} = \frac{c}{x}$" + "\n\n" + r"$x = \frac{b}{a} \cdot c$")
+   
     
     
 
