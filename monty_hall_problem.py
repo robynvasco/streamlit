@@ -21,11 +21,12 @@ def simulate_monty_hall(strategy):
         final_choice = [i for i in range(3) if i != player_choice and i != monty_open][0]
     else:
         remaining_doors.remove(monty_open)
-        final_choice = random.choice(remaining_doors)
+        final_choice = random.choice(remaining_doors) if remaining_doors else player_choice
 
     # Determine the result
     result = doors[final_choice]
     return result
+
 
 def main():
     st.title("Monty Hall Problem Simulator")
