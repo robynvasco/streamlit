@@ -24,12 +24,16 @@ def plot_triangle(a, b, c):
     ax.set_xlim(0, max(a, c) + 1)
     ax.set_ylim(0, max(b, x) + 1)
     
+    # Set aspect ratio
+    ax.set_aspect('equal')
+    
     # Hide axes and background
     ax.axis('off')
     ax.set_facecolor('none')
     
     # Show legend
     ax.legend(fontsize='small')
+   
     
     # Show plot
     st.pyplot(fig)
