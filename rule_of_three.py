@@ -7,19 +7,17 @@ def plot_triangle(a, b, c):
     x = (b * c) / a
     fig = mpl_fig.Figure()
     ax = fig.add_subplot(111)
-    ax.plot([c, c], [0, x], color='#128C7E', label=f'Real Distance x = {x} km')
-    ax.plot([0, c], [0, x], color='#CCCCCC')
-    ax.plot([0, c], [0, 0], color='#CCCCCC')
-    ax.plot([0, a], [0, b], color='#7FDBFF', label=f'Map Distance c = {c} cm')
     ax.plot([0, a], [0, 0], color='#128C7E', label=f'Map Distance a = {a} cm')
     ax.plot([a, a], [0, b], color='#00BFFF', label=f'Real Distance b = {b} km')
-   
+    ax.plot([0, c], [0, 0], color='#7FDBFF', label=f'Map Distance c = {c} cm')
+    ax.plot([c, c], [0, x], color='#128C7E', label=f'Real Distance x = {x} km')
+    ax.plot([0, c], [0, x], color='#CCCCCC')
     
     # Add labels
     ax.text(a/2, 0, "a", ha='center', va='bottom')
     ax.text(a, b/2, "b", ha='right', va='center')
     ax.text(c/2, 0, "c", ha='center', va='bottom')
-    ax.text(c/2, x/2, "x", ha='center', va='center')
+    ax.text(c, x/2, "x", ha='right', va='center')
     
     # Set plot limits
     ax.set_xlim(0, max(a, c) + 1)
@@ -52,7 +50,7 @@ def main():
     distance = x(c)
     
     # Print distance
-    st.write(f"If two centimeters on a map are equivalent to 3 km, then how far is the real distance between two points on the map that are 5 cm apart?")
+    st.write("If two centimeters on a map are equivalent to 3 km, then how far is the real distance between two points on the map that are 5 cm apart?")
     st.write(f"A distance of {c} cm on the map is equivalent to a real distance of {distance} km.")
     
     # Plot triangle
