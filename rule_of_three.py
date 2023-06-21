@@ -1,40 +1,49 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
-def calculate_real_distance(cm_on_map, cm_apart):
-    km_on_map = 3
-    real_distance = (cm_apart * km_on_map) / cm_on_map
-    return real_distance
+def plot_triangle(a, b, c):
+    # Plot triangle
+    plt.plot([0, a], [0, 0], color='green', label='b')
+    plt.plot([a, a], [0, b], color='blue', label='a')
+    plt.plot([0, a], [0, b], color='grey')
+    plt.plot([0, c], [0, 0], color='black')
+    plt.plot([c, c], [0, (a*c)/b], color='black')
+    
+    # Add labels
+    plt.text(a/2, 0, f'a = {a}', ha='center', va='bottom')
+    plt.text(a, b/2, f'b = {b}', ha='right', va='center')
+    
+    # Set plot limits
+    plt.xlim(0, max(a, c) + 1)
+    plt.ylim(0, max(b, (a*c)/b) + 1)
+    
+    # Show legend
+    plt.legend()
+    
+    # Show plot
+    st.pyplot()
 
-def plot_triangle():
-    a = 3
-    b = 2
+def main():
+    st.title('Rule of Three')
+    
+    # Constants
+    a = 2
+    b = 3
+    
+    # Calculate x
+    x = lambda c: (a * c) / b
+    
+    # User input for c
+    c = st.slider('c', min_value=1, max_value=10, value=5)
+    
+    # Calculate distance
+    distance = x(c)
+    
+    # Print distance
+    st.write(f"The real distance between the two points on the map that are 5 cm apart is: {distance} km")
+    
+    # Plot triangle
+    plot_triangle(a, b, c)
 
-    # Create the plot
-    fig, ax = plt.subplots()
-    ax.plot([0, b], [a, a], 'k-')  # Draw the horizontal line
-    ax.plot([b, b, 0], [0, a, a], 'k-')  # Draw the two vertical lines
-    ax.set_xlim(-1, b + 1)
-    ax.set_ylim(-1, a + 1)
-    ax.set_aspect('equal', adjustable='box')
-    ax.axis('off')
-
-    # Display the plot
-    st.pyplot(fig)
-
-# Set the title of the app
-st.title("Rule of Three")
-
-# Display the question and gather user input
-st.subheader("If two centimeters on a map is equivalent to 3 km,")
-st.subheader("How far is the real distance of two points on the map that are 5 cm apart from each other?")
-cm_on_map = st.number_input("Enter the number of centimeters on the map:", min_value=1)
-cm_apart = st.number_input("Enter the distance between the two points on the map in centimeters:", min_value=1)
-
-# Calculate the real distance and display the result
-real_distance = calculate_real_distance(cm_on_map, cm_apart)
-st.write("The real distance between the two points is", real_distance, "km.")
-
-# Plot the triangle
-st.subheader("Triangle Plot:")
-plot_triangle()
+if __name__ == '__main__':
+    main()
