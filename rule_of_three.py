@@ -110,19 +110,19 @@ def inverse_rule_of_three():
     fig.suptitle('Proportional Relationship: a * b = c * x', fontsize=16)
 
     # Plot a * b
-    axes[0].bar(0, a * b, color='orange')
-    axes[0].text(0, a * b + 1, str(a * b), ha='center')
-    axes[0].set_ylim(0, a * b + 10)
-    axes[0].set_xlim(-1, 1)
-    axes[0].set_axis_off()
+    axes[0].add_patch(patches.Rectangle((0, 0), a, b, color='orange', alpha=0.5))
+    axes[0].text(a / 2, b / 2, str(a * b), ha='center', va='center')
+    axes[0].set_xlim(0, a + 10)
+    axes[0].set_ylim(0, b + 10)
+    axes[0].set_aspect('equal')
     axes[0].set_title('a * b')
 
     # Plot c * x
-    axes[1].bar(0, new_c * x, color='orange')
-    axes[1].text(0, new_c * x + 1, str(new_c * x), ha='center')
-    axes[1].set_ylim(0, new_c * x + 10)
-    axes[1].set_xlim(-1, 1)
-    axes[1].set_axis_off()
+    axes[1].add_patch(patches.Rectangle((0, 0), new_c, x, color='orange', alpha=0.5))
+    axes[1].text(new_c / 2, x / 2, str(new_c * x), ha='center', va='center')
+    axes[1].set_xlim(0, new_c + 10)
+    axes[1].set_ylim(0, x + 10)
+    axes[1].set_aspect('equal')
     axes[1].set_title('c * x')
 
     # Adjust subplot spacing
