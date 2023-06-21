@@ -7,19 +7,19 @@ def plot_triangle(a, b, c):
     x = (b * c) / a
     fig = mpl_fig.Figure()
     ax = fig.add_subplot(111)
-    ax.plot([0, a], [0, 0], color='#00B894')
-    ax.plot([a, a], [0, b], color='#00A8FF')
-    ax.plot([0, a], [0, b], color='#F53B57')
-    ax.plot([0, c], [0, 0], color='#00B894')
+    ax.plot([0, a], [0, 0], color='#00B894', label=f'Map Distance a = {a} cm')
+    ax.plot([a, a], [0, b], color='#00A8FF', label=f'Real Distance b = {b} km')
+    ax.plot([0, a], [0, b], color='#F53B57', label=f'Map Distance c = {c} cm')
+    ax.plot([0, c], [0, 0], color='#00B894', label=f'Real Distance x = {x} km')
     ax.plot([c, c], [0, x], color='#00B894')
     ax.plot([0, c], [0, x], color='#CCCCCC')
     
     
     # Add labels
-    ax.text(a/2, 0, f'Map Distance a = {a} cm', ha='center', va='bottom')
-    ax.text(a, b/2, f'Real Distance b = {b} km', ha='right', va='center')
-    ax.text(c/2, 0, f'Map Distance c = {c} cm', ha='center', va='bottom')
-    ax.text(c/2, x/2, f'Real Distance x = {x} km', ha='center', va='center')
+    ax.text(a/2, 0, "a", ha='center', va='bottom')
+    ax.text(a, b/2, "b", ha='right', va='center')
+    ax.text(c/2, 0, "c", ha='center', va='bottom')
+    ax.text(c/2, x/2, "x", ha='center', va='center')
     
     # Set plot limits
     ax.set_xlim(0, max(a, c) + 1)
