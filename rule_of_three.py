@@ -7,23 +7,30 @@ def plot_triangle(a, b, c):
     x = (b * c) / a
     fig = mpl_fig.Figure()
     ax = fig.add_subplot(111)
-    
-    ax.plot([0, a], [0, b], '-', color='#CCCCCC', solid_capstyle='round')
-    ax.plot([0, c], [0, x], '-', color='#CCCCCC', solid_capstyle='round')
-    ax.plot([0, a], [0, 0], '-', color='#940f23', linewidth=3, label=f'Map Distance a = {a} cm', solid_capstyle='round')
-    ax.plot([a, a], [0, b], '-', color='#0489c7', linewidth=3, label=f'Real Distance b = {b} km', solid_capstyle='round')
-    ax.plot([0, c], [0, 0], '-', color='#ed6478', linewidth=5, label=f'Map Distance c = {c} cm', solid_capstyle='round')
-    ax.plot([c, c], [0, x], '-', color='#72c2e8', linewidth=3, label=f'Real Distance x', solid_capstyle='round')
-    ax.plot([0, a], [0, 0], '-', color='#940f23', linewidth=3, solid_capstyle='round')
-    
-    
-  
-    
+    # Colors
+    map_color = '#CCCCCC'
+    a_color = '#336a91'
+    b_color = '#0489c7'
+    c_color = '#ed6478'
+    x_color = '#ccdae3'
+
+    # Plot triangle
+    x = (b * c) / a
+    fig = mpl_fig.Figure()
+    ax = fig.add_subplot(111)
+    ax.plot([0, a], [0, b], '-', color=map_color, solid_capstyle='round')
+    ax.plot([0, c], [0, x], '-', color=map_color, solid_capstyle='round')
+    ax.plot([0, a], [0, 0], '-', color=a_color, linewidth=3, label=f'Map Distance a = {a} cm', solid_capstyle='round')
+    ax.plot([a, a], [0, b], '-', color=b_color, linewidth=3, label=f'Real Distance b = {b} km', solid_capstyle='round')
+    ax.plot([0, c], [0, 0], '-', color=c_color, linewidth=5, label=f'Map Distance c = {c} cm', solid_capstyle='round')
+    ax.plot([c, c], [0, x], '-', color=x_color, linewidth=3, label=f'Real Distance x', solid_capstyle='round')
+    ax.plot([0, a], [0, 0], '-', color=a_color, linewidth=3, solid_capstyle='round')
+
     # Add labels
-    ax.text(a/2, -0.7, "a", ha='center', va='bottom', color='#940f23')
-    ax.text(a-0.1, b/2, "b", ha='right', va='center', color='#0489c7')
-    ax.text(c-0.5, -0.7, "c", ha='center', va='bottom', color='#ed6478')
-    ax.text(c-0.1, x/2, "x", ha='right', va='center', color='#72c2e8')
+    ax.text(a/2, -0.7, "a", ha='center', va='bottom', color=a_color)
+    ax.text(a-0.1, b/2, "b", ha='right', va='center', color=b_color)
+    ax.text(c-0.5, -0.7, "c", ha='center', va='bottom', color=c_color)
+    ax.text(c-0.1, x/2, "x", ha='right', va='center', color=x_color)
     
     # Set plot limits
     ax.set_xlim(0, 11)
