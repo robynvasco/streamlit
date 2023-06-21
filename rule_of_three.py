@@ -19,10 +19,10 @@ def plot_triangle(a, b, c):
   
     
     # Add labels
-    ax.text(a/2, -0.7, "a", ha='center', va='bottom', color='#00BFFF')
-    ax.text(a-0.1, b/2, "b", ha='right', va='center', color='#006F5F')
-    ax.text(c-0.5, -0.7, "c", ha='center', va='bottom', color='#7FDBFF')
-    ax.text(c-0.1, x/2, "x", ha='right', va='center', color='#00B894')
+    ax.text(a/2, -0.7, "a", ha='center', va='bottom', color='#0489c7')
+    ax.text(a-0.1, b/2, "b", ha='right', va='center', color='#02c497')
+    ax.text(c-0.5, -0.7, "c", ha='center', va='bottom', color='#72c2e8')
+    ax.text(c-0.1, x/2, "x", ha='right', va='center', color='#66dec2')
     
     # Set plot limits
     ax.set_xlim(0, 11)
@@ -62,14 +62,20 @@ def main():
     # Display formula in st.info
  
     st.info(f"a is to b as c is to x.\n\n"
-            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n\n"
-            f"$x = \\frac{{3\\,\\mathrm{{km}}}}{{2\\,\\mathrm{{cm}}}} \\cdot {c}\\,\\mathrm{{cm}} = {distance} \\mathrm{{km}}$\n\n "
-            f"A distance of {c} cm on the map is equivalent to a real distance of x={distance} km.")
+            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
+    
+    st.write(f"A distance of {c} cm on the map is equivalent to a real distance of x=")
+    answer = st.text_input("Enter your answer for x (real distance in km):")
+    if answer:
+        try:
+            if float(answer) == distance:
+                st.success("That's correct!")
+            else:
+                st.error("That's incorrect. Try again!")
+        except ValueError:
+            st.error("Invalid input. Please enter a number.")
+           
 
-   
-
-     # Print distance
-    st.write()
     
     
 
