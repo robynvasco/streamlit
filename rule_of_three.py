@@ -7,7 +7,7 @@ def plot_triangle(a, b, c):
     plt.plot([a, a], [0, b], color='blue', label='a')
     plt.plot([0, a], [0, b], color='grey')
     plt.plot([0, c], [0, 0], color='red')
-    plt.plot([c, c], [0, (a*c)/b], color='red')
+    plt.plot([c, c], [0, (b*c)/a], color='red')
     
     # Add labels
     plt.text(a/2, 0, f'a = {a}', ha='center', va='bottom')
