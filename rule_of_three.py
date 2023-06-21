@@ -33,6 +33,9 @@ def plot_triangle(a, b, c):
     
     # Show legend
     ax.legend(fontsize='small')
+    
+    ax.text(1, -1, r'$\frac{a}{b} = \frac{2}{3}$', ha='left', va='bottom', fontsize=12, usetex=True)
+    ax.text(5, -1, r'$\frac{c}{x} = \frac{' + str(c) + r'}{' + str(round(x, 2)) + r'}$', ha='left', va='bottom', fontsize=12, usetex=True)
    
     
     # Show plot
