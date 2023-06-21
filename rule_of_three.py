@@ -43,7 +43,7 @@ def main():
     # Constants
     a = 2
     b = 3
-    
+    f=2/3
     # Calculate x
     x = lambda c: (b * c) / a
     
@@ -57,8 +57,8 @@ def main():
     # Print distance
     st.write(f"A distance of {c} cm on the map is equivalent to a real distance of {distance} km.")
     # Display fractions using LaTeX
-    st.latex(r"\frac{a}{b} = \frac{2}{3}")
-    st.latex(r"\frac{c}{x} = \frac{" + str(c) + r"}{" + str(distance) + r"}")
+    st.latex(r"\frac{a}{b} = \frac{2}{3}="+str(f)+"= \frac{" + str(c) + r"}{" + str(distance) + r"}=\frac{c}{x}")
+    st.info(st.latex(r"\frac{a}{b} =\frac{c}{x}"))
     
     
     # Plot triangle
