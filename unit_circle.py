@@ -105,6 +105,9 @@ def main():
         table_data['cos(α)'].append(cos_choice)
 
     df = pd.DataFrame(table_data)
+    
+    st.info("Task Description: Fill in the Cosine Values. In the table below, you will find a column labeled "cos(α)". Your task is to fill in the cosine values for each angle. Choose the correct value from the given options and select it from the dropdown menu next to each angle. The options to choose from are: '1', '√3/2', '√2/2', '½', and '0'. If all the values are correct, you will see a success message. If any value is incorrect, please review and correct your choices. Good luck!")
+
 
     # Render the table
     st.table(df)
