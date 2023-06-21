@@ -91,7 +91,7 @@ def main():
     st.write('')
     st.write('### Trigonometric Values')
     table_data = {
-        'α in degrees': ['0°', '30°', '45°', '60°', '90°'],
+        'Angle': ['0°', '30°', '45°', '60°', '90°'],
         'α in radians': ['0', 'π/6', 'π/4', 'π/3', 'π/2'],
         'sin(α)': ['0', '½', '√2/2', '√3/2', '1'],
         'Memory Aid for sin(α)': ['√0/2', '√1/2', '√2/2', '√3/2', '√4/2'],
@@ -105,9 +105,6 @@ def main():
         table_data['cos(α)'].append(cos_choice)
 
     df = pd.DataFrame(table_data)
-    
-    st.info("The table provides a quick reference for the sine values of common angles. The column labeled cos(α) is empty yet. Your task is to fill in the cosine values for each angle. Choose the correct value from the given options and select it from the dropdown menu next to each angle. If all the values are correct, you will see a success message. If any value is incorrect, please review and correct your choices. Good luck!")
-
 
     # Render the table
     st.table(df)
