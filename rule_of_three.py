@@ -9,8 +9,8 @@ def plot_triangle(a, b, c):
     ax = fig.add_subplot(111)
     # Colors
     map_color = '#CCCCCC'
-    a_color = '#e80224'
-    b_color = '#336a91'
+    a_color = '#c20420'
+    b_color = '#408ccc'
     c_color = '#ed6478'
     x_color = '#ccdae3'
 
