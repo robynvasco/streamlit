@@ -41,22 +41,17 @@ def main():
     st.write(f"**Strategy:** {strategy}")
     st.write(f"**Number of simulations:** {num_simulations}")
 
-    stay_count = switch_count = random_count = 0
+    wins = 0
 
     for _ in range(num_simulations):
         result = simulate_monty_hall(strategy)
         if result == "car":
-            if strategy == "Stay":
-                stay_count += 1
-            elif strategy == "Switch":
-                switch_count += 1
-            else:
-                random_count += 1
+            wins += 1
 
     st.write("### Results")
-    st.write(f"Stay: {stay_count} wins out of {num_simulations} simulations")
-    st.write(f"Switch: {switch_count} wins out of {num_simulations} simulations")
-    st.write(f"Random: {random_count} wins out of {num_simulations} simulations")
+    st.write(f"{strategy}: {wins} wins out of {num_simulations} simulations")
 
 if __name__ == "__main__":
     main()
+
+
