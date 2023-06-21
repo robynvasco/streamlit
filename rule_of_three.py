@@ -54,10 +54,10 @@ def main():
     # Calculate distance
     distance = x(c)
     
-   
+    st.info("a is to b as c is to x.\n"+ st.latex(r"\frac{a}{b} =\frac{c}{x}")+"\n"  st.latex(r"x=\frac{b}{a} \cdot c") )
     # Display fractions using LaTeX
-    st.latex(r"\frac{a}{b} =\frac{c}{x}")
-    st.latex(r"x=\frac{b}{a} \cdot c")
+    
+    
 
      # Print distance
     st.write(f"A distance of {c} cm on the map is equivalent to a real distance of x={distance} km.")
