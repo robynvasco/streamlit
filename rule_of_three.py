@@ -10,9 +10,10 @@ def plot_triangle(a, b, c):
     ax.plot([0, a], [0, 0], color='#00B894')
     ax.plot([a, a], [0, b], color='#00A8FF')
     ax.plot([0, a], [0, b], color='#F53B57')
-    ax.plot([0, c], [0, 0], color='#E78AC3')
-    ax.plot([c, c], [0, x], color='#E78AC3')
+    ax.plot([0, c], [0, 0], color='#00B894')
+    ax.plot([c, c], [0, x], color='#00B894')
     ax.plot([0, c], [0, x], color='#CCCCCC')
+    
     
     # Add labels
     ax.text(a/2, 0, f'Map Distance a = {a} cm', ha='center', va='bottom')
