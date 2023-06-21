@@ -104,7 +104,7 @@ def main():
         cos_choice = st.selectbox(f'cos(α) ({i+1}/5)', options, key=f'cos_{i}')
         table_data['cos(α)'].append(cos_choice)
 
-    df = pd.DataFrame(table_data)
+    df = pd.DataFrame(table_data).transpose()
 
     # Render the table
     st.table(df)
