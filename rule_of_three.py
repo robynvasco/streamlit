@@ -8,10 +8,10 @@ def plot_triangle(a, b, c):
     fig = mpl_fig.Figure()
     ax = fig.add_subplot(111)
     ax.plot([0, c], [0, x], color='#CCCCCC')
-    ax.plot([a, a], [0, b], color='#00BFFF', label=f'Real Distance b = {b} km')
-    ax.plot([0, c], [0, 0], color='#128C7E', label=f'Map Distance c = {c} cm')
-    ax.plot([c, c], [0, x], color='#7FDBFF', label=f'Real Distance x = {x} km')
-    ax.plot([0, a], [0, 0], color='#128C7E', label=f'Map Distance a = {a} cm')
+    ax.plot([a, a], [0, b], color='#00BFFF', linewidth=2, label=f'Real Distance b = {b} km')
+    ax.plot([0, c], [0, 0], color='#128C7E', linewidth=2, label=f'Map Distance c = {c} cm')
+    ax.plot([c, c], [0, x], color='#7FDBFF', linewidth=2, label=f'Real Distance x = {x} km')
+    ax.plot([0, a], [0, 0], color='#128C7E', linewidth=2, label=f'Map Distance a = {a} cm')
   
     
     # Add labels
