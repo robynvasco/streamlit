@@ -7,22 +7,23 @@ def plot_triangle(a, b, c):
     x = (b * c) / a
     fig = mpl_fig.Figure()
     ax = fig.add_subplot(111)
+    
     ax.plot([0, a], [0, b], '-', color='#CCCCCC', solid_capstyle='round')
     ax.plot([0, c], [0, x], '-', color='#CCCCCC', solid_capstyle='round')
-    ax.plot([0, a], [0, 0], '-', color='#0489c7', linewidth=3, label=f'Map Distance a = {a} cm', solid_capstyle='round')
-    ax.plot([a, a], [0, b], '-', color='#02c497', linewidth=3, label=f'Real Distance b = {b} km', solid_capstyle='round')
-    ax.plot([0, c], [0, 0], '-', color='#72c2e8', linewidth=5, label=f'Map Distance c = {c} cm', solid_capstyle='round')
-    ax.plot([c, c], [0, x], '-', color='#66dec2', linewidth=3, label=f'Real Distance x', solid_capstyle='round')
-    ax.plot([0, a], [0, 0], '-', color='#0489c7', linewidth=3, solid_capstyle='round')
+    ax.plot([0, a], [0, 0], '-', color='#940f23', linewidth=3, label=f'Map Distance a = {a} cm', solid_capstyle='round')
+    ax.plot([a, a], [0, b], '-', color='#0489c7', linewidth=3, label=f'Real Distance b = {b} km', solid_capstyle='round')
+    ax.plot([0, c], [0, 0], '-', color='#ed6478', linewidth=5, label=f'Map Distance c = {c} cm', solid_capstyle='round')
+    ax.plot([c, c], [0, x], '-', color='#72c2e8', linewidth=3, label=f'Real Distance x', solid_capstyle='round')
+    ax.plot([0, a], [0, 0], '-', color='#940f23', linewidth=3, solid_capstyle='round')
     
     
   
     
     # Add labels
-    ax.text(a/2, -0.7, "a", ha='center', va='bottom', color='#0489c7')
-    ax.text(a-0.1, b/2, "b", ha='right', va='center', color='#02c497')
-    ax.text(c-0.5, -0.7, "c", ha='center', va='bottom', color='#72c2e8')
-    ax.text(c-0.1, x/2, "x", ha='right', va='center', color='#66dec2')
+    ax.text(a/2, -0.7, "a", ha='center', va='bottom', color='#940f23')
+    ax.text(a-0.1, b/2, "b", ha='right', va='center', color='#0489c7')
+    ax.text(c-0.5, -0.7, "c", ha='center', va='bottom', color='#ed6478')
+    ax.text(c-0.1, x/2, "x", ha='right', va='center', color='#72c2e8')
     
     # Set plot limits
     ax.set_xlim(0, 11)
