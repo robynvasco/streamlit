@@ -58,7 +58,9 @@ def main():
     distance = x(c)
     
     # Display formula in st.info
-    st.info("a is to b as c is to x.\n\n" + r"$\frac{a}{b} = \frac{c}{x}$" + "\n\n" + r"$x = \frac{b}{a} \cdot c$")
+    st.info(f"a is to b as c is to x.\n"
+         f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$"
+         f"\n$x = \\frac{{3km}}{{2cm}} \\cdot {c}cm = $")
    
 
      # Print distance
