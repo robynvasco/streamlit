@@ -11,8 +11,8 @@ def plot_triangle(a, b, c):
     ax.plot([0, c], [0, x], '-', color='#CCCCCC', solid_capstyle='round')
     ax.plot([0, a], [0, 0], '-', color='#0489c7', linewidth=3, label=f'Map Distance a = {a} cm', solid_capstyle='round')
     ax.plot([a, a], [0, b], '-', color='#02c497', linewidth=3, label=f'Real Distance b = {b} km', solid_capstyle='round')
-    ax.plot([0, c], [0, 0], '-', color='#72c2e8', linewidth=3, label=f'Map Distance c = {c} cm', solid_capstyle='round')
-    ax.plot([c, c], [0, x], '-', color='#66dec2', linewidth=3, label=f'Real Distance x = {x} km', solid_capstyle='round')
+    ax.plot([0, c], [0, 0], '-', color='#72c2e8', linewidth=4, label=f'Map Distance c = {c} cm', solid_capstyle='round')
+    ax.plot([c, c], [0, x], '-', color='#66dec2', linewidth=4, label=f'Real Distance x = {x} km', solid_capstyle='round')
     ax.plot([0, a], [0, 0], '-', color='#0489c7', linewidth=3, solid_capstyle='round')
     
     
