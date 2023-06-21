@@ -32,11 +32,7 @@ def plot_triangle(a, b, c):
     ax.set_facecolor('none')
     
     # Show legend
-    ax.legend(fontsize='small')
-    
-    ax.text(1, -1, r'$\frac{a}{b} = \frac{2}{3}$', ha='left', va='bottom', fontsize=12, usetex=True)
-    ax.text(5, -1, r'$\frac{c}{x} = \frac{' + str(c) + r'}{' + str(round(x, 2)) + r'}$', ha='left', va='bottom', fontsize=12, usetex=True)
-   
+    ax.legend(fontsize='small', ha='left')
     
     # Show plot
     st.pyplot(fig)
@@ -51,6 +47,7 @@ def main():
     # Calculate x
     x = lambda c: (b * c) / a
     
+    st.info("If two centimeters on a map are equivalent to 3 km, then how far is the real distance between two points on the map that are 5 cm apart?")
     # User input for c
     c = st.slider('Map Distance c in cm', min_value=1, max_value=10, value=4)
     
@@ -58,8 +55,11 @@ def main():
     distance = x(c)
     
     # Print distance
-    st.write("If two centimeters on a map are equivalent to 3 km, then how far is the real distance between two points on the map that are 5 cm apart?")
     st.write(f"A distance of {c} cm on the map is equivalent to a real distance of {distance} km.")
+    # Display fractions using LaTeX
+    st.latex(r"\frac{a}{b} = \frac{2}{3}")
+    st.latex(r"\frac{c}{x} = \frac{" + str(c) + r"}{" + str(distance) + r"}")
+    
     
     # Plot triangle
     plot_triangle(a, b, c)
