@@ -7,12 +7,12 @@ def plot_triangle(a, b, c):
     x = (b * c) / a
     fig = mpl_fig.Figure()
     ax = fig.add_subplot(111)
-    ax.plot([c, c], [0, x], '-', color='#CCCCCC')
-    ax.plot([0, c], [0, x], '-', color='#CCCCCC')
-    ax.plot([0, c], [0, 0], '-', color='#00B894', linewidth=3, label=f'Map Distance c = {c} cm')
-    ax.plot([c, c], [0, x], '-', color='#7FDBFF', linewidth=3, label=f'Real Distance x = {x} km')
-    ax.plot([0, a], [0, 0], '-', color='#006F5F', linewidth=3, label=f'Map Distance a = {a} cm')
-    ax.plot([a, a], [0, b], '-', color='#00BFFF', linewidth=3, label=f'Real Distance b = {b} km')
+    ax.plot([0, a], [0, b], '-', color='#CCCCCC', solid_capstyle='round')
+    ax.plot([0, c], [0, x], '-', color='#CCCCCC', solid_capstyle='round')
+    ax.plot([0, c], [0, 0], '-', color='#00B894', linewidth=3, label=f'Map Distance c = {c} cm', solid_capstyle='round')
+    ax.plot([c, c], [0, x], '-', color='#7FDBFF', linewidth=3, label=f'Real Distance x = {x} km', solid_capstyle='round')
+    ax.plot([0, a], [0, 0], '-', color='#006F5F', linewidth=3, label=f'Map Distance a = {a} cm', solid_capstyle='round')
+    ax.plot([a, a], [0, b], '-', color='#00BFFF', linewidth=3, label=f'Real Distance b = {b} km', solid_capstyle='round')
   
     
     # Add labels
