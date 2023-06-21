@@ -69,9 +69,10 @@ def main():
     
     # Display formula in st.info
  
-    with st.info(f"a is to b as c is to x.\n\n"
-            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n"):
-            with st.expander("Explanation"):
+    st.info(f"a is to b as c is to x.\n\n"
+            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
+    
+    with st.expander("Explanation"):
                 st.write("The rule of three, also known as the proportionality rule, is a mathematical concept that allows us to solve proportional relationships between different quantities. It is based on the idea that if two ratios are equal, then the corresponding values in those ratios are also equal.")
                 st.write("In the sentence 'a is to b as c is to x,' implies that the ratio of a to b is equal to the ratio of c to x. So in our example, if the distance of two points on the map gets bigger, the real distance gets bigger proportionally.")
                 st.write("To use this sentence, we can interpret it as a mathematical equation:")
