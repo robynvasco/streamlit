@@ -54,11 +54,12 @@ def main():
     # Calculate distance
     distance = x(c)
     
-    # Print distance
-    st.write(f"A distance of {c} cm on the map is equivalent to a real distance of {distance} km.")
+   
     # Display fractions using LaTeX
     st.latex(r"\frac{a}{b} = \frac{2}{3}="+str(f)+"= \frac{" + str(c) + r"}{" + str(distance) + r"}=\frac{c}{x}")
-    st.latex(r"\frac{a}{b} =\frac{c}{x}"))
+    st.latex(r"x=\frac{b}{a} \cdot c")
+     # Print distance
+    st.write(f"A distance of {c} cm on the map is equivalent to a real distance of x={distance} km.")
     
     
     # Plot triangle
