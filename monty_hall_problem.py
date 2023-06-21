@@ -20,15 +20,16 @@ def simulate_monty_hall(strategy):
     elif strategy == "Switch":
         final_choice = [i for i in range(3) if i != player_choice and i != monty_open][0]
     else:
-        remaining_doors.remove(monty_open)
-        if remaining_doors:
-            final_choice = random.choice(remaining_doors)
+        remaining_doors_for_random_choice = [i for i in range(3) if i != monty_open]
+        if remaining_doors_for_random_choice:
+            final_choice = random.choice(remaining_doors_for_random_choice)
         else:
             final_choice = player_choice
 
     # Determine the result
     result = doors[final_choice]
     return result
+
 
 
 def main():
