@@ -32,7 +32,7 @@ def plot_triangle(a, b, c):
     ax.set_facecolor('none')
     
     # Show legend
-    ax.legend(fontsize='small', loc='upper left')
+    ax.legend(fontsize='x-small', loc='upper left')
     
     # Show plot
     st.pyplot(fig)
