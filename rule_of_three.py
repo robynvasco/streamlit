@@ -1,6 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.figure as mpl_fig
+import matplotlib.patches as patches
 
 def plot_triangle(a, b, c):
     # Plot triangle
