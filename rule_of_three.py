@@ -69,7 +69,7 @@ def rule_of_three():
 
     # Display formula in st.info
     st.info("If the distance between two points on the map increases, the real distance also increases proportionally. That implies that the ratio of map distance a and real distance b stays constant.\n\n"
-        "Therefore, the ratio of a to b is equal to the ratio of an increased/decreased map distance c to real distance x. We say "
+        "Therefore, the ratio of a to b is equal to the ratio of an increased/decreased map distance c to real distance x. We say \n\n "
         "a is to b as c is to x.\n\n"
         "To use this sentence, we can interpret it as a mathematical equation:\n\n"
         "$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n\n"
@@ -132,8 +132,13 @@ def inverse_rule_of_three():
     # Show plot
     st.pyplot(fig)
 
-    st.info(f"a times b as c is to x.\n\n"
-            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
+    st.info("If the number of ducks increases, the days that the food lasts decreases proportionally. The total amount of food stays the same an can be expressed as the multiplication of the number of ducks with the days the food lasts. \n\n"
+            " We say \n\n "
+            "a times b is the same as c times x.\n\n"
+            "To use this sentence, we can interpret it as a mathematical equation:\n\n"
+            "$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
+            "It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
+           
 
     with st.expander("Explanation"):
         st.write("The rule of three, also known as the proportionality rule, is a mathematical concept that allows us to solve proportional relationships between different quantities. It is based on the idea that if two ratios are equal, then the corresponding values in those ratios are also equal.")
