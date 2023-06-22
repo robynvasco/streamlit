@@ -69,11 +69,11 @@ def rule_of_three():
 
     # Display formula in st.info
     st.info("If the distance between two points on the map increases, the real distance also increases proportionally. That implies that the ratio of map distance a and real distance b stays constant.\n\n"
-        "Therefore, the ratio of a to b is equal to the ratio of an increased/decreased map distance c to real distance x. We say \n\n "
-        "a is to b as c is to x.\n\n"
-        "To use this sentence, we can interpret it as a mathematical equation:\n\n"
-        "$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n\n"
-        "It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
+            "Therefore, the ratio of a to b is equal to the ratio of an increased/decreased map distance c to real distance x. We say \n\n "
+            "a is to b as c is to x.\n\n"
+            "To use this sentence, we can interpret it as a mathematical equation:\n\n"
+            "$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n\n"
+            "It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
 
 
  
