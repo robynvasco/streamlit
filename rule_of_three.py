@@ -127,12 +127,7 @@ def inverse_rule_of_three():
     # Show plot
     st.pyplot(fig)
 
-    st.info("If the number of ducks increases, the days that the food lasts decreases proportionally. The total amount of food stays the same an can be expressed as the multiplication of the number of ducks with the days the food lasts. \n\n"
-            " We say \n\n "
-            "a times b is the same as c times x.\n\n"
-            "To use this sentence, we can interpret it as a mathematical equation:\n\n"
-            "$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
-            "It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
+   
            
 
     with st.expander("Explanation"):
