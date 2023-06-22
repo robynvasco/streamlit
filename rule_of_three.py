@@ -68,15 +68,14 @@ def rule_of_three():
     distance = x(5)
 
     # Display formula in st.info
-    st.info(f"a is to b as c is to x.\n\n"
-            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
+    st.info(f"If the distance between two points on the map increases, the real distance also increases proportionally. That implies that the ratio of map distance a and real distance b stays constant.\n\n
+            Therefore the ratio a to b is is equal to the ratio of an incresed/decreased map distance c to real distance x. We say
+            a is to b as c is to x.\n\n
+            To use this sentence, we can interpret it as a mathematical equation:\n\n
+            $\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n\n\
+            It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
 
-    with st.expander("Explanation"):
-        st.write("The rule of three, also known as the proportionality rule, is a mathematical concept that allows us to solve proportional relationships between different quantities. It is based on the idea that if two ratios are equal, then the corresponding values in those ratios are also equal.")
-        st.write("In the sentence 'a is to b as c is to x,' it implies that the ratio of a to b is equal to the ratio of c to x. So in our example, if the distance between two points on the map increases, the real distance also increases proportionally.")
-        st.write("To use this sentence, we can interpret it as a mathematical equation:")
-        st.latex(r"\frac{a}{b} = \frac{c}{x}")
-        st.write("This equation states that the ratio of a to b is equal to the ratio of c to x. It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
+ 
 
     st.write("")
     answer = st.text_input("How far is the real distance between two points on the map that are 5 cm apart? Enter your answer for x in km:", placeholder="Type your answer here, e.g., 3.0 or 4.5")
@@ -101,7 +100,7 @@ def inverse_rule_of_three():
 
     st.info("At a farm, it takes 10 days for 20 ducks to eat the food that’s left out for them. How much time would it take for a different number of ducks to eat the same food?")
     # User input for x
-    x = st.slider('Number of Ducks (x)', min_value=1, max_value=30, value=20)
+    x = st.slider('Number of Ducks x', min_value=5, max_value=30, value=20)
 
     # Calculate c
     new_c = c(x)
@@ -113,16 +112,16 @@ def inverse_rule_of_three():
     # Plot a * b
     axes[0].add_patch(patches.Rectangle((0, 0), a, b, color='orange', alpha=0.5))
     axes[0].text(a / 2, b / 2, str(a * b), ha='center', va='center')
-    axes[0].set_xlim(0, a + 10)
-    axes[0].set_ylim(0, b + 10)
+    axes[0].set_xlim(0, 40)
+    axes[0].set_ylim(0, 30)
     axes[0].set_aspect('equal')
     axes[0].set_title('a * b')
 
     # Plot c * x
     axes[1].add_patch(patches.Rectangle((0, 0), new_c, x, color='orange', alpha=0.5))
     axes[1].text(new_c / 2, x / 2, str(new_c * x), ha='center', va='center')
-    axes[1].set_xlim(0, new_c + 10)
-    axes[1].set_ylim(0, x + 10)
+    axes[1].set_xlim(0, 40)
+    axes[1].set_ylim(0, 30)
     axes[1].set_aspect('equal')
     axes[1].set_title('c * x')
 
@@ -131,6 +130,17 @@ def inverse_rule_of_three():
 
     # Show plot
     st.pyplot(fig)
+
+    st.info(f"a times b as c is to x.\n\n"
+            f"$\\frac{{a}}{{b}} = \\frac{{c}}{{x}}$\n")
+
+    with st.expander("Explanation"):
+        st.write("The rule of three, also known as the proportionality rule, is a mathematical concept that allows us to solve proportional relationships between different quantities. It is based on the idea that if two ratios are equal, then the corresponding values in those ratios are also equal.")
+        st.write("In the sentence 'a is to b as c is to x,' it implies that the ratio of a to b is equal to the ratio of c to x. So in our example, if the distance between two points on the map increases, the real distance also increases proportionally.")
+        st.write("To use this sentence, we can interpret it as a mathematical equation:")
+        st.latex(r"\frac{a}{b} = \frac{c}{x}")
+        st.write("This equation states that the ratio of a to b is equal to the ratio of c to x. It implies that if we know three of the variables, we can calculate the value of the fourth variable.")
+
 
     st.write("")
     answer = st.text_input("How many ducks would it take to eat the same food in the given time? Enter your answer for c (number of ducks):", placeholder="Type your answer here, e.g., 15")
