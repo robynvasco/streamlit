@@ -11,8 +11,7 @@ st.sidebar.title("Function Input")
 function_input = st.sidebar.text_input("Enter a function (e.g., x^2 + 3*x + 2)", "x^2 + 3*x + 2")
 
 # Derivation level input
-st.sidebar.title("Derivation Level")
-derivation_level = st.sidebar.slider("Select derivation level", 1, 5, 1)
+derivation_level = 1
 
 # Point selection for tangent line
 st.sidebar.title("Tangent Line")
