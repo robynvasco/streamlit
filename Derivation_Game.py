@@ -33,12 +33,20 @@ y_der_vals = [sp.lambdify(x, derivative)(val) for val in x_vals]
 tangent_line_func = sp.lambdify(x, derivative)(selected_point) * (x - selected_point) + sp.lambdify(x, function)(selected_point)
 tangent_line = lambda x_val: tangent_line_func.subs(x, x_val)
 
-# Plot the original function, its derivative, and the tangent line
-fig, ax = plt.subplots()
-ax.plot(x_vals, y_vals, label="Original Function")
-ax.plot(x_vals, y_der_vals, label="Derivative Function")
-ax.plot(x_vals, [tangent_line(val) for val in x_vals], label="Tangent Line")
-ax.legend()
+# Create subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+# Plot the original function and tangent points
+ax1.plot(x_vals, y_vals, label="Original Function")
+ax1.plot(selected_point, sp.lambdify(x, function)(selected_point), 'ro', label="Tangent Point (x/f(x))")
+ax1.plot(selected_point, tangent_line_func, 'go', label="Tangent Point (x/f'(x))")
+ax1.legend()
+
+# Plot the derivative function and tangent points
+ax2.plot(x_vals, y_der_vals, label="Derivative Function")
+ax2.plot(selected_point, sp.lambdify(x, function)(selected_point), 'ro', label="Tangent Point (x/f(x))")
+ax2.plot(selected_point, tangent_line_func, 'go', label="Tangent Point (x/f'(x))")
+ax2.legend()
 
 # Display the plot
 st.pyplot(fig)
