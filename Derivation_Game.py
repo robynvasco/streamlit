@@ -11,7 +11,8 @@ st.sidebar.title("Function Input")
 function_input = st.sidebar.text_input("Enter a function (e.g., x^2 + 3*x + 2)", "x^2 + 3*x + 2")
 
 # Derivation level input
-derivation_level = 1
+st.sidebar.title("Derivation Level")
+derivation_level = st.sidebar.slider("Select derivation level", 1, 5, 1)
 
 # Point selection for tangent line
 st.sidebar.title("Tangent Line")
@@ -30,7 +31,8 @@ y_vals = [sp.lambdify(x, function)(val) for val in x_vals]
 y_der_vals = [sp.lambdify(x, derivative)(val) for val in x_vals]
 
 # Calculate tangent line
-tangent_line = sp.lambdify(x, derivative)(selected_point) * (x - selected_point) + sp.lambdify(x, function)(selected_point)
+tangent_line_func = sp.lambdify(x, derivative)(selected_point) * (x - selected_point) + sp.lambdify(x, function)(selected_point)
+tangent_line = lambda x_val: tangent_line_func.subs(x, x_val)
 
 # Plot the original function, its derivative, and the tangent line
 fig, ax = plt.subplots()
