@@ -21,7 +21,6 @@ def apply_term(new_term, level):
         x_is_isolated = (equation.lhs == Symbol('x') and not equation.rhs.has(Symbol('x'))) or \
                         (equation.rhs == Symbol('x') and not equation.lhs.has(Symbol('x')))
         if x_is_isolated:
-            st.balloons()
             st.success("Congratulations! 'x' is isolated and you have found the solution!")
             
             
