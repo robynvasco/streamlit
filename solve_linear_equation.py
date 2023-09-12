@@ -54,6 +54,9 @@ def add_multiplication_operator(match):
     return match.group(1) + '*' + match.group(2)
 
 def insert_multiplication_operators(term):
+    # Replace ':' with '/' for division
+    term = term.replace(':', '/')
+    # Insert multiplication operators
     term = re.sub(r'(\d)([a-zA-Z\(])', add_multiplication_operator, term)
     term = re.sub(r'(\))(?=[a-zA-Z])', add_multiplication_operator, term)
     return term
