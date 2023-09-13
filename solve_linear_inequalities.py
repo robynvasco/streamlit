@@ -38,8 +38,7 @@ def apply_term(new_term, level, reverse_sign):
                 if i < len(st.session_state['terms']):
                     st.session_state['terms'][i] = "This step is incorrect"
                     st.error("You made a mistake")
-                else:
-                    st.error("You made a mistake in your last step.")
+                
             
         # Check if the last and the first equations are equal
         last_equation = st.session_state['equations'][-1]
@@ -49,6 +48,8 @@ def apply_term(new_term, level, reverse_sign):
 
         if simplified_last == simplified_first:
             st.success("Congratulations! 'x' is isolated and you have found the solution!")
+        else:
+            st.error("You made a mistake in your last step.")
         
             
             
