@@ -18,7 +18,7 @@ def apply_term(new_term, level, reverse_sign):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
     
     st.session_state['equations'].append(equation)
-    st.session_state['terms'].append("$"+term+"$")
+    st.session_state['terms'].append("|   $"+term+"$")
 
     # Check if x is isolated
     x_is_isolated = (equation.lhs == Symbol('x') and not equation.rhs.has(Symbol('x'))) or \
@@ -36,7 +36,7 @@ def apply_term(new_term, level, reverse_sign):
             if simplified_original != simplified_current:
                 # Add a message to the equation indicating a mistake
                 if i < len(st.session_state['terms']):
-                    st.session_state['terms'][i] = ":heavy_exclamation_mark: :yellow[This inequality does not correspond to the original statement.]"
+                    st.session_state['terms'][i] = ":heavy_exclamation_mark: :orange[This inequality does not correspond to the original statement.]"
                     
                 
             
@@ -292,7 +292,7 @@ def main():
                     st.markdown("---")
             with term_col:
                 term = terms[i] if i < len(terms) else ''
-                term_text = f"|    {term.replace('*', '⋅')}"
+                term_text = f"{term.replace('*', '⋅')}"
                 st.markdown(term_text)
 
     st.write("")
