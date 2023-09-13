@@ -181,7 +181,7 @@ def main():
     st.write("")
 
     # Create a column layout
-    col1, col2, col3 = st.columns([3, 1, 1])
+    col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
 
     level = st.sidebar.selectbox("Select Level", ["Level 1", "Level 2", "Level 3", "Level 4","Level 5"])  # Add more levels
     
@@ -205,9 +205,12 @@ def main():
 
     if col2.button("Apply term", key="apply"):
         apply = True
+    
+    if col3.button("Apply term and reverse sign", key="reverse_apply"):
+        apply = True
 
     if len(st.session_state['equations']) >=1:
-        if col3.button("Undo", key="undo"):
+        if col4.button("Undo", key="undo"):
             apply = True
             undo_last_action()
 
