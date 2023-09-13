@@ -57,7 +57,7 @@ def apply_term(new_term, level, reverse_sign):
 def apply_term_to_equation(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
-    st.write("normal function is called")
+    
 
     if "()" in term:
         st.error("Invalid term. Empty parentheses.")
@@ -86,7 +86,7 @@ def apply_term_to_equation(term, equation):
 def apply_term_to_equation_reverse(term, equation):
     x = Symbol('x')
     left_side, right_side = equation.args
-    st.write("Reverse function is called")
+    
 
     if "()" in term:
         st.error("Invalid term. Empty parentheses.")
@@ -276,8 +276,6 @@ def main():
             apply = True
             undo_last_action()
 
-    if st.session_state.saved_input and not apply:
-        st.write("Input")
 
 
     # Display the updated equations and applied terms
