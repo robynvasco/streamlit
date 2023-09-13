@@ -160,13 +160,13 @@ def start_new_game(level):
         "Level 3": [
             Lt(5/(Symbol('x') + 3), 5),
             Lt(-1/Symbol('x') - 1/2 , 6),
-            Le(4/(Symbol('x') * 2), 8),
+            Le(4/(Symbol('x') * (-2)), 8),
             Le(1/Symbol('x') - 2/3, 8),
             Ge(4/(Symbol('x') + 1), 10),
             Ge(3/Symbol('x'), 3),
-            Gt(8/(Symbol('x') * 3), 9),
-            Gt(9/Symbol('x') + 2, 5),
-            Gt(9/Symbol('x'), 3/2),
+            Gt(8/(Symbol('x') * (-3)), 9),
+            Gt(-9/Symbol('x') + 2, 5),
+            Gt(-9/Symbol('x'), 3/2),
             Lt(1/(Symbol('x') + 4), 6),
         ],
         "Level 4": [
