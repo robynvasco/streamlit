@@ -36,9 +36,15 @@ def apply_term(new_term, level, reverse_sign):
             if simplified_original != simplified_current:
                 # Add a message to the equation indicating a mistake
                 st.session_state['terms'][i] = "Here is a mistake with the sign"
-            #if the last and the first st.session_state['equations'] are equal then print
+            
+        # Check if the last and the first equations are equal
+        last_equation = st.session_state['equations'][-1]
+        first_equation = st.session_state['equations'][0]
+        simplified_last = simplify(last_equation)
+        simplified_first = simplify(first_equation)
 
-        st.success("Congratulations! 'x' is isolated and you have found the solution!")
+        if simplified_last == simplified_first:
+            st.success("Congratulations! 'x' is isolated and you have found the solution!")
         
             
             
