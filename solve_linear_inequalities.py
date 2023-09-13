@@ -241,8 +241,8 @@ def main():
         apply = True
     
     if col3.button("Apply term and reverse sign", key="reverse_apply"):
+        apply = True
         st.session_state.reverse_sign = True
-        apply_term(st.session_state.saved_input, level, st.session_state.reverse_sign)
 
     if len(st.session_state['equations']) >=1:
         if col4.button("Undo", key="undo"):
