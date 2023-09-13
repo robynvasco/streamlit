@@ -36,7 +36,7 @@ def apply_term(new_term, level, reverse_sign):
             if simplified_original != simplified_current:
                 # Add a message to the equation indicating a mistake
                 if i < len(st.session_state['terms']):
-                    st.session_state['terms'][i] = "This step is incorrect"
+                    st.session_state['terms'][i] = ":red[This step is incorrect]"
                     st.error("You made a mistake")
                 
             
