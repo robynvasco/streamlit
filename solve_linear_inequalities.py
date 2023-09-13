@@ -8,7 +8,7 @@ def enter():
     st.session_state.input = ''
 
 def clear_text():
-    st.session_state.input = ''
+    st.session_state.saved_input = ''
 
 def apply_term(new_term, level, reverse_sign):
     term = insert_multiplication_operators(new_term)
@@ -255,7 +255,7 @@ def main():
         st.session_state.level = level
 
 
-    st.session_state.input = col1.text_input(
+    term = col1.text_input(
         "input",
         label_visibility="collapsed",
         value="",
@@ -271,12 +271,12 @@ def main():
 
     if col2.button("Apply term", key="apply"):
         apply = True
-        apply_term(st.session_state.input, level, st.session_state.reverse_sign)
+        apply_term(st.session_state.saved_input, level, st.session_state.reverse_sign)
     
     if col3.button("Apply term and reverse sign", key="reverse_apply"):
         apply = True
         st.session_state.reverse_sign = True
-        apply_term(st.session_state.input, level, st.session_state.reverse_sign)
+        apply_term(st.session_state.saved_input, level, st.session_state.reverse_sign)
 
     if len(st.session_state['equations']) >=1:
         if col4.button("Undo", key="undo"):
@@ -305,6 +305,7 @@ def main():
     st.write("")
     st.write("")
     st.button("Click here to begin a new game", key="new_game", on_click=lambda: start_new_game(level))
+    clear_text()
 
 if __name__ == "__main__":
     main()
