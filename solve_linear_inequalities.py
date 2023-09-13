@@ -1,5 +1,5 @@
 import streamlit as st
-import sympy
+from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols, Rational, nsimplify, Float, Mul, S, And, Or, Not, Le, Lt, Ge, Gt, Eq, Ne
 import re
 import random
 
