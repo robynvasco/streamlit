@@ -239,10 +239,12 @@ def main():
 
     if col2.button("Apply term", key="apply"):
         apply = True
+        apply_term(st.session_state.saved_input, level, st.session_state.reverse_sign)
     
     if col3.button("Apply term and reverse sign", key="reverse_apply"):
         apply = True
         st.session_state.reverse_sign = True
+        apply_term(st.session_state.saved_input, level, st.session_state.reverse_sign)
 
     if len(st.session_state['equations']) >=1:
         if col4.button("Undo", key="undo"):
@@ -250,7 +252,7 @@ def main():
             undo_last_action()
 
     if st.session_state.saved_input and not apply:
-        apply_term(st.session_state.saved_input, level, st.session_state.reverse_sign)
+        st.write("Input")
 
 
     # Display the updated equations and applied terms
