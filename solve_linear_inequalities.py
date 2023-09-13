@@ -36,7 +36,7 @@ def apply_term(new_term, level, reverse_sign):
             if simplified_original != simplified_current:
                 # Add a message to the equation indicating a mistake
                 if i < len(st.session_state['terms']):
-                    st.session_state['terms'][i] = ":large_orange_circle: :orange[This inequality does not correspond to the original statement.]"
+                    st.session_state['terms'][i] = ":orange[This inequality does not correspond to the original statement.]"
                     
                 
             
