@@ -18,7 +18,7 @@ def apply_term(new_term, level, reverse_sign):
         equation = apply_term_to_equation(term, st.session_state['equations'][-1])
     
     st.session_state['equations'].append(equation)
-    st.session_state['terms'].append(term)
+    st.session_state['terms'].append("$"+term+"$")
 
     # Check if x is isolated
     x_is_isolated = (equation.lhs == Symbol('x') and not equation.rhs.has(Symbol('x'))) or \
