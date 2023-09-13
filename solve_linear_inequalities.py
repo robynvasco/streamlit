@@ -35,7 +35,7 @@ def apply_term(new_term, level, reverse_sign):
             # Check if the current equation is different from the original equation
             if simplified_original != simplified_current:
                 # Add a message to the equation indicating a mistake
-                st.session_state['equations'][i] = current_equation + " - Here is a mistake"
+                st.session_state['terms'][i] = "Here is a mistake with the sign"
 
         # Check if all equations are correct (no mistakes)
         all_correct = all("Here is a mistake" not in eq for eq in st.session_state['equations'][1:])
