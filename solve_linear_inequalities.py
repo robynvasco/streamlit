@@ -65,16 +65,9 @@ def start_new_game(level):
     st.session_state.saved_input = ""
     equation_databases = {
         "Level 1": [
-            Eq(Symbol('x') + 3, 5),
-            Eq(Symbol('x') - 2, 4),
-            Eq(Symbol('x') * 2, 8),
-            Eq(Symbol('x') / 3, 2),
-            Eq(Symbol('x') + 7, 10),
-            Eq(Symbol('x') - 5, 1),
-            Eq(Symbol('x') * 4, 12),
-            Eq(Symbol('x') / 2, 3),
-            Eq(Symbol('x') + 2, 6),
-            Eq(Symbol('x') - 1, 3),
+            Le(Symbol('x') + 3, 5),
+            Le(Symbol('x') - 2, 4),
+            Le(Symbol('x') * 2, 8),
         ],
         "Level 2": [
             Eq((Symbol('x') + 3) * 2, 5),
