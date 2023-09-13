@@ -159,7 +159,7 @@ def start_new_game(level):
         ],
         "Level 3": [
             Lt(5/(Symbol('x') + 3), 5),
-            Lt(1/Symbol('x') - 1/2 , 6),
+            Lt(-1/Symbol('x') - 1/2 , 6),
             Le(4/(Symbol('x') * 2), 8),
             Le(1/Symbol('x') - 2/3, 8),
             Ge(4/(Symbol('x') + 1), 10),
