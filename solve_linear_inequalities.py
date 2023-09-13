@@ -10,19 +10,22 @@ def enter():
 def clear_text():
     st.session_state.input = ''
 
-def apply_term(new_term, level):
+def apply_term(new_term, level, reverse_sign):
     term = insert_multiplication_operators(new_term)
-    equation = apply_term_to_equation(term, st.session_state['equations'][-1])
-    if equation != st.session_state['equations'][-1]:
-        st.session_state['equations'].append(equation)
-        st.session_state['terms'].append(term)
+    if reverse_sign:
+        equation = apply_term_to_equation_reverse(term, st.session_state['equations'][-1])
+    else:
+        equation = apply_term_to_equation(term, st.session_state['equations'][-1])
+    
+    st.session_state['equations'].append(equation)
+    st.session_state['terms'].append(term)
 
-        # Check if x is isolated
-        x_is_isolated = (equation.lhs == Symbol('x') and not equation.rhs.has(Symbol('x'))) or \
-                        (equation.rhs == Symbol('x') and not equation.lhs.has(Symbol('x')))
-        if x_is_isolated:
-            st.success("Congratulations! 'x' is isolated and you have found the solution!")
-            
+    # Check if x is isolated
+    x_is_isolated = (equation.lhs == Symbol('x') and not equation.rhs.has(Symbol('x'))) or \
+                    (equation.rhs == Symbol('x') and not equation.lhs.has(Symbol('x')))
+    if x_is_isolated:
+        st.success("Congratulations! 'x' is isolated and you have found the solution!")
+        
             
             
 
@@ -47,6 +50,34 @@ def apply_term_to_equation(term, equation):
             new_equation = Lt(new_left_side, new_right_side)
         elif isinstance(equation, Gt):
             new_equation = Gt(new_left_side, new_right_side)
+        else:
+            st.error("Invalid equation type.")
+        return new_equation
+    except SympifyError:
+        st.error("Invalid term. Please check the syntax and mismatched parentheses.")
+        return equation
+
+def apply_term_to_equation_reverse(term, equation):
+    x = Symbol('x')
+    left_side, right_side = equation.args
+
+    if "()" in term:
+        st.error("Invalid term. Empty parentheses.")
+        return equation
+
+    try:
+        new_left_side = sympify(f"({left_side}){term}")
+        new_right_side = sympify(f"({right_side}){term}")
+        if isinstance(equation, Eq):
+            new_equation = Eq(new_left_side, new_right_side)
+        elif isinstance(equation, Le):
+            new_equation = Ge(new_left_side, new_right_side)
+        elif isinstance(equation, Ge):
+            new_equation = Le(new_left_side, new_right_side)
+        elif isinstance(equation, Lt):
+            new_equation = Gt(new_left_side, new_right_side)
+        elif isinstance(equation, Gt):
+            new_equation = Lt(new_left_side, new_right_side)
         else:
             st.error("Invalid equation type.")
         return new_equation
@@ -202,12 +233,14 @@ def main():
 
     undo = False
     apply = False
+    reverse_sign= False
 
     if col2.button("Apply term", key="apply"):
         apply = True
     
     if col3.button("Apply term and reverse sign", key="reverse_apply"):
         apply = True
+        reverse_sign = True
 
     if len(st.session_state['equations']) >=1:
         if col4.button("Undo", key="undo"):
@@ -215,7 +248,7 @@ def main():
             undo_last_action()
 
     if st.session_state.saved_input and not apply:
-        apply_term(st.session_state.saved_input, level)
+        apply_term(st.session_state.saved_input, level, reverse_sign)
 
 
     # Display the updated equations and applied terms
