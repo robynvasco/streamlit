@@ -1,5 +1,5 @@
 import streamlit as st
-from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, symbols, Rational, nsimplify, Float, Mul, S, And, Or, Not, Le, Lt, Ge, Gt, Eq, Ne
+from sympy import Symbol, Eq, parse_expr, latex, SympifyError, sympify, simplify, symbols, Rational, nsimplify, Float, Mul, S, And, Or, Not, Le, Lt, Ge, Gt, Eq, Ne
 import re
 import random
 
@@ -24,7 +24,23 @@ def apply_term(new_term, level, reverse_sign):
     x_is_isolated = (equation.lhs == Symbol('x') and not equation.rhs.has(Symbol('x'))) or \
                     (equation.rhs == Symbol('x') and not equation.lhs.has(Symbol('x')))
     if x_is_isolated:
-        st.success("Congratulations! 'x' is isolated and you have found the solution!")
+        original_equation = st.session_state['equations'][0] 
+        #Compare every equation in st.session_state.equations
+        for i in range(1, len(st.session_state['equations'])):
+            current_equation = st.session_state['equations'][i]
+            # Simplify the current equation for comparison
+            simplified_original = simplify(original_equation)
+            simplified_current = simplify(current_equation)
+
+            # Check if the current equation is different from the original equation
+            if simplified_original != simplified_current:
+                # Add a message to the equation indicating a mistake
+                st.session_state['equations'][i] = current_equation + " - Here is a mistake"
+
+        # Check if all equations are correct (no mistakes)
+        all_correct = all("Here is a mistake" not in eq for eq in st.session_state['equations'][1:])
+        if all_correct:
+            st.success("Congratulations! 'x' is isolated and you have found the solution!")
         
             
             
