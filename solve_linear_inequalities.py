@@ -37,7 +37,18 @@ def apply_term_to_equation(term, equation):
     try:
         new_left_side = sympify(f"({left_side}){term}")
         new_right_side = sympify(f"({right_side}){term}")
-        new_equation = Eq(new_left_side, new_right_side)
+        if isinstance(equation, Eq):
+            new_equation = Eq(new_left_side, new_right_side)
+        elif isinstance(equation, Le):
+            new_equation = Le(new_left_side, new_right_side)
+        elif isinstance(equation, Ge):
+            new_equation = Ge(new_left_side, new_right_side)
+        elif isinstance(equation, Lt):
+            new_equation = Lt(new_left_side, new_right_side)
+        elif isinstance(equation, Gt):
+            new_equation = Gt(new_left_side, new_right_side)
+        else:
+            st.error("Invalid equation type.")
         return new_equation
     except SympifyError:
         st.error("Invalid term. Please check the syntax and mismatched parentheses.")
