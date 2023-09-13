@@ -35,7 +35,7 @@ def apply_term(new_term, level, reverse_sign):
             # Check if the current equation is different from the original equation
             if simplified_original != simplified_current:
                 # Add a message to the equation indicating a mistake
-                st.session_state['terms'][i] = "Here is a mistake with the sign"
+                st.session_state['terms'][i-1] = "Here is a mistake with the sign"
             
         # Check if the last and the first equations are equal
         last_equation = st.session_state['equations'][-1]
