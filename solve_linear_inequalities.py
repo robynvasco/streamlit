@@ -36,8 +36,8 @@ def apply_term(new_term, level, reverse_sign):
             if simplified_original != simplified_current:
                 # Add a message to the equation indicating a mistake
                 if i < len(st.session_state['terms']):
-                    st.session_state['terms'][i] = ":red[This step is incorrect]"
-                    st.error("You made a mistake")
+                    st.session_state['terms'][i] = ":red[This inequality does not correspond to the original statement.]"
+                    
                 
             
         # Check if the last and the first equations are equal
@@ -49,7 +49,7 @@ def apply_term(new_term, level, reverse_sign):
         if simplified_last == simplified_first:
             st.success("Congratulations! 'x' is isolated and you have found the solution!")
         else:
-            st.error("You made a mistake in your last step.")
+            st.error("Some of the inequalities do not correspond to the original statement. Make sure the inequality signs are correct.")
         
             
             
