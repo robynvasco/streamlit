@@ -39,8 +39,7 @@ def apply_term(new_term, level, reverse_sign):
                     st.session_state['terms'][i] = "This step is incorrect"
                     st.error("You made a mistake")
                 else:
-                    st.session_state['terms'].append("This step is incorrect")
-                    st.error("You made a mistake")
+                    st.error("You made a mistake in your last step.")
             
         # Check if the last and the first equations are equal
         last_equation = st.session_state['equations'][-1]
